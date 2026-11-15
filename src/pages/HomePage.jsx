@@ -265,19 +265,21 @@ export function HomePage() {
           <div className="advantage-split">
             {/* Left Anchor Column */}
             <Reveal className="advantage-split__lead">
-              <span className="eyebrow">
-                <span className="eyebrow-dot" />
-                The Hasamex Advantage
-              </span>
-              <AnimatedHeading
-                as="h2"
-                text="Why the World’s Smartest Teams Choose Hasamex"
-                style={{ marginTop: '0.6rem', marginBottom: '0.55rem' }}
-              />
-              <p className="lead" style={{ marginBottom: '1.25rem' }}>
-                We blend custom sourcing, precision vetting, white-glove service, and built-in
-                compliance to elevate every project—without the noise of recycled databases.
-              </p>
+              <div>
+                <span className="eyebrow">
+                  <span className="eyebrow-dot" />
+                  The Hasamex Advantage
+                </span>
+                <AnimatedHeading
+                  as="h2"
+                  text="Why the World’s Smartest Teams Choose Hasamex"
+                  style={{ marginTop: '0.55rem', marginBottom: '0.45rem' }}
+                />
+                <p className="lead" style={{ marginBottom: '0.9rem' }}>
+                  We blend custom sourcing, precision vetting, white-glove service, and built-in
+                  compliance to elevate every project—without the noise of recycled databases.
+                </p>
+              </div>
 
               <div className="advantage-sla-card">
                 <div className="advantage-sla-card__eyebrow">
