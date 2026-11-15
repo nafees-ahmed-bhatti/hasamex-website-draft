@@ -1039,6 +1039,28 @@ p {
   white-space: nowrap;
 }
 
+.showcase-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s var(--ease-hub);
+}
+
+.showcase-cta:hover {
+  background: #ffffff;
+  color: var(--hub-navy);
+  border-color: #ffffff;
+}
+
 /* ==========================================================================
    BENCHMARK STRIP & CONTINUOUS MARQUEE TICKERS
    ========================================================================== */
@@ -1717,14 +1739,16 @@ p {
 
 .pipeline-stage__step-num {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 0.15rem 0.46rem;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.44rem;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #ffffff;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s var(--ease-hub);
 }
 
