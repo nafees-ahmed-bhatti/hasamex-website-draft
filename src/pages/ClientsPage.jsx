@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   CLIENT_AUDIENCES,
   CLIENTS_SERVICE_MODEL,
   FORM_CONFIGS,
-  HOME_FORMATS
+  HOME_FORMATS,
+  HOW_HASAMEX_CONNECTS
 } from '../content/siteData';
 import { Icon } from '../components/Icons';
 import { IntakeForm } from '../components/IntakeForm';
 import { Layout } from '../components/Layout';
 import { MarketCoverageMap } from '../components/MarketCoverageMap';
-import { Reveal } from '../components/Reveal';
+import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 export function ClientsPage() {
   return (
@@ -28,23 +28,25 @@ export function ClientsPage() {
     >
       {/* HERO */}
       <section className="hero">
-        <div className="container" style={{ maxWidth: 920 }}>
-          <Reveal blur y={18}>
+        <div className="container" style={{ maxWidth: 880 }}>
+          <Reveal blur y={16}>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
               Client Services
             </span>
-            <h1 style={{ marginTop: '1.1rem', marginBottom: '1.15rem' }}>
-              The New Standard in Expert Intelligence
-            </h1>
-            <p className="lead" style={{ maxWidth: 680 }}>
+            <AnimatedHeading
+              as="h1"
+              text="The New Standard in Expert Intelligence"
+              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+            />
+            <p className="lead" style={{ maxWidth: 640 }}>
               Fast, compliant, and high-quality expert insight — delivered with white glove
-              service.
+              service across Developed, Emerging, and Frontier markets.
             </p>
             <div className="hero-ctas">
-              <a href="#enquiry-form" className="btn btn--gold">
+              <a href="#enquiry-form" className="btn btn--primary">
                 Start a Project
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </a>
               <a href="#formats" className="btn btn--glass">
                 Explore our Services
@@ -65,26 +67,79 @@ export function ClientsPage() {
               <span className="eyebrow-dot" />
               Service Architecture
             </span>
-            <h2>A Service Model Designed for Excellence</h2>
+            <AnimatedHeading as="h2" text="A Service Model Designed for Excellence" />
             <p className="lead">
               From intake to delivery, every step is structured, premium, and built around your
               workflow.
             </p>
           </Reveal>
 
-          <div className="grid-4">
+          <div className="grid-4" style={{ marginBottom: '2.5rem' }}>
             {CLIENTS_SERVICE_MODEL.map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.05} className="card">
+              <Reveal key={item.title} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{item.number}</span>
-                    <Icon name="shield" size={17} />
+                    <span style={{ color: 'var(--color-accent)' }}>
+                      <Icon name="shield" size={16} />
+                    </span>
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>
               </Reveal>
             ))}
+          </div>
+
+          {/* 4-Step Client-to-Expert Execution Flow */}
+          <div className="card card--navy" style={{ padding: '2rem' }}>
+            <div style={{ marginBottom: '1.35rem' }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                How We Connect You With Vetted Experts
+              </span>
+              <h3 style={{ fontSize: '1.3rem', marginTop: '0.6rem', color: '#ffffff' }}>
+                Four-Stage Brief-to-Consultation Execution
+              </h3>
+            </div>
+            <div className="grid-4">
+              {HOW_HASAMEX_CONNECTS.map((step) => (
+                <div
+                  key={step.step}
+                  style={{
+                    padding: '1rem',
+                    borderRadius: 'var(--radius-md)',
+                    background: 'rgba(15, 23, 42, 0.72)',
+                    border: '1px solid #1e293b'
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      color: '#22d3ee',
+                      marginBottom: '0.35rem'
+                    }}
+                  >
+                    PHASE {step.step}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.95rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      marginBottom: '0.35rem'
+                    }}
+                  >
+                    {step.title}
+                  </div>
+                  <p style={{ fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.55 }}>
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -93,12 +148,12 @@ export function ClientsPage() {
       <section id="formats" className="section section--ivory">
         <div className="container">
           <Reveal className="section-header">
-            <span className="eyebrow eyebrow--light">
+            <span className="eyebrow">
               <span className="eyebrow-dot" />
               Engagement Methods
             </span>
-            <h2>Multiple Formats. One Goal: Better Insight.</h2>
-            <p className="lead lead--ink">
+            <AnimatedHeading as="h2" text="Multiple Formats. One Goal: Better Insight." />
+            <p className="lead">
               Tailored primary research formats designed for institutional diligence, thematic
               sprints, and strategic decision-making.
             </p>
@@ -106,27 +161,14 @@ export function ClientsPage() {
 
           <div className="grid-3">
             {HOME_FORMATS.map((fmt, idx) => (
-              <Reveal key={fmt.id} delay={idx * 0.05} className="card card--ivory">
+              <Reveal key={fmt.id} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
-                    <span
-                      className="card-index"
-                      style={{ color: '#9a7000', fontWeight: 700 }}
-                    >
-                      {fmt.number}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: '0.74rem',
-                        fontWeight: 600,
-                        padding: '0.22rem 0.65rem',
-                        borderRadius: 'var(--radius-pill)',
-                        background: 'rgba(13,14,16,0.06)',
-                        color: 'var(--text-ink)'
-                      }}
-                    >
-                      {fmt.tag}
-                    </span>
+                    <span className="card-index">{fmt.number}</span>
+                    <span className="card-tag">{fmt.tag}</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name={fmt.icon} size={18} />
                   </div>
                   <h3>{fmt.title}</h3>
                   <p>{fmt.clientsDesc}</p>
@@ -145,7 +187,7 @@ export function ClientsPage() {
               <span className="eyebrow-dot" />
               Markets Coverage
             </span>
-            <h2>Local Expertise Across Global Markets</h2>
+            <AnimatedHeading as="h2" text="Local Expertise Across Global Markets" />
             <p className="lead">
               We source senior practitioners across Developed, Emerging, and Frontier corridors—so
               your diligence reflects local operational reality.
@@ -164,28 +206,31 @@ export function ClientsPage() {
               <span className="eyebrow-dot" />
               Client Segments
             </span>
-            <h2>We Support Global Decision-Makers Who Need Primary Insight They Can Trust</h2>
+            <AnimatedHeading
+              as="h2"
+              text="We Support Global Decision-Makers Who Need Primary Insight They Can Trust"
+            />
           </Reveal>
 
           <div className="grid-3">
             {CLIENT_AUDIENCES.map((seg, idx) => (
-              <Reveal key={seg.id} delay={idx * 0.06} className="card">
+              <Reveal key={seg.id} delay={idx * 0.05} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">0{idx + 1}</span>
                     <span className="card-tag">{seg.label}</span>
                   </div>
                   <h3>{seg.clientsPageTitle}</h3>
-                  <p style={{ marginBottom: '1.25rem' }}>{seg.clientsDescription}</p>
+                  <p style={{ marginBottom: '1.15rem' }}>{seg.clientsDescription}</p>
                   <ul
                     style={{
                       listStyle: 'none',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '0.45rem',
-                      marginBottom: '1.5rem',
-                      fontSize: '0.86rem',
-                      color: 'var(--text-secondary)'
+                      marginBottom: '1.35rem',
+                      fontSize: '0.84rem',
+                      color: 'var(--color-text-secondary)'
                     }}
                   >
                     {seg.workflows.map((w) => (
@@ -193,7 +238,7 @@ export function ClientsPage() {
                         key={w}
                         style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}
                       >
-                        <span style={{ color: 'var(--gold)', marginTop: 2 }}>
+                        <span style={{ color: 'var(--color-accent)', marginTop: 2 }}>
                           <Icon name="check" size={14} />
                         </span>
                         <span>{w}</span>
@@ -217,7 +262,7 @@ export function ClientsPage() {
 
       {/* CLIENT ENQUIRY FORM */}
       <section id="enquiry-form" className="section">
-        <div className="container" style={{ maxWidth: 880 }}>
+        <div className="container" style={{ maxWidth: 860 }}>
           <Reveal>
             <IntakeForm config={FORM_CONFIGS.client} />
           </Reveal>

@@ -2,19 +2,38 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { HERO_SHOWCASE_BRIEFS } from '../content/siteData';
 import { HasamexEmblemVector, Icon } from './Icons';
+import { TypewriterText } from './Reveal';
+
+const CYCLE_DURATION_MS = 8000;
 
 export function HeroShowcaseCard() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (paused || prefersReducedMotion) return;
-    const id = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % HERO_SHOWCASE_BRIEFS.length);
-    }, 4600);
-    return () => clearInterval(id);
+    const stepMs = 50;
+    const increment = (stepMs / CYCLE_DURATION_MS) * 100;
+
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev + increment >= 100) {
+          setActiveIndex((idx) => (idx + 1) % HERO_SHOWCASE_BRIEFS.length);
+          return 0;
+        }
+        return prev + increment;
+      });
+    }, stepMs);
+
+    return () => clearInterval(timer);
   }, [paused, prefersReducedMotion]);
+
+  const handleSelectTab = (idx) => {
+    setActiveIndex(idx);
+    setProgress(0);
+  };
 
   const current = HERO_SHOWCASE_BRIEFS[activeIndex];
 
@@ -23,39 +42,48 @@ export function HeroShowcaseCard() {
       className="showcase-card"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      aria-label="Illustrative Hasamex Engagement Workflow Preview"
+      aria-label="Hasamex Intelligence Network Workflow Walkthrough"
     >
       <div className="showcase-header">
         <div className="showcase-live-pill">
           <span className="live-dot" />
-          <span>Engagement Brief Desk</span>
+          <span>HIN Execution Lifecycle</span>
         </div>
-        <div className="showcase-tabs" role="tablist" aria-label="Engagement Format Examples">
-          {HERO_SHOWCASE_BRIEFS.map((item, idx) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={idx === activeIndex}
-              className={`showcase-tab ${idx === activeIndex ? 'showcase-tab--active' : ''}`}
-              onClick={() => setActiveIndex(idx)}
-            >
-              {item.index} · {item.format.split(' ')[0]}
-            </button>
-          ))}
+        <div className="showcase-tabs" role="tablist" aria-label="Hasamex Workflow Phases">
+          {HERO_SHOWCASE_BRIEFS.map((item, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`showcase-tab ${isActive ? 'showcase-tab--active' : ''}`}
+                onClick={() => handleSelectTab(idx)}
+              >
+                {item.tabLabel}
+                {isActive && (
+                  <span
+                    className="showcase-tab__progress"
+                    style={{ width: prefersReducedMotion ? '100%' : `${progress}%` }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={current.id}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -10 }}
-          transition={{ duration: 0.28, ease: 'easeOut' }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 10, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8, filter: 'blur(3px)' }}
+          transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="showcase-meta-row">
-            <span style={{ color: 'var(--gold)', fontWeight: 600 }}>
+            <span style={{ color: '#22d3ee', fontWeight: 600 }}>
               {current.format}
             </span>
             <span>{current.region}</span>
@@ -65,33 +93,37 @@ export function HeroShowcaseCard() {
 
           <div
             style={{
-              fontSize: '0.8rem',
-              color: 'var(--text-secondary)',
-              marginBottom: '0.95rem'
+              fontSize: '0.78rem',
+              color: '#94a3b8',
+              marginBottom: '0.85rem'
             }}
           >
-            Client Mandate: <strong style={{ color: 'var(--text-primary)' }}>{current.audience}</strong>
+            Scope Coverage: <strong style={{ color: '#f8fafc' }}>{current.audience}</strong>
           </div>
 
           <div className="showcase-profile-box">
-            <div className="showcase-profile-box__label">Matched Expert Profile</div>
+            <div className="showcase-profile-box__label">Live Workflow Stream</div>
             <div
               style={{
-                fontSize: '0.92rem',
+                fontSize: '0.84rem',
                 fontWeight: 500,
-                color: 'var(--text-primary)'
+                color: '#f8fafc',
+                lineHeight: 1.5,
+                minHeight: '2.6rem',
+                fontFamily: 'var(--font-mono)'
               }}
             >
-              {current.expertRole}
+              <TypewriterText text={current.streamText} speed={22} />
             </div>
             <div
               style={{
-                fontSize: '0.78rem',
-                color: '#86efac',
-                marginTop: '0.25rem',
+                fontSize: '0.75rem',
+                color: '#4ade80',
+                marginTop: '0.45rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.35rem'
+                gap: '0.35rem',
+                fontWeight: 600
               }}
             >
               <Icon name="clock" size={13} />
@@ -104,7 +136,7 @@ export function HeroShowcaseCard() {
               <div key={cp} className="showcase-checkpoint">
                 <span
                   style={{
-                    color: 'var(--gold)',
+                    color: '#22d3ee',
                     display: 'inline-flex',
                     flexShrink: 0
                   }}
@@ -117,19 +149,20 @@ export function HeroShowcaseCard() {
           </div>
 
           <div className="showcase-footer">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <HasamexEmblemVector size={32} />
-              <span>{current.deliverable}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <HasamexEmblemVector size={28} />
+              <span style={{ color: '#cbd5e1' }}>{current.deliverable}</span>
             </div>
             <span
               style={{
-                fontSize: '0.7rem',
+                fontSize: '0.68rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.07em',
-                color: 'var(--text-muted)'
+                color: '#94a3b8',
+                fontFamily: 'var(--font-mono)'
               }}
             >
-              Illustrative Workflow
+              Standard Protocol
             </span>
           </div>
         </motion.div>

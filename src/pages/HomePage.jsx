@@ -6,6 +6,8 @@ import {
   HOME_COMPLIANCE_CARDS,
   HOME_EXPERT_ARCHETYPES,
   HOME_FORMATS,
+  HOW_HASAMEX_CONNECTS,
+  MARQUEE_ITEMS,
   TESTIMONIALS,
   VERIFIED_BENCHMARKS,
   WHY_CHOOSE_HASAMEX
@@ -13,7 +15,7 @@ import {
 import { HeroShowcaseCard } from '../components/HeroShowcaseCard';
 import { Icon } from '../components/Icons';
 import { Layout } from '../components/Layout';
-import { Reveal } from '../components/Reveal';
+import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 export function HomePage() {
   const [activeAudienceId, setActiveAudienceId] = useState(CLIENT_AUDIENCES[0].id);
@@ -30,24 +32,29 @@ export function HomePage() {
 
   return (
     <Layout>
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION (Hub Executive Navy) */}
       <section className="hero">
         <div className="container hero-grid">
-          <Reveal blur y={20} className="hero-copy">
+          <Reveal blur y={18} className="hero-copy">
             <span className="eyebrow">
               <span className="eyebrow-dot" />
               Global Expert Intelligence Network
             </span>
-            <h1>Expert Intelligence, Redefined</h1>
-            <p className="lead" style={{ maxWidth: 580 }}>
+            <AnimatedHeading
+              as="h1"
+              text="Expert Intelligence, Redefined"
+              delay={0.04}
+              stagger={0.055}
+            />
+            <p className="lead" style={{ maxWidth: 560 }}>
               Hasamex connects global decision makers to trusted primary insight through expert
               calls, curated meetings, and custom reports — enabling sharper, faster decisions.
             </p>
 
             <div className="hero-ctas">
-              <Link to="/clients" className="btn btn--gold">
+              <Link to="/clients" className="btn btn--primary">
                 Become a Client
-                <Icon name="arrow-right" size={17} />
+                <Icon name="arrow-right" size={16} />
               </Link>
               <Link to="/experts" className="btn btn--glass">
                 Join as an Expert
@@ -62,24 +69,24 @@ export function HomePage() {
                 src="/brand/hasamex-emblem-light.png"
                 alt="Hasamex Two-Figures H Emblem"
                 style={{
-                  width: 44,
-                  height: 44,
+                  width: 40,
+                  height: 40,
                   borderRadius: '50%',
-                  border: '1px solid rgba(255,255,255,0.22)'
+                  border: '1px solid rgba(34, 211, 238, 0.35)'
                 }}
               />
               <div>
-                <div style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
+                <div style={{ color: '#f8fafc', fontWeight: 600 }}>
                   Headquartered in Singapore · Distributed Execution Across India &amp; Global Corridors
                 </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
                   Custom-vetted primary insight for Investment Firms, Strategy Consultants &amp; Corporate Leaders
                 </div>
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.12} y={24}>
+          <Reveal delay={0.12} y={20}>
             <HeroShowcaseCard />
           </Reveal>
         </div>
@@ -100,18 +107,32 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 3. SIX ENGAGEMENT FORMATS */}
+      {/* 2B. CONTINUOUS CAPABILITY MARQUEE TICKER (Junior.ai Inspired) */}
+      <div className="marquee-bar" aria-label="Hasamex Capabilities Ticker">
+        <div className="marquee-track">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+            <div key={`${item}-${idx}`} className="marquee-item">
+              <span className="marquee-dot" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. SIX ENGAGEMENT FORMATS (Light Crisp Surface) */}
       <section className="section">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 640 }}>
+            <Reveal style={{ maxWidth: 620 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Engagement Formats
               </span>
-              <h2 style={{ marginTop: '0.85rem', marginBottom: '0.6rem' }}>
-                Designed Around How You Work
-              </h2>
+              <AnimatedHeading
+                as="h2"
+                text="Designed Around How You Work"
+                style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}
+              />
               <p className="lead">
                 Whether you need a one-off call or a thematic knowledge sprint, Hasamex offers
                 flexible formats to match your insight goals.
@@ -120,49 +141,49 @@ export function HomePage() {
             <Reveal delay={0.08}>
               <Link to="/clients#formats" className="btn btn--glass">
                 Explore our services
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </Link>
             </Reveal>
           </div>
 
           <div className="grid-3">
             {HOME_FORMATS.map((fmt, idx) => (
-              <Reveal key={fmt.id} delay={idx * 0.05} className="card">
+              <Reveal key={fmt.id} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{fmt.number}</span>
                     <span className="card-tag">{fmt.tag}</span>
                   </div>
                   <div className="card-icon-box">
-                    <Icon name={fmt.icon} size={20} />
+                    <Icon name={fmt.icon} size={18} />
                   </div>
                   <h3>{fmt.title}</h3>
                   <p>{fmt.shortDesc}</p>
                 </div>
                 <div
                   style={{
-                    marginTop: '1.5rem',
-                    paddingTop: '1rem',
-                    borderTop: '1px solid var(--border-subtle)',
+                    marginTop: '1.25rem',
+                    paddingTop: '0.9rem',
+                    borderTop: '1px solid var(--hasamex-border-light)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    fontSize: '0.82rem',
-                    color: 'var(--text-secondary)'
+                    fontSize: '0.8rem',
+                    color: 'var(--color-text-secondary)'
                   }}
                 >
                   <span>Full MNPI &amp; NDA coverage</span>
                   <Link
                     to="/clients#formats"
                     style={{
-                      color: 'var(--gold)',
-                      fontWeight: 500,
+                      color: 'var(--color-accent)',
+                      fontWeight: 600,
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.3rem'
                     }}
                   >
-                    Details <Icon name="arrow-right" size={14} />
+                    Details <Icon name="arrow-right" size={13} />
                   </Link>
                 </div>
               </Reveal>
@@ -171,19 +192,76 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 4. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Light Ivory Architectural Contrast) */}
+      {/* 4. HOW HASAMEX CONNECTS CLIENTS WITH EXPERTS (Executive Navy Architectural Section) */}
+      <section className="section section--navy">
+        <div className="container">
+          <div className="section-header--split">
+            <Reveal style={{ maxWidth: 640 }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                End-to-End Execution
+              </span>
+              <AnimatedHeading
+                as="h2"
+                text="How Hasamex Connects Clients With Experts"
+                style={{ marginTop: '0.75rem', marginBottom: '0.5rem', color: '#ffffff' }}
+              />
+              <p className="lead" style={{ color: '#cbd5e1' }}>
+                Every research mandate runs through a structured four-stage workflow—combining custom
+                human headhunting, proprietary AI profile enrichment, and mandatory pre-call
+                compliance controls.
+              </p>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <Link to="/clients#service-model" className="btn btn--primary">
+                Start a Project
+                <Icon name="arrow-right" size={15} />
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="grid-4">
+            {HOW_HASAMEX_CONNECTS.map((stage, idx) => (
+              <Reveal key={stage.step} delay={idx * 0.05} className="card card--navy">
+                <div>
+                  <div className="card-top">
+                    <span className="card-index">STEP {stage.step}</span>
+                    <span className="card-tag">{stage.phase.split(' ')[0]}</span>
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.74rem',
+                      fontWeight: 600,
+                      color: '#22d3ee',
+                      marginBottom: '0.35rem'
+                    }}
+                  >
+                    {stage.phase}
+                  </div>
+                  <h3>{stage.title}</h3>
+                  <p>{stage.description}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Light Slate Contrast) */}
       <section className="section section--ivory">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 660 }}>
-              <span className="eyebrow eyebrow--light">
+            <Reveal style={{ maxWidth: 640 }}>
+              <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 The Hasamex Advantage
               </span>
-              <h2 style={{ marginTop: '0.85rem', marginBottom: '0.6rem' }}>
-                Why the World’s Smartest Teams Choose Hasamex
-              </h2>
-              <p className="lead lead--ink">
+              <AnimatedHeading
+                as="h2"
+                text="Why the World’s Smartest Teams Choose Hasamex"
+                style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}
+              />
+              <p className="lead">
                 We blend custom sourcing, precision vetting, premium service, and built-in
                 compliance to elevate every project.
               </p>
@@ -191,34 +269,18 @@ export function HomePage() {
             <Reveal delay={0.08}>
               <Link to="/clients#service-model" className="btn btn--ink">
                 Learn More About Our Service Framework
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </Link>
             </Reveal>
           </div>
 
           <div className="grid-4">
             {WHY_CHOOSE_HASAMEX.map((pillar, idx) => (
-              <Reveal key={pillar.title} delay={idx * 0.06} className="card card--ivory">
+              <Reveal key={pillar.title} delay={idx * 0.05} className="card">
                 <div>
                   <div className="card-top">
-                    <span
-                      className="card-index"
-                      style={{ color: '#9a7000', fontWeight: 700 }}
-                    >
-                      {pillar.number}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: '0.72rem',
-                        fontWeight: 600,
-                        padding: '0.22rem 0.6rem',
-                        borderRadius: 'var(--radius-pill)',
-                        background: 'rgba(13,14,16,0.06)',
-                        color: 'var(--text-ink)'
-                      }}
-                    >
-                      {pillar.highlight}
-                    </span>
+                    <span className="card-index">{pillar.number}</span>
+                    <span className="card-tag">{pillar.highlight}</span>
                   </div>
                   <h3>{pillar.title}</h3>
                   <p>{pillar.description}</p>
@@ -229,27 +291,30 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 5. THE EXPERTS BEHIND THE INTELLIGENCE */}
+      {/* 6. THE EXPERTS BEHIND THE INTELLIGENCE */}
       <section className="section">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 640 }}>
+            <Reveal style={{ maxWidth: 620 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
-                Hasamex Intelligence Network
+                Hasamex Intelligence Network (HIN)
               </span>
-              <h2 style={{ marginTop: '0.85rem', marginBottom: '0.6rem' }}>
-                The Experts Behind the Intelligence
-              </h2>
+              <AnimatedHeading
+                as="h2"
+                text="The Experts Behind the Intelligence"
+                style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}
+              />
               <p className="lead">
                 A global network of operators, advisors, and specialists with real-world
-                experience—producing high-quality primary insight.
+                experience—producing high-quality primary insight across Developed, Emerging, and
+                Frontier markets.
               </p>
             </Reveal>
             <Reveal delay={0.08}>
-              <Link to="/experts" className="btn btn--gold">
+              <Link to="/experts" className="btn btn--primary">
                 Learn About our Experts
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </Link>
             </Reveal>
           </div>
@@ -257,19 +322,21 @@ export function HomePage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-              gap: '1.15rem'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1.1rem'
             }}
           >
             {HOME_EXPERT_ARCHETYPES.map((arch, idx) => (
-              <Reveal key={arch.code} delay={idx * 0.05} className="card">
+              <Reveal key={arch.code} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{arch.code}</span>
-                    <Icon name="users" size={17} />
+                    <span style={{ color: 'var(--color-accent)' }}>
+                      <Icon name="users" size={16} />
+                    </span>
                   </div>
-                  <h3 style={{ fontSize: '1.14rem' }}>{arch.title}</h3>
-                  <p style={{ fontSize: '0.88rem' }}>{arch.detail}</p>
+                  <h3>{arch.title}</h3>
+                  <p>{arch.detail}</p>
                 </div>
               </Reveal>
             ))}
@@ -277,7 +344,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 6. CLIENT AUDIENCES (Junior.ai-inspired Interactive Tab Matrix) */}
+      {/* 7. CLIENT AUDIENCES (Interactive Tab Matrix) */}
       <section className="section section--elevated">
         <div className="container">
           <Reveal className="section-header">
@@ -285,7 +352,7 @@ export function HomePage() {
               <span className="eyebrow-dot" />
               Client Segments
             </span>
-            <h2>Trusted by Decision-Makers Worldwide</h2>
+            <AnimatedHeading as="h2" text="Trusted by Decision-Makers Worldwide" />
             <p className="lead">
               Hasamex supports a global client base across institutional investment, strategy
               consulting, and corporate innovation.
@@ -314,14 +381,14 @@ export function HomePage() {
               initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={prefersReducedMotion ? undefined : { opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
             >
               <div>
                 <span className="card-index">{currentAudience.label}</span>
-                <h3 style={{ fontSize: '1.65rem', marginTop: '0.5rem', marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.38rem', marginTop: '0.45rem', marginBottom: '0.65rem' }}>
                   {currentAudience.headline}
                 </h3>
-                <p className="lead" style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>
+                <p className="lead" style={{ fontSize: '0.95rem', marginBottom: '1.35rem' }}>
                   {currentAudience.homeDescription}
                 </p>
 
@@ -329,8 +396,8 @@ export function HomePage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.65rem',
-                    marginBottom: '1.85rem'
+                    gap: '0.6rem',
+                    marginBottom: '1.65rem'
                   }}
                 >
                   {currentAudience.workflows.map((wf) => (
@@ -339,56 +406,60 @@ export function HomePage() {
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.65rem',
-                        fontSize: '0.92rem',
-                        color: 'var(--text-primary)'
+                        gap: '0.6rem',
+                        fontSize: '0.88rem',
+                        color: 'var(--color-text-primary)',
+                        fontWeight: 500
                       }}
                     >
-                      <span style={{ color: 'var(--gold)', display: 'inline-flex' }}>
-                        <Icon name="check" size={16} />
+                      <span style={{ color: 'var(--color-accent)', display: 'inline-flex' }}>
+                        <Icon name="check" size={15} />
                       </span>
                       <span>{wf}</span>
                     </div>
                   ))}
                 </div>
 
-                <Link to="/clients#enquiry-form" className="btn btn--gold">
+                <Link to="/clients#enquiry-form" className="btn btn--primary">
                   Start a Project for {currentAudience.label}
-                  <Icon name="arrow-right" size={16} />
+                  <Icon name="arrow-right" size={15} />
                 </Link>
               </div>
 
               <div
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid var(--border-subtle)',
+                  background: '#0b1329',
+                  border: '1px solid #1e293b',
                   borderRadius: 'var(--radius-lg)',
-                  padding: '1.75rem'
+                  padding: '1.65rem',
+                  color: '#f8fafc'
                 }}
               >
                 <div
                   style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.72rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
-                    color: 'var(--gold)',
-                    marginBottom: '0.75rem'
+                    color: '#22d3ee',
+                    fontWeight: 600,
+                    marginBottom: '0.65rem',
+                    fontFamily: 'var(--font-mono)'
                   }}
                 >
                   Verified Practitioner Feedback
                 </div>
                 <blockquote
                   style={{
-                    fontSize: '1.08rem',
+                    fontSize: '1rem',
                     lineHeight: 1.6,
-                    color: 'var(--text-primary)',
-                    marginBottom: '1.1rem',
+                    color: '#f8fafc',
+                    marginBottom: '1rem',
                     fontStyle: 'normal'
                   }}
                 >
                   “{currentAudience.quote.text}”
                 </blockquote>
-                <div style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
                   — {currentAudience.quote.author}
                 </div>
               </div>
@@ -397,7 +468,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 7. COMPLIANCE YOU CAN TRUST */}
+      {/* 8. COMPLIANCE YOU CAN TRUST */}
       <section className="section">
         <div className="container">
           <Reveal className="section-header">
@@ -405,7 +476,7 @@ export function HomePage() {
               <span className="eyebrow-dot" />
               Institutional Governance
             </span>
-            <h2>Compliance You Can Trust</h2>
+            <AnimatedHeading as="h2" text="Compliance You Can Trust" />
             <p className="lead">
               From expert onboarding and NDAs to MNPI safeguards and full audit trails, Hasamex is
               built for regulated, institutional-grade research.
@@ -414,14 +485,16 @@ export function HomePage() {
 
           <div className="grid-3">
             {HOME_COMPLIANCE_CARDS.map((card, idx) => (
-              <Reveal key={card.title} delay={idx * 0.06} className="card">
+              <Reveal key={card.title} delay={idx * 0.05} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{card.badge}</span>
-                    <Icon name="shield" size={18} />
+                    <span style={{ color: 'var(--color-accent)' }}>
+                      <Icon name="shield" size={17} />
+                    </span>
                   </div>
                   <h3>{card.title}</h3>
-                  <p style={{ marginBottom: '1.5rem' }}>{card.description}</p>
+                  <p style={{ marginBottom: '1.35rem' }}>{card.description}</p>
                 </div>
                 <Link
                   to={card.path}
@@ -429,7 +502,7 @@ export function HomePage() {
                   style={{ alignSelf: 'flex-start' }}
                 >
                   {card.ctaLabel}
-                  <Icon name="arrow-right" size={15} />
+                  <Icon name="arrow-right" size={14} />
                 </Link>
               </Reveal>
             ))}
@@ -437,18 +510,20 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 8. VERIFIED TESTIMONIALS */}
+      {/* 9. VERIFIED TESTIMONIALS */}
       <section className="section section--elevated">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 640 }}>
+            <Reveal style={{ maxWidth: 620 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Verified Testimonials
               </span>
-              <h2 style={{ marginTop: '0.85rem', marginBottom: '0.5rem' }}>
-                Trusted by Clients. Respected by Experts.
-              </h2>
+              <AnimatedHeading
+                as="h2"
+                text="Trusted by Clients. Respected by Experts."
+                style={{ marginTop: '0.75rem', marginBottom: '0.45rem' }}
+              />
               <p className="lead">Here’s what people are saying about working with Hasamex.</p>
             </Reveal>
 
@@ -472,36 +547,34 @@ export function HomePage() {
             </div>
           </div>
 
-          {/* Featured Spotlight Slider */}
+          {/* Featured Spotlight Slider (Hub Executive Navy Card) */}
           <div
-            className="card"
+            className="card card--navy"
             style={{
-              padding: '2.25rem',
-              marginBottom: '1.35rem',
-              borderColor: 'var(--gold-border)',
-              background:
-                'linear-gradient(145deg, rgba(234, 177, 11, 0.07) 0%, rgba(20, 21, 24, 0.95) 100%)'
+              padding: '2rem',
+              marginBottom: '1.25rem',
+              borderColor: 'rgba(34, 211, 238, 0.35)'
             }}
           >
             <div className="card-top">
               <span className="eyebrow">{TESTIMONIALS[activeTestimonial].category}</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              <span style={{ fontSize: '0.78rem', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
                 {activeTestimonial + 1} / {TESTIMONIALS.length}
               </span>
             </div>
             <blockquote
               style={{
-                fontSize: 'clamp(1.2rem, 2vw, 1.55rem)',
+                fontSize: 'clamp(1.08rem, 1.65vw, 1.32rem)',
                 fontWeight: 500,
-                lineHeight: 1.45,
-                color: 'var(--text-primary)',
-                marginBottom: '1.25rem'
+                lineHeight: 1.5,
+                color: '#f8fafc',
+                marginBottom: '1.1rem'
               }}
             >
               “{TESTIMONIALS[activeTestimonial].quote}”
             </blockquote>
-            <div style={{ fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>
+            <div style={{ fontSize: '0.88rem', color: '#94a3b8' }}>
+              <strong style={{ color: '#ffffff' }}>
                 {TESTIMONIALS[activeTestimonial].role}
               </strong>{' '}
               — {TESTIMONIALS[activeTestimonial].org}
@@ -518,7 +591,7 @@ export function HomePage() {
                 style={{
                   cursor: 'pointer',
                   borderColor:
-                    activeTestimonial === idx ? 'var(--gold)' : 'var(--border-subtle)'
+                    activeTestimonial === idx ? 'var(--color-accent)' : 'var(--border-subtle)'
                 }}
               >
                 <div>
@@ -527,16 +600,16 @@ export function HomePage() {
                   </div>
                   <p
                     style={{
-                      color: 'var(--text-primary)',
-                      fontSize: '0.98rem',
-                      marginBottom: '1.2rem'
+                      color: 'var(--color-text-primary)',
+                      fontSize: '0.92rem',
+                      marginBottom: '1.1rem'
                     }}
                   >
                     “{item.quote}”
                   </p>
                 </div>
-                <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>{item.role}</strong> ·{' '}
+                <div style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)' }}>
+                  <strong style={{ color: 'var(--color-text-primary)' }}>{item.role}</strong> ·{' '}
                   {item.org}
                 </div>
               </div>

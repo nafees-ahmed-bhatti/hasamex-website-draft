@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { BRAND, FOOTER_COLUMNS, NAV_LINKS } from '../content/siteData';
 import { Icon } from './Icons';
+import { AnimatedHeading } from './Reveal';
 
 export function ScrollRestoration() {
   const { pathname, hash } = useLocation();
@@ -37,13 +38,24 @@ export function PreFooterCTA({
 }) {
   return (
     <section className="pre-footer">
-      <div className="container" style={{ textAlign: 'center', maxWidth: 820 }}>
+      <div className="container" style={{ textAlign: 'center', maxWidth: 780 }}>
         <span className="eyebrow">
           <span className="eyebrow-dot" />
           {eyebrow}
         </span>
-        <h2 style={{ marginTop: '1.1rem', marginBottom: '1rem' }}>{title}</h2>
-        <p className="lead" style={{ maxWidth: 640, margin: '0 auto 2.1rem' }}>
+        <AnimatedHeading
+          as="h2"
+          text={title}
+          style={{ marginTop: '1rem', marginBottom: '0.85rem', color: '#ffffff' }}
+        />
+        <p
+          className="lead"
+          style={{
+            maxWidth: 600,
+            margin: '0 auto 1.85rem',
+            color: '#cbd5e1'
+          }}
+        >
           {subtitle}
         </p>
         <div
@@ -51,12 +63,12 @@ export function PreFooterCTA({
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: '0.85rem'
+            gap: '0.75rem'
           }}
         >
-          <Link to={primaryTo} className="btn btn--gold">
+          <Link to={primaryTo} className="btn btn--primary">
             {primaryLabel}
-            <Icon name="arrow-right" size={16} />
+            <Icon name="arrow-right" size={15} />
           </Link>
           <Link to={secondaryTo} className="btn btn--glass">
             {secondaryLabel}
@@ -126,25 +138,23 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
           </nav>
 
           <div className="header-actions">
-            <Link
-              to="/clients#enquiry-form"
-              className="btn btn--glass btn--sm"
-              style={{ display: 'none' }}
-              id="header-client-btn"
-            >
-              Request Expert
+            <Link to="/clients#enquiry-form" className="btn btn--primary btn--sm">
+              Start a Project
             </Link>
-            <Link to="/contact-us" className="btn btn--charcoal btn--sm">
+            <Link to="/contact-us" className="btn btn--glass btn--sm">
               Contact Us
             </Link>
             <button
               type="button"
               className="menu-toggle"
-              aria-label="Open navigation menu"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
             >
-              <Icon name="menu" size={20} />
+              <span className={`icon-menu ${mobileMenuOpen ? 'icon-menu--open' : ''}`}>
+                <span className="icon-menu__bar" />
+                <span className="icon-menu__bar" />
+              </span>
             </button>
           </div>
         </div>
@@ -157,7 +167,7 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
+            transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation"
@@ -185,37 +195,50 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
                 aria-label="Close navigation menu"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <Icon name="close" size={20} />
+                <span className="icon-menu icon-menu--open">
+                  <span className="icon-menu__bar" />
+                  <span className="icon-menu__bar" />
+                </span>
               </button>
             </div>
 
             <nav className="mobile-overlay__links" aria-label="Mobile Links">
               {[...NAV_LINKS, { label: 'Contact Us', path: '/contact-us' }].map(
-                (item) => (
-                  <NavLink
+                (item, idx) => (
+                  <motion.div
                     key={item.path}
-                    to={item.path}
-                    end={item.path === '/'}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `mobile-overlay__link ${
-                        isActive ? 'mobile-overlay__link--active' : ''
-                      }`
-                    }
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.28,
+                      delay: idx * 0.035,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
                   >
-                    <span>
-                      {item.label}{' '}
-                      {item.badge && (
-                        <span
-                          className="nav-pill__badge"
-                          style={{ verticalAlign: 'middle', marginLeft: 8 }}
-                        >
-                          {item.badge}
-                        </span>
-                      )}
-                    </span>
-                    <Icon name="arrow-right" size={20} />
-                  </NavLink>
+                    <NavLink
+                      to={item.path}
+                      end={item.path === '/'}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `mobile-overlay__link ${
+                          isActive ? 'mobile-overlay__link--active' : ''
+                        }`
+                      }
+                    >
+                      <span>
+                        {item.label}{' '}
+                        {item.badge && (
+                          <span
+                            className="nav-pill__badge"
+                            style={{ verticalAlign: 'middle', marginLeft: 8 }}
+                          >
+                            {item.badge}
+                          </span>
+                        )}
+                      </span>
+                      <Icon name="arrow-right" size={18} />
+                    </NavLink>
+                  </motion.div>
                 )
               )}
             </nav>
@@ -231,7 +254,7 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
               </Link>
               <Link
                 to="/clients#enquiry-form"
-                className="btn btn--gold"
+                className="btn btn--primary"
                 style={{ width: '100%' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -264,24 +287,25 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
               </Link>
               <p
                 style={{
-                  color: 'var(--text-primary)',
-                  fontWeight: 500,
-                  marginBottom: '0.5rem'
+                  color: '#f8fafc',
+                  fontWeight: 600,
+                  fontSize: '0.92rem',
+                  marginBottom: '0.45rem'
                 }}
               >
                 {BRAND.footerTagline}
               </p>
               <p
                 style={{
-                  fontSize: '0.84rem',
-                  color: 'var(--text-muted)',
+                  fontSize: '0.82rem',
+                  color: '#94a3b8',
                   maxWidth: 300,
-                  marginBottom: '1.15rem'
+                  marginBottom: '1.1rem'
                 }}
               >
                 {BRAND.address}
               </p>
-              <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '0.55rem', flexWrap: 'wrap' }}>
                 <a
                   href={BRAND.social.linkedin}
                   target="_blank"
@@ -289,14 +313,14 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
                   className="btn btn--glass btn--sm"
                   aria-label="Hasamex on LinkedIn"
                 >
-                  <Icon name="linkedin" size={15} />
+                  <Icon name="linkedin" size={14} />
                   LinkedIn
                 </a>
                 <a
                   href={`mailto:${BRAND.emails.general}`}
                   className="btn btn--glass btn--sm"
                 >
-                  <Icon name="mail" size={15} />
+                  <Icon name="mail" size={14} />
                   {BRAND.emails.general}
                 </a>
               </div>

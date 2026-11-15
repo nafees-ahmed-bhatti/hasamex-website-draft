@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { LEGAL_PAGES } from '../content/legalData';
 import { Icon } from '../components/Icons';
 import { Layout } from '../components/Layout';
+import { AnimatedHeading } from '../components/Reveal';
 
 const POLICY_TABS = [
   { slug: 'terms', label: 'Expert Terms & Conditions', path: '/terms' },
@@ -23,14 +24,14 @@ export function LegalPage({ slug }) {
 
   return (
     <Layout>
-      <section className="hero" style={{ paddingBottom: '3.25rem' }}>
+      <section className="hero" style={{ paddingBottom: '2.75rem' }}>
         <div className="container">
           <div
             style={{
               display: 'flex',
               flexWrap: 'wrap',
               gap: '0.45rem',
-              marginBottom: '1.75rem'
+              marginBottom: '1.5rem'
             }}
           >
             {POLICY_TABS.map((tab) => (
@@ -38,7 +39,7 @@ export function LegalPage({ slug }) {
                 key={tab.slug}
                 to={tab.path}
                 className={`btn btn--sm ${
-                  tab.slug === slug ? 'btn--gold' : 'btn--glass'
+                  tab.slug === slug ? 'btn--primary' : 'btn--glass'
                 }`}
               >
                 {tab.label}
@@ -50,8 +51,12 @@ export function LegalPage({ slug }) {
             <span className="eyebrow-dot" />
             Last updated: {doc.updated}
           </span>
-          <h1 style={{ marginTop: '0.95rem', marginBottom: '0.75rem' }}>{doc.title}</h1>
-          <p className="lead" style={{ maxWidth: 720 }}>
+          <AnimatedHeading
+            as="h1"
+            text={doc.title}
+            style={{ marginTop: '0.85rem', marginBottom: '0.65rem' }}
+          />
+          <p className="lead" style={{ maxWidth: 680 }}>
             {doc.subtitle}
           </p>
         </div>
@@ -60,14 +65,14 @@ export function LegalPage({ slug }) {
       <section className="section">
         <div className="container">
           {doc.flags && doc.flags.length > 0 && (
-            <div className="draft-banner" style={{ marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+            <div className="draft-banner" style={{ marginBottom: '1.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                 <span style={{ marginTop: 2 }}>
-                  <Icon name="alert" size={18} />
+                  <Icon name="alert" size={17} />
                 </span>
                 <div>
                   <strong>Content Verification Flag for Leadership Review:</strong>
-                  <ul style={{ marginTop: '0.35rem', paddingLeft: '1.2rem' }}>
+                  <ul style={{ marginTop: '0.3rem', paddingLeft: '1.15rem' }}>
                     {doc.flags.map((f) => (
                       <li key={f}>{f}</li>
                     ))}
@@ -81,12 +86,13 @@ export function LegalPage({ slug }) {
             <aside className="legal-toc" aria-label="Document Sections">
               <div
                 style={{
-                  fontSize: '0.76rem',
-                  fontWeight: 600,
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  color: 'var(--gold)',
-                  marginBottom: '0.6rem'
+                  color: 'var(--color-accent)',
+                  marginBottom: '0.55rem'
                 }}
               >
                 Contents ({doc.toc.length} Sections)
@@ -95,7 +101,7 @@ export function LegalPage({ slug }) {
                 <input
                   type="search"
                   className="form-input"
-                  style={{ padding: '0.45rem 0.7rem', fontSize: '0.8rem' }}
+                  style={{ padding: '0.4rem 0.65rem', fontSize: '0.78rem' }}
                   placeholder="Filter sections..."
                   value={tocQuery}
                   onChange={(e) => setTocQuery(e.target.value)}

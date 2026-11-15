@@ -73,52 +73,105 @@ export const FOOTER_COLUMNS = [
 
 export const HERO_SHOWCASE_BRIEFS = [
   {
-    id: 'call-1on1',
+    id: 'stage-sourcing',
     index: '01',
-    format: '1:1 Expert Call',
-    status: 'Matched in 4h 20m',
-    region: 'Emerging Markets · Southeast Asia & India',
-    title: 'APAC Data Center Power Infrastructure & Hyperscale Cooling',
-    audience: 'Institutional Investment Firm · Private Equity Diligence',
-    expertRole: 'Former SVP, Infrastructure Operations — Regional Cloud Operator',
+    tabLabel: '01 · Custom Sourcing',
+    format: 'Phase 01 · Brief Intake & Custom Recruiting',
+    status: '2–12 Hour Typical Turnaround',
+    region: 'DM · EM · FM Coverage',
+    title: 'Precision-Sourced Operators — Built Around Your Exact Research Brief',
+    audience: 'Investment Firms · Strategy Consultancies · Corporate Teams',
+    expertRole: 'Former CxOs, BU Heads, Sector Operators & Policy Advisors (HIN)',
+    streamText:
+      'Calibrating research scope → Custom-headhunting senior practitioners across Developed, Emerging & Frontier markets → Enriching profiles with proprietary AI verification tools.',
     checkpoints: [
-      'Custom-sourced to brief (Non-database)',
-      'Zero-MNPI & Employer Cooling-Off Cleared',
-      'Signed NDA & Recorded MS Teams Line'
+      'Handpicked custom recruitment per brief (beyond static databases)',
+      'Target-market alignment across U.S., Europe, APAC, India & MENA',
+      'Curated screening responses matched to exact client questions'
     ],
-    deliverable: '60-min live consultation + auditable compliance log'
+    deliverable: 'Vetted expert profiles delivered in 2–12 hours'
   },
   {
-    id: 'roundtable',
+    id: 'stage-compliance',
     index: '02',
-    format: 'Moderated Roundtable',
-    status: 'Curated Cohort · 4 Vetted Operators',
-    region: 'Developed Markets · Europe & U.S.',
-    title: 'GLP-1 Supply Chain & Specialty Pharmacy Distribution Economics',
-    audience: 'Global Strategy Consultancy · Commercial Due Diligence',
-    expertRole: 'Panel: Former BU Head, Commercial Director & Regulatory Advisor',
+    tabLabel: '02 · Compliance Gate',
+    format: 'Phase 02 · 5-Point Compliance & MNPI Vetting',
+    status: '100% Pre-Call Cleared',
+    region: 'Global Governance Protocol',
+    title: 'Zero-Tolerance MNPI Safeguards & Conflict-of-Interest Screening',
+    audience: 'Institutional Compliance & Legal Risk Standards',
+    expertRole: 'Mandatory HIN Terms, Code of Conduct & Insider Trading Policy Consent',
+    streamText:
+      'Verifying employment restrictions & cooling-off rules → Enforcing strict zero-MNPI firewall → Confirming blind need-to-know client anonymity & anti-corruption clearance.',
     checkpoints: [
-      'Multi-perspective thematic group session',
-      'Conflict-of-interest & clinical boundary screen',
-      'White-glove moderator & synthesis brief'
+      'Affirmative acceptance of Expert T&Cs and Code of Conduct',
+      'Employer conflict, IPO/M&A & public-official cooling-off checks',
+      'Strict ban on real-time AI/LLM usage during live consultations'
     ],
-    deliverable: '90-min moderated group insight + structured takeaways'
+    deliverable: 'Pre-engagement compliance clearance + full audit log'
   },
   {
-    id: 'transcript',
+    id: 'stage-execution',
     index: '03',
-    format: 'Custom Transcripts & Knowledge Tour',
-    status: 'Advisor-Led Primary Research',
-    region: 'Frontier & Emerging Markets · MENA & South Asia',
-    title: 'Cross-Border B2B Payments, Treasury Rails & Regulatory Licensing',
-    audience: 'Hedge Fund & Corporate Strategy Team',
-    expertRole: 'Former Central Bank Policy Advisor & Fintech Chief Risk Officer',
+    tabLabel: '03 · Live Execution',
+    format: 'Phase 03 · Recorded Consultation & 14-Day Payout',
+    status: 'Auditable End-to-End Delivery',
+    region: '6 Flexible Engagement Formats',
+    title: '1:1 Calls, Roundtables, In-Person Meetings & Custom Transcripts',
+    audience: 'White-Glove Coordination · Singapore HQ & India Execution',
+    expertRole: 'Monitored MS Teams Line · Verbatim Transcripts · ≤ 14-Day Expert Payout',
+    streamText:
+      'Hosting recorded consultation on monitored Hasamex line → Delivering high-signal primary insight → Processing guaranteed expert honorarium within 14 days.',
     checkpoints: [
-      'Advisor-led interview structured for high signal',
-      'Public-sector & FCPA / PCA anti-corruption clearance',
-      'Full transcript delivery & follow-up Q&A access'
+      'All calls recorded, securely stored, and auditable for compliance',
+      'Support for 1:1 Calls, Roundtables, Knowledge Tours & Transcripts',
+      'Guaranteed expert compensation within 14 days — zero delays'
     ],
-    deliverable: 'High-context verbatim transcript + executive summary'
+    deliverable: 'Recorded consultation + guaranteed ≤14-day settlement'
+  }
+];
+
+export const MARQUEE_ITEMS = [
+  'Hasamex Pte Ltd · Singapore HQ (UEN 202526952W)',
+  '2–12 Hour Typical Delivery',
+  '100% Recorded & Auditable Calls',
+  'Zero-Tolerance MNPI Safeguards',
+  'Developed · Emerging · Frontier Markets',
+  '1:1 Expert Calls & Moderated Roundtables',
+  'Knowledge Tours & Conference Augmentation',
+  'Advisor-Led Custom Transcripts',
+  'Guaranteed ≤ 14-Day Expert Payouts',
+  'Hasamex Intelligence Network (HIN)'
+];
+
+export const HOW_HASAMEX_CONNECTS = [
+  {
+    step: '01',
+    phase: 'Brief Intake & Scope Calibration',
+    title: 'Define the Exact Knowledge Gap',
+    description:
+      'Clients share their research objectives, target geographies, value-chain questions, and preferred engagement format (1:1 call, roundtable, in-person meeting, knowledge tour, or transcript). Our Singapore and India research teams calibrate the brief immediately.'
+  },
+  {
+    step: '02',
+    phase: 'Custom Recruiting & AI Enrichment',
+    title: 'Handpick Senior Operators Within 2–12 Hours',
+    description:
+      'Rather than recycling generic database profiles, Hasamex custom-sources former CxOs, BU heads, commercial operators, technologists, and policy specialists from the Hasamex Intelligence Network (HIN), enriched with proprietary AI matching tools.'
+  },
+  {
+    step: '03',
+    phase: '5-Point Compliance & Conflict Clearance',
+    title: 'Enforce Investment-Grade MNPI Safeguards',
+    description:
+      'Before any introduction is scheduled, every expert completes mandatory vetting, employer conflict screening, cooling-off verification, and affirmative consent to Hasamex’s Terms & Conditions, Code of Conduct, and Insider Trading Policy.'
+  },
+  {
+    step: '04',
+    phase: 'Monitored Consultation & 14-Day Settlement',
+    title: 'Deliver High-Signal Insight & Prompt Honoraria',
+    description:
+      'Consultations take place on recorded, auditable lines with need-to-know client anonymity. Clients receive actionable primary intelligence, and participating experts are guaranteed full payment within 14 days.'
   }
 ];
 

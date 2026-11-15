@@ -4,7 +4,7 @@ import { BRAND, FORM_CONFIGS } from '../content/siteData';
 import { Icon } from '../components/Icons';
 import { IntakeForm } from '../components/IntakeForm';
 import { Layout } from '../components/Layout';
-import { Reveal } from '../components/Reveal';
+import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 const DIRECT_CHANNELS = [
   {
@@ -38,23 +38,27 @@ export function ContactPage() {
     <Layout showPreFooter={false}>
       {/* HERO */}
       <section className="hero">
-        <div className="container" style={{ maxWidth: 920 }}>
-          <Reveal blur y={18}>
+        <div className="container" style={{ maxWidth: 880 }}>
+          <Reveal blur y={16}>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
               Contact Hasamex
             </span>
-            <h1 style={{ marginTop: '1.1rem', marginBottom: '1.15rem' }}>Contact Us</h1>
-            <p className="lead" style={{ maxWidth: 650 }}>
+            <AnimatedHeading
+              as="h1"
+              text="Contact Us"
+              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+            />
+            <p className="lead" style={{ maxWidth: 620 }}>
               Share your details below and our team will be in touch within 24 hours.
             </p>
             <div className="hero-ctas">
-              <a href="#contact-form" className="btn btn--gold">
+              <a href="#contact-form" className="btn btn--primary">
                 Submit Your Details
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </a>
               <a href={`mailto:${BRAND.emails.general}`} className="btn btn--glass">
-                <Icon name="mail" size={16} />
+                <Icon name="mail" size={15} />
                 {BRAND.emails.general}
               </a>
             </div>
@@ -65,23 +69,25 @@ export function ContactPage() {
       {/* DIRECT CHANNELS + FORM */}
       <section id="contact-form" className="section">
         <div className="container">
-          <div className="grid-4" style={{ marginBottom: '3.25rem' }}>
+          <div className="grid-4" style={{ marginBottom: '2.75rem' }}>
             {DIRECT_CHANNELS.map((ch, idx) => (
-              <Reveal key={ch.email} delay={idx * 0.05} className="card">
+              <Reveal key={ch.email} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{ch.badge}</span>
-                    <Icon name="mail" size={16} />
+                    <span style={{ color: 'var(--color-accent)' }}>
+                      <Icon name="mail" size={16} />
+                    </span>
                   </div>
-                  <h3 style={{ fontSize: '1.12rem' }}>{ch.title}</h3>
-                  <p style={{ fontSize: '0.88rem', marginBottom: '1.15rem' }}>{ch.description}</p>
+                  <h3>{ch.title}</h3>
+                  <p style={{ marginBottom: '1.1rem' }}>{ch.description}</p>
                 </div>
                 <a
                   href={`mailto:${ch.email}`}
                   style={{
-                    color: 'var(--gold)',
+                    color: 'var(--color-accent)',
                     fontWeight: 600,
-                    fontSize: '0.88rem',
+                    fontSize: '0.84rem',
                     textDecoration: 'underline'
                   }}
                 >
@@ -95,20 +101,20 @@ export function ContactPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
-              gap: '2rem',
+              gap: '1.75rem',
               alignItems: 'start'
             }}
           >
-            <Reveal className="card" style={{ padding: '2.25rem' }}>
+            <Reveal className="card card--navy" style={{ padding: '2rem' }}>
               <div>
                 <span className="eyebrow">
                   <span className="eyebrow-dot" />
                   Global Headquarters
                 </span>
-                <h3 style={{ fontSize: '1.45rem', marginTop: '0.9rem', marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.32rem', marginTop: '0.8rem', marginBottom: '0.45rem', color: '#ffffff' }}>
                   {BRAND.legalName}
                 </h3>
-                <p style={{ marginBottom: '1.5rem' }}>
+                <p style={{ marginBottom: '1.35rem', color: '#cbd5e1' }}>
                   Registered in Singapore (UEN {BRAND.uen}) with distributed execution teams across
                   India and global corridors.
                 </p>
@@ -117,51 +123,51 @@ export function ContactPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '1rem',
-                    paddingTop: '1.25rem',
-                    borderTop: '1px solid var(--border-subtle)',
-                    fontSize: '0.9rem'
+                    gap: '0.95rem',
+                    paddingTop: '1.15rem',
+                    borderTop: '1px solid #1e293b',
+                    fontSize: '0.86rem'
                   }}
                 >
-                  <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--gold)', marginTop: 3 }}>
-                      <Icon name="map-pin" size={18} />
+                  <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
+                      <Icon name="map-pin" size={17} />
                     </span>
                     <div>
-                      <strong style={{ color: 'var(--text-primary)', display: 'block' }}>
+                      <strong style={{ color: '#ffffff', display: 'block' }}>
                         Singapore Registered Office
                       </strong>
-                      <span style={{ color: 'var(--text-secondary)' }}>{BRAND.address}</span>
+                      <span style={{ color: '#94a3b8' }}>{BRAND.address}</span>
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--gold)', marginTop: 3 }}>
-                      <Icon name="clock" size={18} />
+                  <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
+                      <Icon name="clock" size={17} />
                     </span>
                     <div>
-                      <strong style={{ color: 'var(--text-primary)', display: 'block' }}>
+                      <strong style={{ color: '#ffffff', display: 'block' }}>
                         Response Commitment
                       </strong>
-                      <span style={{ color: 'var(--text-secondary)' }}>
+                      <span style={{ color: '#94a3b8' }}>
                         Within 24 hours for general enquiries · 2–12 hours for active client briefs
                       </span>
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--gold)', marginTop: 3 }}>
-                      <Icon name="linkedin" size={18} />
+                  <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
+                      <Icon name="linkedin" size={17} />
                     </span>
                     <div>
-                      <strong style={{ color: 'var(--text-primary)', display: 'block' }}>
+                      <strong style={{ color: '#ffffff', display: 'block' }}>
                         Official LinkedIn
                       </strong>
                       <a
                         href={BRAND.social.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: 'var(--gold)', textDecoration: 'underline' }}
+                        style={{ color: '#22d3ee', textDecoration: 'underline' }}
                       >
                         linkedin.com/company/hasamex
                       </a>
@@ -171,18 +177,18 @@ export function ContactPage() {
 
                 <div
                   style={{
-                    marginTop: '1.75rem',
-                    paddingTop: '1.25rem',
-                    borderTop: '1px solid var(--border-subtle)',
+                    marginTop: '1.5rem',
+                    paddingTop: '1.15rem',
+                    borderTop: '1px solid #1e293b',
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '0.65rem'
+                    gap: '0.6rem'
                   }}
                 >
-                  <Link to="/clients#enquiry-form" className="btn btn--glass btn--sm">
+                  <Link to="/clients#enquiry-form" className="btn btn--primary btn--sm">
                     Client Brief Form →
                   </Link>
-                  <Link to="/experts#register-form" className="btn btn--glass btn--sm">
+                  <Link to="/experts#register-form" className="btn btn--glass btn--sm" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', borderColor: 'rgba(255,255,255,0.18)' }}>
                     Expert Registration →
                   </Link>
                 </div>

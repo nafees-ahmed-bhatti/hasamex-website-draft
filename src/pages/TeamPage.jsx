@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { TEAM_DEPARTMENTS, TEAM_PLACEHOLDER_SLOTS } from '../content/siteData';
 import { HasamexEmblemVector, Icon } from '../components/Icons';
 import { Layout } from '../components/Layout';
-import { Reveal } from '../components/Reveal';
+import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 function EditorialAvatarPlaceholder({ code }) {
   return (
@@ -11,28 +11,28 @@ function EditorialAvatarPlaceholder({ code }) {
       style={{
         width: '100%',
         aspectRatio: '4 / 3',
-        borderRadius: '14px',
+        borderRadius: '12px',
         background:
-          'radial-gradient(circle at 50% 35%, rgba(234,177,11,0.16), rgba(14,15,18,0.95) 72%)',
-        border: '1px dashed rgba(255,255,255,0.18)',
+          'radial-gradient(circle at 50% 35%, rgba(34, 211, 238, 0.16), #0b1329 76%)',
+        border: '1px dashed #334155',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0.6rem',
-        marginBottom: '1.25rem',
+        gap: '0.55rem',
+        marginBottom: '1.1rem',
         position: 'relative',
         overflow: 'hidden'
       }}
       aria-label="Portrait Placeholder"
     >
-      {/* Minimalist Illustrated Line-Art Silhouette (inspired by Junior.ai editorial portraits) */}
-      <svg width="76" height="76" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      {/* Minimalist Illustrated Line-Art Silhouette */}
+      <svg width="68" height="68" viewBox="0 0 80 80" fill="none" aria-hidden="true">
         <circle
           cx="40"
           cy="40"
-          r="36"
-          stroke="rgba(255,255,255,0.12)"
+          r="35"
+          stroke="rgba(148, 163, 184, 0.24)"
           strokeWidth="1.2"
           strokeDasharray="3 3"
         />
@@ -40,24 +40,25 @@ function EditorialAvatarPlaceholder({ code }) {
           cx="40"
           cy="29"
           r="11"
-          stroke="#eab10b"
+          stroke="#22d3ee"
           strokeWidth="1.6"
-          fill="rgba(234,177,11,0.08)"
+          fill="rgba(34, 211, 238, 0.12)"
         />
         <path
           d="M20 65 C22 50, 30 45, 40 45 C50 45, 58 50, 60 65"
-          stroke="#f6f6f4"
+          stroke="#f8fafc"
           strokeWidth="1.6"
           strokeLinecap="round"
         />
       </svg>
       <span
         style={{
-          fontSize: '0.7rem',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.68rem',
           fontWeight: 600,
-          letterSpacing: '0.09em',
+          letterSpacing: '0.08em',
           textTransform: 'uppercase',
-          color: 'var(--text-muted)'
+          color: '#94a3b8'
         }}
       >
         Portrait / Headshot Slot · {code}
@@ -90,16 +91,18 @@ export function TeamPage() {
     >
       {/* HERO */}
       <section className="hero">
-        <div className="container" style={{ maxWidth: 940 }}>
-          <Reveal blur y={18}>
+        <div className="container" style={{ maxWidth: 880 }}>
+          <Reveal blur y={16}>
             <span className="eyebrow">
               <span className="eyebrow-dot" />
               Leadership &amp; Team · New Page Draft
             </span>
-            <h1 style={{ marginTop: '1.1rem', marginBottom: '1.15rem' }}>
-              The People Behind Hasamex
-            </h1>
-            <p className="lead" style={{ maxWidth: 700 }}>
+            <AnimatedHeading
+              as="h1"
+              text="The People Behind Hasamex"
+              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+            />
+            <p className="lead" style={{ maxWidth: 660 }}>
               Headquartered in Singapore, with a distributed team across India and beyond, our
               team connects institutional decision-makers with vetted domain experts worldwide.
             </p>
@@ -110,9 +113,9 @@ export function TeamPage() {
       {/* TRANSPARENT DRAFT NOTICE & CONTROLS */}
       <section className="section">
         <div className="container">
-          <div className="draft-banner" style={{ marginBottom: '2.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <Icon name="alert" size={18} />
+          <div className="draft-banner" style={{ marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <Icon name="alert" size={17} />
               <span>
                 <strong>Draft Architecture — Awaiting Official Team Roster:</strong> Per project
                 guidelines, no employee names, titles, biographies, or headshots have been
@@ -124,7 +127,7 @@ export function TeamPage() {
               <button
                 type="button"
                 className={`btn btn--sm ${
-                  viewMode === 'detailed' ? 'btn--gold' : 'btn--glass'
+                  viewMode === 'detailed' ? 'btn--primary' : 'btn--glass'
                 }`}
                 onClick={() => setViewMode('detailed')}
               >
@@ -133,7 +136,7 @@ export function TeamPage() {
               <button
                 type="button"
                 className={`btn btn--sm ${
-                  viewMode === 'compact' ? 'btn--gold' : 'btn--glass'
+                  viewMode === 'compact' ? 'btn--primary' : 'btn--glass'
                 }`}
                 onClick={() => setViewMode('compact')}
               >
@@ -177,33 +180,35 @@ export function TeamPage() {
 
                   <div
                     style={{
-                      fontSize: '0.74rem',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.7rem',
                       textTransform: 'uppercase',
                       letterSpacing: '0.07em',
-                      color: 'var(--gold)',
-                      marginBottom: '0.3rem'
+                      color: 'var(--color-accent)',
+                      fontWeight: 600,
+                      marginBottom: '0.25rem'
                     }}
                   >
                     {slot.departmentLabel}
                   </div>
 
-                  <h3 style={{ fontSize: '1.15rem', marginBottom: '0.35rem' }}>
+                  <h3 style={{ fontSize: '1.08rem', marginBottom: '0.3rem' }}>
                     {slot.namePlaceholder}
                   </h3>
 
                   <div
                     style={{
-                      fontSize: '0.88rem',
-                      fontWeight: 500,
-                      color: 'var(--text-primary)',
-                      marginBottom: '0.75rem'
+                      fontSize: '0.84rem',
+                      fontWeight: 600,
+                      color: 'var(--color-text-primary)',
+                      marginBottom: '0.65rem'
                     }}
                   >
                     {slot.titlePlaceholder}
                   </div>
 
                   {viewMode === 'detailed' && (
-                    <p style={{ fontSize: '0.88rem', marginBottom: '1.15rem' }}>
+                    <p style={{ fontSize: '0.84rem', marginBottom: '1rem' }}>
                       {slot.bioPlaceholder}
                     </p>
                   )}
@@ -211,13 +216,13 @@ export function TeamPage() {
 
                 <div
                   style={{
-                    paddingTop: '0.9rem',
-                    borderTop: '1px solid var(--border-subtle)',
+                    paddingTop: '0.85rem',
+                    borderTop: '1px solid var(--hasamex-border-light)',
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: '0.5rem'
+                    gap: '0.45rem'
                   }}
                 >
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
@@ -225,11 +230,12 @@ export function TeamPage() {
                       <span
                         key={tag}
                         style={{
-                          fontSize: '0.7rem',
-                          padding: '0.18rem 0.5rem',
+                          fontSize: '0.68rem',
+                          fontWeight: 500,
+                          padding: '0.16rem 0.5rem',
                           borderRadius: 'var(--radius-pill)',
-                          background: 'rgba(255,255,255,0.04)',
-                          color: 'var(--text-secondary)'
+                          background: '#f1f5f9',
+                          color: 'var(--color-text-secondary)'
                         }}
                       >
                         {tag}
@@ -238,11 +244,11 @@ export function TeamPage() {
                   </div>
                   <span
                     style={{
-                      fontSize: '0.75rem',
-                      color: 'var(--text-muted)',
+                      fontSize: '0.72rem',
+                      color: 'var(--color-text-muted)',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '0.3rem'
+                      gap: '0.28rem'
                     }}
                   >
                     <Icon name="linkedin" size={13} />
@@ -258,36 +264,38 @@ export function TeamPage() {
       {/* CROSS-BORDER CULTURE HIGHLIGHT */}
       <section className="section section--ivory">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '2.5rem' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '2.25rem' }}>
             <div>
-              <span className="eyebrow eyebrow--light">
+              <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Cross-Border Collaboration
               </span>
-              <h2 style={{ marginTop: '0.85rem', marginBottom: '0.85rem' }}>
-                One Standard of Precision Across Singapore &amp; India
-              </h2>
-              <p className="lead lead--ink" style={{ marginBottom: '1.25rem' }}>
+              <AnimatedHeading
+                as="h2"
+                text="One Standard of Precision Across Singapore & India"
+                style={{ marginTop: '0.75rem', marginBottom: '0.75rem' }}
+              />
+              <p className="lead" style={{ marginBottom: '1.15rem' }}>
                 We lead with integrity, operate with speed, treat people with respect, move with
                 momentum, and communicate with clarity.
               </p>
               <Link to="/careers" className="btn btn--ink">
                 Join Our Growing Team
-                <Icon name="arrow-right" size={16} />
+                <Icon name="arrow-right" size={15} />
               </Link>
             </div>
 
-            <div className="card card--ivory">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1rem' }}>
-                <HasamexEmblemVector size={48} />
+            <div className="card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.9rem' }}>
+                <HasamexEmblemVector size={44} />
                 <div>
-                  <h3 style={{ marginBottom: '0.15rem' }}>Ready for Content Handover</h3>
-                  <p style={{ fontSize: '0.85rem' }}>
+                  <h3 style={{ marginBottom: '0.1rem' }}>Ready for Content Handover</h3>
+                  <p style={{ fontSize: '0.82rem' }}>
                     Drop-in JSON configuration in <code>src/content/siteData.js</code>
                   </p>
                 </div>
               </div>
-              <p style={{ fontSize: '0.9rem' }}>
+              <p style={{ fontSize: '0.86rem' }}>
                 Once leadership confirms the final team list, each placeholder card above can be
                 populated with official names, titles, regional locations, executive bios, LinkedIn
                 URLs, and either studio photography or custom illustrated portraits.
