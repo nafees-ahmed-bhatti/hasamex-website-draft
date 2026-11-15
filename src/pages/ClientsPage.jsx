@@ -71,7 +71,7 @@ export function ClientsPage() {
               <div className="hero-footprint-ledger">
                 <div className="hero-footprint-ledger__head">
                   <img
-                    src="/assets/logo-emblem.png"
+                    src="/brand/hasamex-emblem-dark.png"
                     alt="Hasamex Institutional Seal"
                     className="hero-footprint-ledger__emblem"
                   />
