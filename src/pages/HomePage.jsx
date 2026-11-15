@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import {
   CLIENT_AUDIENCES,
+  COMPLIANCE_SAFEGUARDS,
   HOME_COMPLIANCE_CARDS,
   HOME_EXPERT_ARCHETYPES,
   HOME_FORMATS,
@@ -32,7 +33,6 @@ export function HomePage() {
   const [audiencePaused, setAudiencePaused] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [testimonialPaused, setTestimonialPaused] = useState(false);
-  const [expandedPillar, setExpandedPillar] = useState(null);
   const prefersReducedMotion = useReducedMotion();
 
   // Subtle auto-switching for Client Segments when not hovered
@@ -66,10 +66,10 @@ export function HomePage() {
 
   return (
     <Layout>
-      {/* 1. HERO SECTION (Hub Executive Navy) */}
+      {/* 1. HERO SECTION (Hub Executive Navy — Balanced Left & Right Columns) */}
       <section className="hero">
         <div className="container hero-grid">
-          <Reveal blur y={16} className="hero-copy">
+          <Reveal blur y={14} className="hero-copy">
             <span className="eyebrow">
               <span className="eyebrow-dot" />
               Global Expert Intelligence Network
@@ -98,41 +98,56 @@ export function HomePage() {
               </Link>
             </div>
 
-            <div className="hero-trust-note">
-              <img
-                src="/brand/hasamex-emblem-light.png"
-                alt="Hasamex Two-Figures H Emblem"
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: '50%',
-                  border: '1px solid rgba(255, 255, 255, 0.25)'
-                }}
-              />
-              <div>
-                <div style={{ color: '#f8fafc', fontWeight: 600 }}>
-                  Headquartered in Singapore · Distributed Execution Across India &amp; Global Corridors
+            {/* Architectural Institutional Footprint Ledger (Balances Hero Left vs Right Height) */}
+            <div className="hero-footprint-ledger">
+              <div className="hero-footprint-ledger__head">
+                <img
+                  src="/brand/hasamex-emblem-light.png"
+                  alt="Hasamex Two-Figures H Emblem"
+                  className="hero-footprint-ledger__emblem"
+                />
+                <div>
+                  <div className="hero-footprint-ledger__title">
+                    Hasamex Pte Ltd · Headquartered in Singapore (UEN 202526952W)
+                  </div>
+                  <div className="hero-footprint-ledger__sub">
+                    160 Robinson Road, #14-04 SBF Center · Distributed Research &amp; Sourcing Hubs Across India
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.77rem', color: '#94a3b8' }}>
-                  Custom-vetted primary insight for Investment Firms, Strategy Consultants &amp; Corporate Leaders
+              </div>
+              <div className="hero-footprint-ledger__metrics">
+                <div className="hero-footprint-ledger__cell">
+                  <span className="hero-footprint-ledger__k">Turnaround</span>
+                  <span className="hero-footprint-ledger__v">2–12 Hr Typical Delivery</span>
+                </div>
+                <div className="hero-footprint-ledger__cell">
+                  <span className="hero-footprint-ledger__k">Governance</span>
+                  <span className="hero-footprint-ledger__v">Zero-Tolerance MNPI Controls</span>
+                </div>
+                <div className="hero-footprint-ledger__cell">
+                  <span className="hero-footprint-ledger__k">Settlement</span>
+                  <span className="hero-footprint-ledger__v">≤ 14-Day Expert Payouts</span>
                 </div>
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} y={18}>
+          <Reveal delay={0.08} y={16}>
             <HeroShowcaseCard />
           </Reveal>
         </div>
       </section>
 
-      {/* 2. VERIFIED BENCHMARKS BAR */}
-      <section aria-label="Operational Commitments">
+      {/* 2. VERIFIED BENCHMARKS BAR (4x1 Desktop, 2x2 Architectural Grid on Tablet & Mobile) */}
+      <section aria-label="Operational Commitments" className="benchmark-section">
         <div className="container" style={{ padding: 0, maxWidth: '100%' }}>
           <div className="benchmark-strip">
-            {VERIFIED_BENCHMARKS.map((item) => (
+            {VERIFIED_BENCHMARKS.map((item, idx) => (
               <div key={item.label} className="benchmark-cell">
-                <div className="benchmark-metric">{item.metric}</div>
+                <div className="benchmark-cell__top">
+                  <span className="benchmark-metric">{item.metric}</span>
+                  <span className="benchmark-index">0{idx + 1}</span>
+                </div>
                 <div className="benchmark-label">{item.label}</div>
                 <p className="benchmark-detail">{item.detail}</p>
               </div>
@@ -153,11 +168,11 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* 3. SIX ENGAGEMENT FORMATS (Balanced 3x2 Grid — 6 Cards) */}
+      {/* 3. SIX ENGAGEMENT FORMATS (Architectural Hairline Matrix — Zero Floating Box Clutter) */}
       <section className="section">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 620 }}>
+            <Reveal style={{ maxWidth: 640 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Engagement Formats
@@ -165,41 +180,45 @@ export function HomePage() {
               <AnimatedHeading
                 as="h2"
                 text="Designed Around How You Work"
-                style={{ marginTop: '0.65rem', marginBottom: '0.45rem' }}
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem' }}
               />
               <p className="lead">
-                Whether you need a one-off call or a thematic knowledge sprint, Hasamex offers
-                flexible formats to match your insight goals.
+                Whether you need a rapid 1:1 diligence call or a multi-day field itinerary, Hasamex
+                delivers six flexible primary research formats tailored to your workflow.
               </p>
             </Reveal>
-            <Reveal delay={0.06}>
+            <Reveal delay={0.05}>
               <Link to="/clients#formats" className="btn btn--glass">
-                Explore our services
+                Explore All Client Services
                 <Icon name="arrow-right" size={15} />
               </Link>
             </Reveal>
           </div>
 
-          <div className="grid-3">
+          <div className="format-matrix">
             {HOME_FORMATS.map((fmt, idx) => (
-              <Reveal key={fmt.id} delay={idx * 0.04} className="card">
-                <div>
-                  <div className="card-top">
-                    <div className="card-top__left">
-                      <span className="card-icon-box">
-                        <Icon name={fmt.icon} size={15} />
-                      </span>
-                      <span className="card-index">{fmt.number}</span>
-                    </div>
-                    <span className="card-tag">{fmt.tag}</span>
+              <Reveal key={fmt.id} delay={idx * 0.03} className="format-cell">
+                <div className="format-cell__top">
+                  <div className="format-cell__id">
+                    <span className="format-cell__num">{fmt.number}</span>
+                    <span className="format-cell__icon">
+                      <Icon name={fmt.icon} size={15} />
+                    </span>
+                    <span className="format-cell__tag">{fmt.tag}</span>
                   </div>
-                  <h3>{fmt.title}</h3>
-                  <p>{fmt.shortDesc}</p>
+                  <span className="format-cell__scope">{fmt.scope}</span>
                 </div>
-                <div className="card-footer-row">
-                  <span style={{ fontWeight: 500 }}>{fmt.scope}</span>
-                  <Link to="/clients#formats" className="card-cta-link">
-                    Explore <Icon name="arrow-right" size={13} />
+
+                <div className="format-cell__body">
+                  <h3 className="format-cell__title">{fmt.title}</h3>
+                  <p className="format-cell__desc">{fmt.shortDesc}</p>
+                </div>
+
+                <div className="format-cell__footer">
+                  <span className="format-cell__detail-note">{fmt.clientsDesc}</span>
+                  <Link to="/clients#formats" className="format-cell__link">
+                    <span>Explore</span>
+                    <Icon name="arrow-right" size={13} />
                   </Link>
                 </div>
               </Reveal>
@@ -208,11 +227,11 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 4. HOW HASAMEX CONNECTS CLIENTS WITH EXPERTS (Compact 4-Stage Interactive Workflow Timeline) */}
+      {/* 4. HOW HASAMEX CONNECTS CLIENTS WITH EXPERTS (Unified 4-Stage Process Pipeline — All Details Visible) */}
       <section className="section section--navy">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 640 }}>
+            <Reveal style={{ maxWidth: 660 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 End-to-End Execution
@@ -220,7 +239,7 @@ export function HomePage() {
               <AnimatedHeading
                 as="h2"
                 text="How Hasamex Connects Clients With Experts"
-                style={{ marginTop: '0.65rem', marginBottom: '0.45rem', color: '#ffffff' }}
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem', color: '#ffffff' }}
               />
               <p className="lead" style={{ color: '#cbd5e1' }}>
                 Every research mandate runs through a structured four-stage workflow—combining custom
@@ -228,7 +247,7 @@ export function HomePage() {
                 compliance controls.
               </p>
             </Reveal>
-            <Reveal delay={0.06}>
+            <Reveal delay={0.05}>
               <Link to="/clients#service-model" className="btn btn--primary">
                 Start a Project
                 <Icon name="arrow-right" size={15} />
@@ -240,11 +259,12 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 5. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Compact 4x1 Grid with Expandable Details) */}
+      {/* 5. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Editorial Split Layout + 4 Architectural Rows) */}
       <section className="section section--ivory">
         <div className="container">
-          <div className="section-header--split">
-            <Reveal style={{ maxWidth: 640 }}>
+          <div className="advantage-split">
+            {/* Left Anchor Column */}
+            <Reveal className="advantage-split__lead">
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 The Hasamex Advantage
@@ -252,60 +272,65 @@ export function HomePage() {
               <AnimatedHeading
                 as="h2"
                 text="Why the World’s Smartest Teams Choose Hasamex"
-                style={{ marginTop: '0.65rem', marginBottom: '0.45rem' }}
+                style={{ marginTop: '0.6rem', marginBottom: '0.55rem' }}
               />
-              <p className="lead">
-                We blend custom sourcing, precision vetting, premium service, and built-in
-                compliance to elevate every project.
+              <p className="lead" style={{ marginBottom: '1.25rem' }}>
+                We blend custom sourcing, precision vetting, white-glove service, and built-in
+                compliance to elevate every project—without the noise of recycled databases.
               </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <Link to="/clients#service-model" className="btn btn--ink">
-                Learn More About Our Service Framework
-                <Icon name="arrow-right" size={15} />
-              </Link>
-            </Reveal>
-          </div>
 
-          <div className="grid-4">
-            {WHY_CHOOSE_HASAMEX.map((pillar, idx) => {
-              const isExpanded = expandedPillar === pillar.number;
-              return (
-                <Reveal key={pillar.title} delay={idx * 0.045} className="card">
-                  <div>
-                    <div className="card-top">
-                      <div className="card-top__left">
-                        <span className="card-icon-box">
-                          <Icon name={pillar.icon || 'shield'} size={15} />
-                        </span>
-                        <span className="card-index">{pillar.number}</span>
-                      </div>
-                      <span className="card-tag">{pillar.highlight}</span>
-                    </div>
-                    <h3>{pillar.title}</h3>
-                    <p>{pillar.summary}</p>
-                    {isExpanded && (
-                      <div className="card-detail-drawer">{pillar.description}</div>
-                    )}
-                  </div>
-                  <div className="card-footer-row">
-                    <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
-                      {pillar.footerNote}
+              <div className="advantage-sla-card">
+                <div className="advantage-sla-card__eyebrow">
+                  Institutional Execution Standard
+                </div>
+                <div className="advantage-sla-card__title">
+                  Built for High-Stakes Diligence Across Global Corridors
+                </div>
+                <ul className="advantage-sla-card__list">
+                  <li>
+                    <Icon name="check" size={14} />
+                    <span>Singapore HQ &amp; India execution desks operating in tandem</span>
+                  </li>
+                  <li>
+                    <Icon name="check" size={14} />
+                    <span>Bespoke recruitment per brief across DM, EM &amp; FM</span>
+                  </li>
+                  <li>
+                    <Icon name="check" size={14} />
+                    <span>100% monitored, recorded &amp; auditable consultations</span>
+                  </li>
+                </ul>
+                <Link to="/clients#service-model" className="btn btn--primary" style={{ width: '100%' }}>
+                  Explore Our Service Framework
+                  <Icon name="arrow-right" size={15} />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Right 4-Row Architectural Ledger (Full Descriptions Visible, Zero Truncation) */}
+            <div className="advantage-ledger">
+              {WHY_CHOOSE_HASAMEX.map((pillar, idx) => (
+                <Reveal key={pillar.title} delay={idx * 0.04} className="advantage-row">
+                  <div className="advantage-row__left">
+                    <span className="advantage-row__num">{pillar.number}</span>
+                    <span className="advantage-row__icon">
+                      <Icon name={pillar.icon || 'shield'} size={16} />
                     </span>
-                    <button
-                      type="button"
-                      className={`card-expand-btn ${isExpanded ? 'card-expand-btn--active' : ''}`}
-                      onClick={() =>
-                        setExpandedPillar(isExpanded ? null : pillar.number)
-                      }
-                      aria-expanded={isExpanded}
-                    >
-                      {isExpanded ? 'Less −' : 'Learn More +'}
-                    </button>
+                  </div>
+
+                  <div className="advantage-row__content">
+                    <div className="advantage-row__header">
+                      <h3 className="advantage-row__title">{pillar.title}</h3>
+                      <div className="advantage-row__badges">
+                        <span className="advantage-row__tag">{pillar.highlight}</span>
+                        <span className="advantage-row__note">{pillar.footerNote}</span>
+                      </div>
+                    </div>
+                    <p className="advantage-row__desc">{pillar.description}</p>
                   </div>
                 </Reveal>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -322,11 +347,11 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* 6. THE EXPERTS BEHIND THE INTELLIGENCE (Balanced 3x2 Grid — 6 Cards, Zero Orphan Cards!) */}
+      {/* 6. THE EXPERTS BEHIND THE INTELLIGENCE (Institutional 2-Column Operator Roster) */}
       <section className="section">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 620 }}>
+            <Reveal style={{ maxWidth: 640 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Hasamex Intelligence Network (HIN)
@@ -334,7 +359,7 @@ export function HomePage() {
               <AnimatedHeading
                 as="h2"
                 text="The Experts Behind the Intelligence"
-                style={{ marginTop: '0.65rem', marginBottom: '0.45rem' }}
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem' }}
               />
               <p className="lead">
                 A global network of operators, advisors, and specialists with real-world
@@ -342,38 +367,57 @@ export function HomePage() {
                 Frontier markets.
               </p>
             </Reveal>
-            <Reveal delay={0.06}>
+            <Reveal delay={0.05}>
               <Link to="/experts" className="btn btn--primary">
-                Learn About our Experts
+                Explore the Expert Network
                 <Icon name="arrow-right" size={15} />
               </Link>
             </Reveal>
           </div>
 
-          <div className="grid-3">
-            {HOME_EXPERT_ARCHETYPES.map((arch, idx) => (
-              <Reveal key={arch.code} delay={idx * 0.04} className="card">
-                <div>
-                  <div className="card-top">
-                    <div className="card-top__left">
-                      <span className="card-icon-box">
-                        <Icon name="users" size={15} />
-                      </span>
-                      <span className="card-index">{arch.code}</span>
-                    </div>
-                    <span className="card-tag">{arch.roleTag}</span>
+          <div className="hin-roster">
+            <div className="hin-roster__banner">
+              <div className="hin-roster__banner-left">
+                <span className="hin-roster__dot" />
+                <span>Active Global Practitioner Cohorts (HIN-01 — HIN-06)</span>
+              </div>
+              <div className="hin-roster__banner-pills">
+                <span>Developed Markets (DM)</span>
+                <span>Emerging Markets (EM)</span>
+                <span>Frontier Markets (FM)</span>
+                <span>≤ 14-Day Guaranteed Payouts</span>
+              </div>
+            </div>
+
+            <div className="hin-roster__grid">
+              {HOME_EXPERT_ARCHETYPES.map((arch, idx) => (
+                <Reveal key={arch.code} delay={idx * 0.035} className="hin-cohort-row">
+                  <div className="hin-cohort-row__badge-col">
+                    <span className="hin-cohort-row__code">{arch.code}</span>
+                    <span className="hin-cohort-row__icon">
+                      <Icon name="users" size={15} />
+                    </span>
                   </div>
-                  <h3>{arch.title}</h3>
-                  <p>{arch.detail}</p>
-                </div>
-                <div className="card-footer-row">
-                  <span>{arch.coverage}</span>
-                  <Link to="/experts#categories" className="card-cta-link">
-                    HIN Profile <Icon name="arrow-right" size={13} />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
+
+                  <div className="hin-cohort-row__main">
+                    <div className="hin-cohort-row__top">
+                      <h3 className="hin-cohort-row__title">{arch.title}</h3>
+                      <span className="hin-cohort-row__tag">{arch.roleTag}</span>
+                    </div>
+                    <p className="hin-cohort-row__desc">{arch.detail}</p>
+                    <div className="hin-cohort-row__meta">
+                      <span className="hin-cohort-row__coverage">
+                        Focus: <strong>{arch.coverage}</strong>
+                      </span>
+                      <Link to="/experts#categories" className="hin-cohort-row__link">
+                        <span>HIN Cohort</span>
+                        <Icon name="arrow-right" size={12} />
+                      </Link>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -385,48 +429,57 @@ export function HomePage() {
         onMouseLeave={() => setAudiencePaused(false)}
       >
         <div className="container">
-          <Reveal className="section-header">
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              Client Segments
-            </span>
-            <AnimatedHeading as="h2" text="Trusted by Decision-Makers Worldwide" />
-            <p className="lead">
-              Hasamex supports a global client base across institutional investment, strategy
-              consulting, and corporate innovation.
-            </p>
-          </Reveal>
+          <div className="section-header--split">
+            <Reveal style={{ maxWidth: 640 }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                Client Segments
+              </span>
+              <AnimatedHeading
+                as="h2"
+                text="Trusted by Decision-Makers Worldwide"
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem' }}
+              />
+              <p className="lead">
+                Hasamex supports a global client base across institutional investment, strategy
+                consulting, and corporate innovation.
+              </p>
+            </Reveal>
 
-          <div className="tab-bar" role="tablist" aria-label="Client Segments">
-            {CLIENT_AUDIENCES.map((aud) => (
-              <button
-                key={aud.id}
-                type="button"
-                role="tab"
-                aria-selected={aud.id === activeAudienceId}
-                className={`tab-btn ${aud.id === activeAudienceId ? 'tab-btn--active' : ''}`}
-                onClick={() => setActiveAudienceId(aud.id)}
-              >
-                {aud.label}
-              </button>
-            ))}
+            <div className="tab-bar" role="tablist" aria-label="Client Segments" style={{ marginBottom: 0 }}>
+              {CLIENT_AUDIENCES.map((aud) => (
+                <button
+                  key={aud.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={aud.id === activeAudienceId}
+                  className={`tab-btn ${aud.id === activeAudienceId ? 'tab-btn--active' : ''}`}
+                  onClick={() => setActiveAudienceId(aud.id)}
+                >
+                  {aud.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <AnimatePresence mode="wait">
             <motion.div
               key={currentAudience.id}
               className="tab-panel"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6 }}
+              transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
             >
               <div>
-                <span className="card-index">{currentAudience.label}</span>
-                <h3 style={{ fontSize: '1.32rem', marginTop: '0.55rem', marginBottom: '0.6rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.55rem' }}>
+                  <span className="card-index">{currentAudience.label}</span>
+                  <span className="card-tag">{currentAudience.clientsPageTitle}</span>
+                </div>
+                <h3 style={{ fontSize: '1.26rem', marginBottom: '0.45rem' }}>
                   {currentAudience.headline}
                 </h3>
-                <p className="lead" style={{ fontSize: '0.94rem', marginBottom: '1.25rem' }}>
+                <p className="lead" style={{ fontSize: '0.91rem', marginBottom: '1rem' }}>
                   {currentAudience.homeDescription}
                 </p>
 
@@ -434,8 +487,8 @@ export function HomePage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.55rem',
-                    marginBottom: '1.5rem'
+                    gap: '0.48rem',
+                    marginBottom: '1.25rem'
                   }}
                 >
                   {currentAudience.workflows.map((wf) => (
@@ -444,8 +497,8 @@ export function HomePage() {
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.6rem',
-                        fontSize: '0.88rem',
+                        gap: '0.55rem',
+                        fontSize: '0.86rem',
                         color: 'var(--color-text-primary)',
                         fontWeight: 500
                       }}
@@ -482,19 +535,19 @@ export function HomePage() {
                   background: 'var(--hub-navy)',
                   border: '1px solid var(--hub-navy-border)',
                   borderRadius: 'var(--radius-lg)',
-                  padding: '1.65rem',
+                  padding: '1.45rem 1.55rem',
                   color: '#f8fafc',
                   boxShadow: 'var(--shadow-md)'
                 }}
               >
                 <div
                   style={{
-                    fontSize: '0.68rem',
+                    fontSize: '0.67rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
                     color: '#cbd5e1',
                     fontWeight: 600,
-                    marginBottom: '0.65rem',
+                    marginBottom: '0.55rem',
                     fontFamily: 'var(--font-mono)'
                   }}
                 >
@@ -502,17 +555,17 @@ export function HomePage() {
                 </div>
                 <blockquote
                   style={{
-                    fontSize: '0.98rem',
-                    lineHeight: 1.6,
+                    fontSize: '0.94rem',
+                    lineHeight: 1.58,
                     color: '#ffffff',
-                    marginBottom: '1rem',
+                    marginBottom: '0.85rem',
                     fontStyle: 'normal',
                     fontWeight: 500
                   }}
                 >
                   “{currentAudience.quote.text}”
                 </blockquote>
-                <div style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
+                <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
                   — {currentAudience.quote.author}
                 </div>
               </div>
@@ -521,50 +574,74 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 8. COMPLIANCE YOU CAN TRUST (Balanced 3x1 Grid) */}
+      {/* 8. COMPLIANCE YOU CAN TRUST (5-Checkpoint Strip + 3-Column Governance Ledger — Zero Orphan Cards!) */}
       <section className="section">
         <div className="container">
-          <Reveal className="section-header">
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              Institutional Governance
-            </span>
-            <AnimatedHeading as="h2" text="Compliance You Can Trust" />
-            <p className="lead">
-              From expert onboarding and NDAs to MNPI safeguards and full audit trails, Hasamex is
-              built for regulated, institutional-grade research.
-            </p>
-          </Reveal>
+          <div className="section-header--split">
+            <Reveal style={{ maxWidth: 640 }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                Institutional Governance
+              </span>
+              <AnimatedHeading
+                as="h2"
+                text="Compliance You Can Trust"
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem' }}
+              />
+              <p className="lead">
+                From expert onboarding and NDAs to MNPI safeguards and full audit trails, Hasamex is
+                built for regulated, institutional-grade research.
+              </p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <Link to="/compliance" className="btn btn--ink">
+                Full Compliance Architecture
+                <Icon name="arrow-right" size={15} />
+              </Link>
+            </Reveal>
+          </div>
 
-          <div className="grid-3">
-            {HOME_COMPLIANCE_CARDS.map((card, idx) => (
-              <Reveal key={card.title} delay={idx * 0.045} className="card">
-                <div>
-                  <div className="card-top">
-                    <div className="card-top__left">
-                      <span className="card-icon-box">
-                        <Icon name="shield" size={15} />
-                      </span>
-                      <span className="card-index">{card.badge}</span>
-                    </div>
-                    <span className="card-tag">Mandatory Protocol</span>
+          <div className="governance-architecture">
+            {/* Top 5-Checkpoint Safeguard Strip */}
+            <div className="governance-checkpoints">
+              {COMPLIANCE_SAFEGUARDS.map((cp) => (
+                <div key={cp.number} className="governance-checkpoint-cell">
+                  <div className="governance-checkpoint-cell__top">
+                    <span className="governance-checkpoint-cell__num">CHECKPOINT {cp.number}</span>
+                    <Icon name="shield" size={13} />
                   </div>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
+                  <div className="governance-checkpoint-cell__title">{cp.title}</div>
+                  <div className="governance-checkpoint-cell__stage">{cp.stage}</div>
                 </div>
-                <div className="card-footer-row">
-                  <span>Global Standard</span>
-                  <Link to={card.path} className="card-cta-link">
-                    {card.ctaLabel} <Icon name="arrow-right" size={13} />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
+              ))}
+            </div>
+
+            {/* Bottom 3-Column Binding Policy Ledger (Stays 3 Columns on Desktop AND Tablet!) */}
+            <div className="governance-pillars-row">
+              {HOME_COMPLIANCE_CARDS.map((card, idx) => (
+                <Reveal key={card.title} delay={idx * 0.04} className="governance-pillar-cell">
+                  <div>
+                    <div className="governance-pillar-cell__top">
+                      <span className="card-index">{card.badge}</span>
+                      <span className="card-tag">Mandatory Protocol</span>
+                    </div>
+                    <h3 className="governance-pillar-cell__title">{card.title}</h3>
+                    <p className="governance-pillar-cell__desc">{card.description}</p>
+                  </div>
+                  <div className="governance-pillar-cell__footer">
+                    <span>Global Standard</span>
+                    <Link to={card.path} className="card-cta-link">
+                      {card.ctaLabel} <Icon name="arrow-right" size={13} />
+                    </Link>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 9. VERIFIED TESTIMONIALS */}
+      {/* 9. VERIFIED TESTIMONIALS (Spotlight + 3-Column Selector Bar — Zero Orphan Card on Tablet!) */}
       <section
         className="section section--elevated"
         onMouseEnter={() => setTestimonialPaused(true)}
@@ -580,7 +657,7 @@ export function HomePage() {
               <AnimatedHeading
                 as="h2"
                 text="Trusted by Clients. Respected by Experts."
-                style={{ marginTop: '0.65rem', marginBottom: '0.45rem' }}
+                style={{ marginTop: '0.55rem', marginBottom: '0.4rem' }}
               />
               <p className="lead">Here’s what people are saying about working with Hasamex.</p>
             </Reveal>
@@ -605,76 +682,51 @@ export function HomePage() {
             </div>
           </div>
 
-          {/* Featured Spotlight Slider (Hub Executive Navy Card) */}
-          <div
-            className="card card--navy"
-            style={{
-              padding: '1.9rem 2rem',
-              marginBottom: '1.25rem'
-            }}
-          >
-            <div className="card-top">
-              <span className="eyebrow">{TESTIMONIALS[activeTestimonial].category}</span>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                {activeTestimonial + 1} / {TESTIMONIALS.length}
-              </span>
-            </div>
-            <blockquote
-              style={{
-                fontSize: 'clamp(1.04rem, 1.5vw, 1.25rem)',
-                fontWeight: 500,
-                lineHeight: 1.55,
-                color: '#ffffff',
-                marginBottom: '1rem'
-              }}
-            >
-              “{TESTIMONIALS[activeTestimonial].quote}”
-            </blockquote>
-            <div style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>
-              <strong style={{ color: '#ffffff' }}>
-                {TESTIMONIALS[activeTestimonial].role}
-              </strong>{' '}
-              — {TESTIMONIALS[activeTestimonial].org}
-            </div>
-          </div>
-
-          {/* 3-Card Verified Quote Grid */}
-          <div className="grid-3">
-            {TESTIMONIALS.slice(0, 3).map((item, idx) => (
-              <div
-                key={item.id}
-                className="card"
-                onClick={() => setActiveTestimonial(idx)}
-                style={{
-                  cursor: 'pointer',
-                  borderColor:
-                    activeTestimonial === idx ? 'var(--hub-navy)' : 'var(--border-subtle)'
-                }}
-              >
-                <div>
-                  <div className="card-top">
-                    <span className="card-index">{item.category}</span>
-                    <span className="card-tag">Verified</span>
-                  </div>
-                  <p
-                    style={{
-                      color: 'var(--color-text-primary)',
-                      fontSize: '0.9rem',
-                      marginBottom: '1rem',
-                      fontWeight: 500
-                    }}
-                  >
-                    “{item.quote}”
-                  </p>
-                </div>
-                <div className="card-footer-row" style={{ marginTop: '0.75rem' }}>
-                  <span>
-                    <strong style={{ color: 'var(--color-text-primary)' }}>{item.role}</strong> ·{' '}
-                    {item.org}
-                  </span>
-                </div>
+          <div className="testimonial-showcase">
+            {/* Featured Spotlight Slider (Hub Executive Navy) */}
+            <div className="testimonial-spotlight">
+              <div className="card-top">
+                <span className="eyebrow">{TESTIMONIALS[activeTestimonial].category}</span>
+                <span style={{ fontSize: '0.73rem', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
+                  0{activeTestimonial + 1} / 0{TESTIMONIALS.length}
+                </span>
               </div>
-            ))}
+              <blockquote className="testimonial-spotlight__quote">
+                “{TESTIMONIALS[activeTestimonial].quote}”
+              </blockquote>
+              <div style={{ fontSize: '0.84rem', color: '#cbd5e1' }}>
+                <strong style={{ color: '#ffffff' }}>
+                  {TESTIMONIALS[activeTestimonial].role}
+                </strong>{' '}
+                — {TESTIMONIALS[activeTestimonial].org}
+              </div>
+            </div>
+
+            {/* 3-Column Verified Quote Ledger (Stays 3 Columns on Desktop AND Tablet!) */}
+            <div className="testimonial-selector-row">
+              {TESTIMONIALS.slice(0, 3).map((item, idx) => {
+                const isSelected = activeTestimonial === idx;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`testimonial-selector-cell ${
+                      isSelected ? 'testimonial-selector-cell--active' : ''
+                    }`}
+                    onClick={() => setActiveTestimonial(idx)}
+                  >
+                    <div className="testimonial-selector-cell__top">
+                      <span className="card-index">{item.category}</span>
+                      <span className="card-tag">Verified</span>
+                    </div>
+                    <p className="testimonial-selector-cell__quote">“{item.quote}”</p>
+                    <div className="testimonial-selector-cell__author">
+                      <strong>{item.role}</strong> · {item.org}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

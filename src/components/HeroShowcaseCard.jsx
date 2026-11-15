@@ -74,7 +74,7 @@ export function HeroShowcaseCard() {
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.66rem',
+              fontSize: '0.65rem',
               color: '#94a3b8',
               letterSpacing: '0.06em',
               textTransform: 'uppercase'
@@ -96,7 +96,7 @@ export function HeroShowcaseCard() {
                 className={`showcase-tab ${isActive ? 'showcase-tab--active' : ''}`}
                 onClick={() => handleSelectTab(idx)}
               >
-                {item.tabLabel}
+                <span className="showcase-tab__label-full">{item.tabLabel}</span>
                 {isActive && (
                   <span
                     className="showcase-tab__progress"
@@ -112,10 +112,10 @@ export function HeroShowcaseCard() {
       <AnimatePresence mode="wait">
         <motion.div
           key={current.id}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 8, filter: 'blur(3px)' }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 6, filter: 'blur(2px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6, filter: 'blur(2px)' }}
-          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -5, filter: 'blur(2px)' }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="showcase-meta-row">
             <span style={{ color: '#ffffff', fontWeight: 600 }}>
@@ -128,41 +128,24 @@ export function HeroShowcaseCard() {
 
           <div
             style={{
-              fontSize: '0.77rem',
+              fontSize: '0.75rem',
               color: '#94a3b8',
-              marginBottom: '0.75rem'
+              marginBottom: '0.6rem'
             }}
           >
             Scope Coverage: <strong style={{ color: '#f8fafc' }}>{current.audience}</strong>
           </div>
 
           <div className="showcase-profile-box">
-            <div className="showcase-profile-box__label">Live Workflow Stream</div>
-            <div
-              style={{
-                fontSize: '0.81rem',
-                fontWeight: 500,
-                color: '#f8fafc',
-                lineHeight: 1.48,
-                minHeight: '2.45rem',
-                fontFamily: 'var(--font-mono)'
-              }}
-            >
-              <TypewriterText text={current.streamText} speed={20} />
+            <div className="showcase-profile-box__top">
+              <span className="showcase-profile-box__label">Live Workflow Stream</span>
+              <span className="showcase-profile-box__status">
+                <Icon name="clock" size={12} />
+                {current.status}
+              </span>
             </div>
-            <div
-              style={{
-                fontSize: '0.73rem',
-                color: '#86efac',
-                marginTop: '0.4rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontWeight: 600
-              }}
-            >
-              <Icon name="clock" size={13} />
-              {current.status}
+            <div className="showcase-profile-box__stream">
+              <TypewriterText text={current.streamText} speed={20} />
             </div>
           </div>
 
@@ -174,10 +157,11 @@ export function HeroShowcaseCard() {
                     color: '#ffffff',
                     display: 'inline-flex',
                     flexShrink: 0,
-                    opacity: 0.9
+                    opacity: 0.9,
+                    marginTop: '1px'
                   }}
                 >
-                  <Icon name="shield" size={14} />
+                  <Icon name="shield" size={13} />
                 </span>
                 <span>{cp}</span>
               </div>
@@ -185,21 +169,13 @@ export function HeroShowcaseCard() {
           </div>
 
           <div className="showcase-footer">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-              <HasamexEmblemVector size={24} />
-              <span style={{ color: '#e2e8f0', fontWeight: 500 }}>{current.deliverable}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
+              <HasamexEmblemVector size={22} />
+              <span style={{ color: '#e2e8f0', fontWeight: 500, fontSize: '0.75rem' }}>
+                {current.deliverable}
+              </span>
             </div>
-            <span
-              style={{
-                fontSize: '0.66rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.07em',
-                color: '#94a3b8',
-                fontFamily: 'var(--font-mono)'
-              }}
-            >
-              Standard Protocol
-            </span>
+            <span className="showcase-footer__tag">Standard Protocol</span>
           </div>
         </motion.div>
       </AnimatePresence>
