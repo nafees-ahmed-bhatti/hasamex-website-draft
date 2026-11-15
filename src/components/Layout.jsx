@@ -305,7 +305,7 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
               >
                 {BRAND.address}
               </p>
-              <div style={{ display: 'flex', gap: '0.55rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <a
                   href={BRAND.social.linkedin}
                   target="_blank"
@@ -318,7 +318,7 @@ export function Layout({ children, showPreFooter = true, preFooterProps = {} }) 
                 </a>
                 <a
                   href={`mailto:${BRAND.emails.general}`}
-                  className="btn btn--glass btn--sm"
+                  className="email-plain-link"
                 >
                   <Icon name="mail" size={14} />
                   {BRAND.emails.general}

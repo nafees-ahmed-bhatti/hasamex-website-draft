@@ -6,7 +6,6 @@ import {
   HOME_COMPLIANCE_CARDS,
   HOME_EXPERT_ARCHETYPES,
   HOME_FORMATS,
-  HOW_HASAMEX_CONNECTS,
   MARQUEE_ITEMS,
   TESTIMONIALS,
   VERIFIED_BENCHMARKS,
@@ -16,6 +15,7 @@ import { HeroShowcaseCard } from '../components/HeroShowcaseCard';
 import { Icon } from '../components/Icons';
 import { Layout } from '../components/Layout';
 import { AnimatedHeading, Reveal } from '../components/Reveal';
+import { WorkflowTimeline } from '../components/WorkflowTimeline';
 
 const CORRIDOR_MARQUEE = [
   'Singapore HQ · 160 Robinson Road, #14-04 SBF Center',
@@ -32,6 +32,7 @@ export function HomePage() {
   const [audiencePaused, setAudiencePaused] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [testimonialPaused, setTestimonialPaused] = useState(false);
+  const [expandedPillar, setExpandedPillar] = useState(null);
   const prefersReducedMotion = useReducedMotion();
 
   // Subtle auto-switching for Client Segments when not hovered
@@ -184,11 +185,13 @@ export function HomePage() {
               <Reveal key={fmt.id} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{fmt.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name={fmt.icon} size={15} />
+                      </span>
+                      <span className="card-index">{fmt.number}</span>
+                    </div>
                     <span className="card-tag">{fmt.tag}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name={fmt.icon} size={18} />
                   </div>
                   <h3>{fmt.title}</h3>
                   <p>{fmt.shortDesc}</p>
@@ -205,7 +208,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 4. HOW HASAMEX CONNECTS CLIENTS WITH EXPERTS (Balanced 4x1 Navy Grid) */}
+      {/* 4. HOW HASAMEX CONNECTS CLIENTS WITH EXPERTS (Compact 4-Stage Interactive Workflow Timeline) */}
       <section className="section section--navy">
         <div className="container">
           <div className="section-header--split">
@@ -233,29 +236,11 @@ export function HomePage() {
             </Reveal>
           </div>
 
-          <div className="grid-4">
-            {HOW_HASAMEX_CONNECTS.map((stage, idx) => (
-              <Reveal key={stage.step} delay={idx * 0.045} className="card card--navy">
-                <div>
-                  <div className="card-top">
-                    <span className="card-index">STEP {stage.step}</span>
-                    <span className="card-tag">{stage.phase.split(' ')[0]}</span>
-                  </div>
-                  <h3>{stage.title}</h3>
-                  <p>{stage.description}</p>
-                </div>
-                <div className="card-footer-row">
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.71rem' }}>
-                    {stage.phase}
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <WorkflowTimeline variant="navy" />
         </div>
       </section>
 
-      {/* 5. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Balanced 4x1 Grid) */}
+      {/* 5. WHY THE WORLD'S SMARTEST TEAMS CHOOSE HASAMEX (Compact 4x1 Grid with Expandable Details) */}
       <section className="section section--ivory">
         <div className="container">
           <div className="section-header--split">
@@ -283,27 +268,44 @@ export function HomePage() {
           </div>
 
           <div className="grid-4">
-            {WHY_CHOOSE_HASAMEX.map((pillar, idx) => (
-              <Reveal key={pillar.title} delay={idx * 0.045} className="card">
-                <div>
-                  <div className="card-top">
-                    <span className="card-index">{pillar.number}</span>
-                    <span className="card-tag">{pillar.highlight}</span>
+            {WHY_CHOOSE_HASAMEX.map((pillar, idx) => {
+              const isExpanded = expandedPillar === pillar.number;
+              return (
+                <Reveal key={pillar.title} delay={idx * 0.045} className="card">
+                  <div>
+                    <div className="card-top">
+                      <div className="card-top__left">
+                        <span className="card-icon-box">
+                          <Icon name={pillar.icon || 'shield'} size={15} />
+                        </span>
+                        <span className="card-index">{pillar.number}</span>
+                      </div>
+                      <span className="card-tag">{pillar.highlight}</span>
+                    </div>
+                    <h3>{pillar.title}</h3>
+                    <p>{pillar.summary}</p>
+                    {isExpanded && (
+                      <div className="card-detail-drawer">{pillar.description}</div>
+                    )}
                   </div>
-                  <div className="card-icon-box">
-                    <Icon name={pillar.icon || 'shield'} size={18} />
+                  <div className="card-footer-row">
+                    <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
+                      {pillar.footerNote}
+                    </span>
+                    <button
+                      type="button"
+                      className={`card-expand-btn ${isExpanded ? 'card-expand-btn--active' : ''}`}
+                      onClick={() =>
+                        setExpandedPillar(isExpanded ? null : pillar.number)
+                      }
+                      aria-expanded={isExpanded}
+                    >
+                      {isExpanded ? 'Less −' : 'Learn More +'}
+                    </button>
                   </div>
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.description}</p>
-                </div>
-                <div className="card-footer-row">
-                  <span style={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
-                    {pillar.footerNote}
-                  </span>
-                  <Icon name="check" size={14} />
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -353,11 +355,13 @@ export function HomePage() {
               <Reveal key={arch.code} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{arch.code}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="users" size={15} />
+                      </span>
+                      <span className="card-index">{arch.code}</span>
+                    </div>
                     <span className="card-tag">{arch.roleTag}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="users" size={18} />
                   </div>
                   <h3>{arch.title}</h3>
                   <p>{arch.detail}</p>
@@ -537,11 +541,13 @@ export function HomePage() {
               <Reveal key={card.title} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{card.badge}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="shield" size={15} />
+                      </span>
+                      <span className="card-index">{card.badge}</span>
+                    </div>
                     <span className="card-tag">Mandatory Protocol</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="shield" size={18} />
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>

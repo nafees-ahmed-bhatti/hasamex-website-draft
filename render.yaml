@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: hasamex-website-preview
+    name: hasamex-website-draft
     runtime: static
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*

@@ -147,31 +147,55 @@ export const MARQUEE_ITEMS = [
 export const HOW_HASAMEX_CONNECTS = [
   {
     step: '01',
+    shortPhase: 'Brief Intake',
     phase: 'Brief Intake & Scope Calibration',
     title: 'Define the Exact Knowledge Gap',
+    summary:
+      'Share target geographies, value-chain questions, and preferred format for immediate scope calibration.',
     description:
-      'Clients share their research objectives, target geographies, value-chain questions, and preferred engagement format (1:1 call, roundtable, in-person meeting, knowledge tour, or transcript). Our Singapore and India research teams calibrate the brief immediately.'
+      'Clients share their research objectives, target geographies, value-chain questions, and preferred engagement format (1:1 call, roundtable, in-person meeting, knowledge tour, or transcript). Our Singapore and India research teams calibrate the brief immediately.',
+    sla: 'Immediate Calibration',
+    deliverable: 'Scoped Research Mandate & Screening Criteria',
+    icon: 'compass'
   },
   {
     step: '02',
+    shortPhase: 'Custom Sourcing',
     phase: 'Custom Recruiting & AI Enrichment',
-    title: 'Handpick Senior Operators Within 2–12 Hours',
+    title: 'Handpick Senior Operators in 2–12 Hrs',
+    summary:
+      'Bespoke headhunting of former CxOs, BU heads, and sector specialists—enriched with proprietary AI matching.',
     description:
-      'Rather than recycling generic database profiles, Hasamex custom-sources former CxOs, BU heads, commercial operators, technologists, and policy specialists from the Hasamex Intelligence Network (HIN), enriched with proprietary AI matching tools.'
+      'Rather than recycling generic database profiles, Hasamex custom-sources former CxOs, BU heads, commercial operators, technologists, and policy specialists from the Hasamex Intelligence Network (HIN), enriched with proprietary AI matching tools.',
+    sla: '2–12 Hr Typical Turnaround',
+    deliverable: 'Curated, Brief-Matched Practitioner Shortlist',
+    icon: 'users'
   },
   {
     step: '03',
+    shortPhase: 'Compliance Gate',
     phase: '5-Point Compliance & Conflict Clearance',
-    title: 'Enforce Investment-Grade MNPI Safeguards',
+    title: 'Enforce Zero-Tolerance MNPI Safeguards',
+    summary:
+      'Mandatory conflict screening, cooling-off verification, and affirmative HIN Terms & Code of Conduct consent.',
     description:
-      'Before any introduction is scheduled, every expert completes mandatory vetting, employer conflict screening, cooling-off verification, and affirmative consent to Hasamex’s Terms & Conditions, Code of Conduct, and Insider Trading Policy.'
+      'Before any introduction is scheduled, every expert completes mandatory vetting, employer conflict screening, cooling-off verification, and affirmative consent to Hasamex’s Terms & Conditions, Code of Conduct, and Insider Trading Policy.',
+    sla: '100% Pre-Call Cleared',
+    deliverable: 'Signed Compliance Consent & Conflict Clearance',
+    icon: 'shield'
   },
   {
     step: '04',
+    shortPhase: 'Live Execution',
     phase: 'Monitored Consultation & 14-Day Settlement',
-    title: 'Deliver High-Signal Insight & Prompt Honoraria',
+    title: 'Deliver Insight & ≤ 14-Day Payouts',
+    summary:
+      'Recorded, auditable consultations with blind client anonymity and guaranteed expert settlement within 14 days.',
     description:
-      'Consultations take place on recorded, auditable lines with need-to-know client anonymity. Clients receive actionable primary intelligence, and participating experts are guaranteed full payment within 14 days.'
+      'Consultations take place on recorded, auditable lines with need-to-know client anonymity. Clients receive actionable primary intelligence, and participating experts are guaranteed full payment within 14 days.',
+    sla: '≤ 14-Day Expert Payout',
+    deliverable: 'Recorded Consultation + Full Compliance Audit Log',
+    icon: 'phone'
   }
 ];
 
@@ -265,7 +289,8 @@ export const WHY_CHOOSE_HASAMEX = [
   {
     number: '01',
     title: 'White-Glove Premium Service',
-    description: 'From brief intake and custom screening questions to scheduling and post-call follow-up, our Singapore and India desks manage every detail.',
+    summary: 'Dedicated Singapore and India desks manage intake, custom screening, and scheduling end to end.',
+    description: 'From brief intake and custom screening questions to scheduling and post-call follow-up, our Singapore and India desks manage every detail with proactive ownership.',
     highlight: 'End-to-End Execution',
     footerNote: 'Dedicated Account Lead',
     icon: 'users'
@@ -273,15 +298,17 @@ export const WHY_CHOOSE_HASAMEX = [
   {
     number: '02',
     title: 'Quality with Speed',
-    description: 'We move on institutional clocks—delivering handpicked, custom-vetted profiles within 2–12 hours without cutting corners on depth.',
-    highlight: '2–12 Hr Typical Delivery',
+    summary: 'Handpicked, custom-vetted practitioner profiles delivered within 2–12 hours on institutional timelines.',
+    description: 'We move on institutional clocks—delivering handpicked, custom-vetted profiles within 2–12 hours without cutting corners on domain depth or vetting rigor.',
+    highlight: '2–12 Hr Delivery',
     footerNote: 'Rapid Brief Calibration',
     icon: 'clock'
   },
   {
     number: '03',
     title: 'Built-In Compliance',
-    description: 'Industry-leading 5-point safeguards covering MNPI prohibitions, employer conflict checks, recorded lines, and full audit trails.',
+    summary: '5-point safeguards with zero-tolerance MNPI rules, conflict checks, and 100% recorded audit trails.',
+    description: 'Industry-leading 5-point safeguards covering MNPI prohibitions, employer conflict checks, cooling-off rules, recorded lines, and full institutional audit trails.',
     highlight: 'Zero-MNPI Firewall',
     footerNote: '100% Recorded & Auditable',
     icon: 'shield'
@@ -289,7 +316,8 @@ export const WHY_CHOOSE_HASAMEX = [
   {
     number: '04',
     title: 'Tailored Custom Sourcing',
-    description: 'Rather than recycling stale databases, we custom-recruit senior practitioners for each mandate and enrich profiles with proprietary AI tools.',
+    summary: 'Fresh operator recruitment per brief across DM, EM & FM—enriched with proprietary AI matching.',
+    description: 'Rather than recycling stale databases, we custom-recruit senior practitioners for each mandate and enrich profiles with proprietary AI verification tools.',
     highlight: 'Recruited Per Brief',
     footerNote: 'DM · EM · FM Reach',
     icon: 'compass'

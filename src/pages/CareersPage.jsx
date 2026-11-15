@@ -37,7 +37,7 @@ export function CareersPage() {
         title: 'Prefer to Reach Out Directly by Email?',
         subtitle:
           'Send your CV and a short note telling us your story at careers@hasamex.com. We review every application personally.',
-        primaryLabel: 'Email careers@hasamex.com',
+        primaryLabel: 'Contact Talent Desk',
         primaryTo: '/contact-us',
         secondaryLabel: 'About Hasamex',
         secondaryTo: '/about-us'
@@ -64,7 +64,11 @@ export function CareersPage() {
                 Apply Now
                 <Icon name="arrow-right" size={15} />
               </a>
-              <a href={`mailto:${BRAND.emails.careers}`} className="btn btn--glass">
+              <a
+                href={`mailto:${BRAND.emails.careers}`}
+                className="email-plain-link"
+                style={{ marginLeft: '0.35rem' }}
+              >
                 <Icon name="mail" size={15} />
                 {BRAND.emails.careers}
               </a>
@@ -93,10 +97,7 @@ export function CareersPage() {
               </p>
               <p className="lead" style={{ marginBottom: '0.85rem' }}>
                 To apply, send us your CV through the form below or email us at:{' '}
-                <a
-                  href={`mailto:${BRAND.emails.careers}`}
-                  style={{ color: 'var(--hub-navy)', fontWeight: 700, textDecoration: 'underline' }}
-                >
+                <a href={`mailto:${BRAND.emails.careers}`} className="email-plain-link">
                   {BRAND.emails.careers}
                 </a>
               </p>
@@ -128,11 +129,13 @@ export function CareersPage() {
               <Reveal key={item.title} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{item.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="users" size={15} />
+                      </span>
+                      <span className="card-index">{item.number}</span>
+                    </div>
                     <span className="card-tag">{item.tag}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="users" size={18} />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>

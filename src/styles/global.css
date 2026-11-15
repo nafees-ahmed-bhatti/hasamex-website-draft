@@ -1107,7 +1107,7 @@ p {
 }
 
 /* ==========================================================================
-   PREMIUM HUB CARD ARCHITECTURE & HOVER STATES
+   PREMIUM HUB CARD ARCHITECTURE & HOVER STATES (COMPACT & BALANCED)
    ========================================================================== */
 
 .card {
@@ -1115,16 +1115,16 @@ p {
   background: #ffffff;
   border: 1px solid var(--hasamex-border-light);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1.15rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-sm);
   transition:
-    transform 0.26s var(--ease-out-expo),
-    border-color 0.24s var(--ease-hub),
-    box-shadow 0.26s var(--ease-out-expo),
-    background-color 0.24s var(--ease-hub);
+    transform 0.24s var(--ease-out-expo),
+    border-color 0.22s var(--ease-hub),
+    box-shadow 0.24s var(--ease-out-expo),
+    background-color 0.22s var(--ease-hub);
   overflow: hidden;
 }
 
@@ -1138,13 +1138,13 @@ p {
   height: 2.5px;
   background: var(--hub-navy);
   opacity: 0;
-  transition: opacity 0.24s var(--ease-hub);
+  transition: opacity 0.22s var(--ease-hub);
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(11, 19, 41, 0.38);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2.5px);
+  border-color: rgba(11, 19, 41, 0.36);
+  box-shadow: var(--shadow-md);
 }
 
 .card:hover::before {
@@ -1162,7 +1162,6 @@ p {
   background: var(--hub-navy);
   color: #ffffff;
   border-color: var(--hub-navy);
-  transform: scale(1.04);
 }
 
 .card--ivory {
@@ -1175,7 +1174,7 @@ p {
   background: var(--hub-navy-surface);
   border: 1px solid var(--hub-navy-border);
   color: #ffffff;
-  box-shadow: 0 12px 28px rgba(7, 12, 27, 0.24);
+  box-shadow: 0 10px 24px rgba(7, 12, 27, 0.22);
 }
 
 .card--navy::before {
@@ -1184,8 +1183,8 @@ p {
 
 .card--navy:hover {
   background: #152038;
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 18px 36px rgba(7, 12, 27, 0.36);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 14px 30px rgba(7, 12, 27, 0.34);
 }
 
 .card--navy h3 {
@@ -1200,22 +1199,30 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.65rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.card-top__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
 }
 
 .card-index {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--hub-navy);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.22rem 0.58rem;
-  border-radius: 6px;
+  padding: 0.18rem 0.5rem;
+  border-radius: 5px;
   background: var(--bg-section-subtle);
   border: 1px solid var(--border-strong);
   transition: all 0.22s var(--ease-hub);
+  white-space: nowrap;
 }
 
 .card--navy .card-index {
@@ -1231,13 +1238,16 @@ p {
 }
 
 .card-tag {
-  font-size: 0.71rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.16rem 0.52rem;
   border-radius: var(--radius-pill);
   background: var(--color-grey-100);
   color: var(--color-text-secondary);
   border: 1px solid var(--hasamex-border-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card--navy .card-tag {
@@ -1247,18 +1257,22 @@ p {
 }
 
 .card-icon-box {
-  width: 38px;
-  height: 38px;
-  border-radius: 9px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
   background: var(--bg-section-subtle);
   border: 1px solid var(--border-strong);
   color: var(--hub-navy);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
   transition: all 0.22s var(--ease-hub);
   flex-shrink: 0;
+}
+
+.card-top .card-icon-box {
+  margin-bottom: 0;
 }
 
 .card--navy .card-icon-box {
@@ -1274,18 +1288,25 @@ p {
 }
 
 .card h3 {
-  margin-bottom: 0.45rem;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.card p {
+  font-size: 0.855rem;
+  line-height: 1.54;
 }
 
 .card-footer-row {
-  margin-top: 1.2rem;
-  padding-top: 0.85rem;
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
   border-top: 1px solid var(--hasamex-border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--color-text-secondary);
 }
 
@@ -1297,19 +1318,482 @@ p {
 .card-cta-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.32rem;
-  font-size: 0.8rem;
+  gap: 0.3rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: var(--hub-navy);
-  padding: 0.25rem 0.55rem;
-  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
   background: transparent;
   transition: all 0.2s var(--ease-hub);
+  cursor: pointer;
+  border: none;
 }
 
 .card:hover .card-cta-link {
   background: var(--hub-navy);
   color: #ffffff;
+}
+
+.card-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 700;
+  color: var(--hub-navy);
+  background: var(--bg-section-subtle);
+  border: 1px solid var(--border-strong);
+  padding: 0.18rem 0.52rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-hub);
+}
+
+.card-expand-btn:hover,
+.card-expand-btn--active {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.card-detail-drawer {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--border-strong);
+  font-size: 0.81rem;
+  line-height: 1.52;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   FOUR-STAGE HORIZONTAL WORKFLOW TIMELINE (COMPACT & INTERACTIVE)
+   ========================================================================== */
+
+.workflow-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.workflow-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.95rem;
+}
+
+.workflow-step-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 1.05rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition:
+    transform 0.22s var(--ease-out-expo),
+    border-color 0.22s var(--ease-hub),
+    background-color 0.22s var(--ease-hub),
+    box-shadow 0.22s var(--ease-out-expo);
+  user-select: none;
+}
+
+.workflow-timeline--navy .workflow-step-card {
+  background: rgba(17, 26, 46, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.workflow-timeline--navy .workflow-step-card:hover {
+  transform: translateY(-2px);
+  background: #16223c;
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+.workflow-timeline--navy .workflow-step-card--active {
+  background: #16223c;
+  border-color: #ffffff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.workflow-timeline--light .workflow-step-card {
+  background: #ffffff;
+  border: 1px solid var(--hasamex-border-light);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-xs);
+}
+
+.workflow-timeline--light .workflow-step-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(11, 19, 41, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-timeline--light .workflow-step-card--active {
+  border-color: var(--hub-navy);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-step-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+
+.workflow-step-card__badge-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.workflow-step-card__icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transition: all 0.2s var(--ease-hub);
+}
+
+.workflow-timeline--navy .workflow-step-card--active .workflow-step-card__icon,
+.workflow-timeline--navy .workflow-step-card:hover .workflow-step-card__icon {
+  background: #ffffff;
+  color: var(--hub-navy);
+  border-color: #ffffff;
+}
+
+.workflow-timeline--light .workflow-step-card__icon {
+  background: var(--bg-section-subtle);
+  border-color: var(--border-strong);
+  color: var(--hub-navy);
+}
+
+.workflow-timeline--light .workflow-step-card--active .workflow-step-card__icon,
+.workflow-timeline--light .workflow-step-card:hover .workflow-step-card__icon {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.workflow-step-card__num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.46rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  transition: all 0.2s var(--ease-hub);
+}
+
+.workflow-timeline--navy .workflow-step-card--active .workflow-step-card__num {
+  background: #ffffff;
+  color: var(--hub-navy);
+  border-color: #ffffff;
+}
+
+.workflow-timeline--light .workflow-step-card__num {
+  background: var(--bg-section-subtle);
+  border-color: var(--border-strong);
+  color: var(--hub-navy);
+}
+
+.workflow-timeline--light .workflow-step-card--active .workflow-step-card__num {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.workflow-step-card__phase {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 0.14rem 0.48rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.workflow-timeline--light .workflow-step-card__phase {
+  background: var(--color-grey-100);
+  color: var(--color-text-secondary);
+  border-color: var(--hasamex-border-light);
+}
+
+.workflow-step-card__title {
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+.workflow-timeline--navy .workflow-step-card__title {
+  color: #ffffff;
+}
+
+.workflow-step-card__summary {
+  font-size: 0.81rem;
+  line-height: 1.48;
+  margin-bottom: 0.65rem;
+}
+
+.workflow-timeline--navy .workflow-step-card__summary {
+  color: #cbd5e1;
+}
+
+.workflow-step-card__footer {
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+}
+
+.workflow-timeline--light .workflow-step-card__footer {
+  border-top-color: var(--hasamex-border-light);
+}
+
+.workflow-step-card__sla {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.workflow-timeline--light .workflow-step-card__sla {
+  color: var(--color-text-muted);
+}
+
+.workflow-step-card__toggle {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.workflow-timeline--light .workflow-step-card__toggle {
+  color: var(--hub-navy);
+}
+
+/* Detail Drawer Bar Below Horizontal Process Rail */
+.workflow-detail-drawer {
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.workflow-timeline--navy .workflow-detail-drawer {
+  background: rgba(7, 12, 27, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f8fafc;
+}
+
+.workflow-timeline--light .workflow-detail-drawer {
+  background: var(--bg-section-subtle);
+  border: 1px solid var(--border-strong);
+  color: var(--color-text-primary);
+}
+
+.workflow-detail-drawer__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+
+.workflow-detail-drawer__pill {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.14rem 0.5rem;
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--hub-navy);
+}
+
+.workflow-timeline--light .workflow-detail-drawer__pill {
+  background: var(--hub-navy);
+  color: #ffffff;
+}
+
+.workflow-detail-drawer__phase-name {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.workflow-timeline--light .workflow-detail-drawer__phase-name {
+  color: var(--hub-navy);
+}
+
+.workflow-detail-drawer__desc {
+  font-size: 0.85rem;
+  line-height: 1.56;
+  margin: 0;
+}
+
+.workflow-timeline--navy .workflow-detail-drawer__desc {
+  color: #cbd5e1;
+}
+
+.workflow-detail-drawer__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding-left: 1.15rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.workflow-timeline--light .workflow-detail-drawer__meta {
+  border-left-color: var(--border-strong);
+}
+
+.workflow-detail-drawer__meta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.workflow-detail-drawer__meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #94a3b8;
+}
+
+.workflow-timeline--light .workflow-detail-drawer__meta-label {
+  color: var(--color-text-muted);
+}
+
+.workflow-detail-drawer__meta-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.workflow-timeline--light .workflow-detail-drawer__meta-value {
+  color: var(--color-text-primary);
+}
+
+.workflow-detail-drawer__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.workflow-step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  transition: all 0.18s var(--ease-hub);
+}
+
+.workflow-step-dot--active,
+.workflow-step-dot:hover {
+  background: #ffffff;
+  color: var(--hub-navy);
+  border-color: #ffffff;
+}
+
+.workflow-timeline--light .workflow-step-dot {
+  border-color: var(--border-strong);
+  background: #ffffff;
+  color: var(--color-text-secondary);
+}
+
+.workflow-timeline--light .workflow-step-dot--active,
+.workflow-timeline--light .workflow-step-dot:hover {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+/* ==========================================================================
+   PLAIN EMAIL LINKS — ZERO HOVER BACKGROUND, ZERO COLOR INVERSION OR ANIMATION
+   ========================================================================== */
+
+.email-plain-link,
+.card .email-plain-link,
+.card:hover .email-plain-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hub-navy);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  text-decoration: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.email-plain-link:hover,
+.email-plain-link:active,
+.card:hover .email-plain-link:hover {
+  color: var(--hub-navy) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  text-decoration: none !important;
+}
+
+.email-plain-link svg,
+.email-plain-link:hover svg,
+.card:hover .email-plain-link svg {
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero .email-plain-link,
+.hero .email-plain-link:hover,
+.section--navy .email-plain-link,
+.section--navy .email-plain-link:hover,
+.card--navy .email-plain-link,
+.card--navy:hover .email-plain-link,
+.site-footer .email-plain-link,
+.site-footer .email-plain-link:hover {
+  color: #f8fafc !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.email-plain-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
 /* ==========================================================================
@@ -1723,8 +2207,25 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .grid-4 {
+  .grid-4,
+  .workflow-rail {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .workflow-detail-drawer {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .workflow-detail-drawer__meta {
+    padding-left: 0;
+    padding-top: 0.7rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .workflow-timeline--light .workflow-detail-drawer__meta {
+    border-top-color: var(--border-strong);
   }
 
   .grid-3 {
@@ -1781,6 +2282,7 @@ p {
   .grid-2,
   .grid-3,
   .grid-4,
+  .workflow-rail,
   .grid-5-bento,
   .form-grid,
   .benchmark-strip,

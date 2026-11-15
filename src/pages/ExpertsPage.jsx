@@ -106,11 +106,13 @@ export function ExpertsPage() {
               <Reveal key={item.title} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{item.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="check" size={15} />
+                      </span>
+                      <span className="card-index">{item.number}</span>
+                    </div>
                     <span className="card-tag">HIN Commitment</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="check" size={18} />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -144,11 +146,13 @@ export function ExpertsPage() {
               <Reveal key={cat.code} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{cat.code}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="users" size={15} />
+                      </span>
+                      <span className="card-index">{cat.code}</span>
+                    </div>
                     <span className="card-tag">Verified Cohort</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="users" size={18} />
                   </div>
                   <h3>{cat.title}</h3>
                   <p>{cat.description}</p>

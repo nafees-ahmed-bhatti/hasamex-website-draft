@@ -236,11 +236,13 @@ export function AboutPage() {
               <Reveal key={card.title} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{card.badge}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="users" size={15} />
+                      </span>
+                      <span className="card-index">{card.badge}</span>
+                    </div>
                     <span className="card-tag">{card.tag}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="users" size={18} />
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>

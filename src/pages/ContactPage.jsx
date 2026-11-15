@@ -57,7 +57,11 @@ export function ContactPage() {
                 Submit Your Details
                 <Icon name="arrow-right" size={15} />
               </a>
-              <a href={`mailto:${BRAND.emails.general}`} className="btn btn--glass">
+              <a
+                href={`mailto:${BRAND.emails.general}`}
+                className="email-plain-link"
+                style={{ marginLeft: '0.35rem' }}
+              >
                 <Icon name="mail" size={15} />
                 {BRAND.emails.general}
               </a>
@@ -69,26 +73,24 @@ export function ContactPage() {
       {/* DIRECT CHANNELS + FORM */}
       <section id="contact-form" className="section">
         <div className="container">
-          <div className="grid-4" style={{ marginBottom: '2.5rem' }}>
+          <div className="grid-4" style={{ marginBottom: '2.25rem' }}>
             {DIRECT_CHANNELS.map((ch, idx) => (
               <Reveal key={ch.email} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{ch.badge}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="mail" size={18} />
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="mail" size={15} />
+                      </span>
+                      <span className="card-index">{ch.badge}</span>
+                    </div>
                   </div>
                   <h3>{ch.title}</h3>
                   <p>{ch.description}</p>
                 </div>
                 <div className="card-footer-row">
-                  <a
-                    href={`mailto:${ch.email}`}
-                    className="card-cta-link"
-                    style={{ paddingLeft: 0 }}
-                  >
-                    {ch.email} <Icon name="arrow-up-right" size={13} />
+                  <a href={`mailto:${ch.email}`} className="email-plain-link">
+                    {ch.email}
                   </a>
                 </div>
               </Reveal>

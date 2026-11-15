@@ -1,47 +1,68 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { HERO_SHOWCASE_BRIEFS } from '../content/siteData';
 import { HasamexEmblemVector, Icon } from './Icons';
 import { TypewriterText } from './Reveal';
 
-const CYCLE_DURATION_MS = 8000;
+const CYCLE_DURATION_MS = 6500;
 
 export function HeroShowcaseCard() {
+  // Strictly start at index 0 (Stage 01 · Custom Sourcing)
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
+  // Track elapsed time in a ref so state updaters never side-effect inside StrictMode
+  const elapsedRef = useRef(0);
+  const lastTickRef = useRef(null);
+
   useEffect(() => {
-    if (paused || prefersReducedMotion) return;
-    const stepMs = 50;
-    const increment = (stepMs / CYCLE_DURATION_MS) * 100;
+    if (prefersReducedMotion) return;
+
+    lastTickRef.current = performance.now();
 
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev + increment >= 100) {
-          setActiveIndex((idx) => (idx + 1) % HERO_SHOWCASE_BRIEFS.length);
-          return 0;
-        }
-        return prev + increment;
-      });
-    }, stepMs);
+      const now = performance.now();
+      if (paused) {
+        lastTickRef.current = now;
+        return;
+      }
+
+      const delta = now - (lastTickRef.current ?? now);
+      lastTickRef.current = now;
+      elapsedRef.current += delta;
+
+      if (elapsedRef.current >= CYCLE_DURATION_MS) {
+        elapsedRef.current = 0;
+        setProgress(0);
+        // Deterministic +1 step: 0 -> 1 -> 2 -> 0 -> 1 -> 2
+        setActiveIndex((prev) => (prev + 1) % HERO_SHOWCASE_BRIEFS.length);
+      } else {
+        setProgress(Math.min(100, (elapsedRef.current / CYCLE_DURATION_MS) * 100));
+      }
+    }, 50);
 
     return () => clearInterval(timer);
   }, [paused, prefersReducedMotion]);
 
   const handleSelectTab = (idx) => {
+    elapsedRef.current = 0;
+    lastTickRef.current = performance.now();
     setActiveIndex(idx);
     setProgress(0);
   };
 
-  const current = HERO_SHOWCASE_BRIEFS[activeIndex];
+  const current = HERO_SHOWCASE_BRIEFS[activeIndex] || HERO_SHOWCASE_BRIEFS[0];
 
   return (
     <div
       className="showcase-card"
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={() => {
+        lastTickRef.current = performance.now();
+        setPaused(false);
+      }}
       aria-label="Hasamex Intelligence Network Workflow Walkthrough"
     >
       <div className="showcase-header">
@@ -59,7 +80,7 @@ export function HeroShowcaseCard() {
               textTransform: 'uppercase'
             }}
           >
-            {paused ? 'Paused' : 'Auto-Cycling · 8s'}
+            {paused ? `Stage 0${activeIndex + 1} · Paused` : `Stage 0${activeIndex + 1} / 03`}
           </span>
         </div>
 
@@ -94,7 +115,7 @@ export function HeroShowcaseCard() {
           initial={prefersReducedMotion ? false : { opacity: 0, y: 8, filter: 'blur(3px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6, filter: 'blur(2px)' }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="showcase-meta-row">
             <span style={{ color: '#ffffff', fontWeight: 600 }}>
@@ -107,9 +128,9 @@ export function HeroShowcaseCard() {
 
           <div
             style={{
-              fontSize: '0.78rem',
+              fontSize: '0.77rem',
               color: '#94a3b8',
-              marginBottom: '0.8rem'
+              marginBottom: '0.75rem'
             }}
           >
             Scope Coverage: <strong style={{ color: '#f8fafc' }}>{current.audience}</strong>
@@ -119,21 +140,21 @@ export function HeroShowcaseCard() {
             <div className="showcase-profile-box__label">Live Workflow Stream</div>
             <div
               style={{
-                fontSize: '0.82rem',
+                fontSize: '0.81rem',
                 fontWeight: 500,
                 color: '#f8fafc',
-                lineHeight: 1.5,
-                minHeight: '2.55rem',
+                lineHeight: 1.48,
+                minHeight: '2.45rem',
                 fontFamily: 'var(--font-mono)'
               }}
             >
-              <TypewriterText text={current.streamText} speed={22} />
+              <TypewriterText text={current.streamText} speed={20} />
             </div>
             <div
               style={{
-                fontSize: '0.74rem',
+                fontSize: '0.73rem',
                 color: '#86efac',
-                marginTop: '0.45rem',
+                marginTop: '0.4rem',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.35rem',
@@ -165,7 +186,7 @@ export function HeroShowcaseCard() {
 
           <div className="showcase-footer">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-              <HasamexEmblemVector size={26} />
+              <HasamexEmblemVector size={24} />
               <span style={{ color: '#e2e8f0', fontWeight: 500 }}>{current.deliverable}</span>
             </div>
             <span

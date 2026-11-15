@@ -21,8 +21,8 @@ export function CompliancePage() {
         eyebrow: 'Compliance & Governance Desk',
         title: 'Have a Compliance-Related Question or Concern?',
         subtitle:
-          'Reach out directly to compliance@hasamex.com. We review every inquiry with discretion and respond promptly.',
-        primaryLabel: 'Email compliance@hasamex.com',
+          'Reach out directly to our compliance governance team. We review every inquiry with discretion and respond promptly.',
+        primaryLabel: 'Contact Compliance Desk',
         primaryTo: '/contact-us',
         secondaryLabel: 'Read Code of Conduct',
         secondaryTo: '/code-of-conduct',
@@ -200,16 +200,18 @@ export function CompliancePage() {
       {/* GOVERNANCE DOCUMENTS & DIRECT COMPLIANCE CHANNEL */}
       <section className="section">
         <div className="container">
-          <div className="grid-3" style={{ marginBottom: '2rem' }}>
+          <div className="grid-3" style={{ marginBottom: '1.75rem' }}>
             {HOME_COMPLIANCE_CARDS.map((card) => (
               <div key={card.title} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{card.badge}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="document" size={15} />
+                      </span>
+                      <span className="card-index">{card.badge}</span>
+                    </div>
                     <span className="card-tag">Official Policy</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="document" size={18} />
                   </div>
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>
@@ -224,16 +226,16 @@ export function CompliancePage() {
             ))}
           </div>
 
-          <Reveal className="card card--navy" style={{ padding: '1.9rem 2rem' }}>
+          <Reveal className="card card--navy" style={{ padding: '1.5rem 1.75rem' }}>
             <div style={{ maxWidth: 760 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Direct Compliance Oversight
               </span>
-              <h3 style={{ fontSize: '1.3rem', marginTop: '0.7rem', marginBottom: '0.5rem', color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1.22rem', marginTop: '0.6rem', marginBottom: '0.45rem', color: '#ffffff' }}>
                 Have a compliance-related question or concern?
               </h3>
-              <p style={{ marginBottom: '1.15rem', color: '#cbd5e1' }}>
+              <p style={{ marginBottom: '1rem', color: '#cbd5e1' }}>
                 At Hasamex, compliance is built into everything we do. From expert onboarding and
                 client confidentiality to MNPI safeguards and secure call handling, our program is
                 designed to uphold the highest legal and ethical standards—globally. Powered by
@@ -245,12 +247,12 @@ export function CompliancePage() {
                   display: 'flex',
                   flexWrap: 'wrap',
                   alignItems: 'center',
-                  gap: '0.85rem'
+                  gap: '1rem'
                 }}
               >
-                <a href={`mailto:${BRAND.emails.compliance}`} className="btn btn--primary">
+                <a href={`mailto:${BRAND.emails.compliance}`} className="email-plain-link">
                   <Icon name="mail" size={15} />
-                  Reach out: {BRAND.emails.compliance}
+                  {BRAND.emails.compliance}
                 </a>
                 <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
                   We’ll review your inquiry with discretion and respond promptly.

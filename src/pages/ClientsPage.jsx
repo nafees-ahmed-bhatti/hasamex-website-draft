@@ -3,14 +3,14 @@ import {
   CLIENT_AUDIENCES,
   CLIENTS_SERVICE_MODEL,
   FORM_CONFIGS,
-  HOME_FORMATS,
-  HOW_HASAMEX_CONNECTS
+  HOME_FORMATS
 } from '../content/siteData';
 import { Icon } from '../components/Icons';
 import { IntakeForm } from '../components/IntakeForm';
 import { Layout } from '../components/Layout';
 import { MarketCoverageMap } from '../components/MarketCoverageMap';
 import { AnimatedHeading, Reveal } from '../components/Reveal';
+import { WorkflowTimeline } from '../components/WorkflowTimeline';
 
 export function ClientsPage() {
   return (
@@ -74,16 +74,18 @@ export function ClientsPage() {
             </p>
           </Reveal>
 
-          <div className="grid-4" style={{ marginBottom: '2.25rem' }}>
+          <div className="grid-4" style={{ marginBottom: '2rem' }}>
             {CLIENTS_SERVICE_MODEL.map((item, idx) => (
               <Reveal key={item.title} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{item.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="shield" size={15} />
+                      </span>
+                      <span className="card-index">{item.number}</span>
+                    </div>
                     <span className="card-tag">Core Pillar</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name="shield" size={18} />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -96,56 +98,18 @@ export function ClientsPage() {
             ))}
           </div>
 
-          {/* 4-Step Client-to-Expert Execution Flow */}
-          <div className="card card--navy" style={{ padding: '1.85rem' }}>
-            <div style={{ marginBottom: '1.25rem' }}>
+          {/* 4-Step Client-to-Expert Execution Flow (Compact Horizontal Timeline) */}
+          <div className="card card--navy" style={{ padding: '1.5rem 1.65rem' }}>
+            <div style={{ marginBottom: '1.1rem' }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 How We Connect You With Vetted Experts
               </span>
-              <h3 style={{ fontSize: '1.24rem', marginTop: '0.55rem', color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1.18rem', marginTop: '0.5rem', color: '#ffffff' }}>
                 Four-Stage Brief-to-Consultation Execution
               </h3>
             </div>
-            <div className="grid-4">
-              {HOW_HASAMEX_CONNECTS.map((step) => (
-                <div
-                  key={step.step}
-                  style={{
-                    padding: '1.1rem',
-                    borderRadius: 'var(--radius-md)',
-                    background: 'rgba(7, 12, 27, 0.65)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)'
-                  }}
-                >
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.7rem',
-                      fontWeight: 700,
-                      color: '#ffffff',
-                      marginBottom: '0.35rem',
-                      letterSpacing: '0.06em'
-                    }}
-                  >
-                    PHASE {step.step}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '0.94rem',
-                      fontWeight: 600,
-                      color: '#ffffff',
-                      marginBottom: '0.35rem'
-                    }}
-                  >
-                    {step.title}
-                  </div>
-                  <p style={{ fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.55 }}>
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <WorkflowTimeline variant="navy" />
           </div>
         </div>
       </section>
@@ -170,11 +134,13 @@ export function ClientsPage() {
               <Reveal key={fmt.id} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{fmt.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name={fmt.icon} size={15} />
+                      </span>
+                      <span className="card-index">{fmt.number}</span>
+                    </div>
                     <span className="card-tag">{fmt.tag}</span>
-                  </div>
-                  <div className="card-icon-box">
-                    <Icon name={fmt.icon} size={18} />
                   </div>
                   <h3>{fmt.title}</h3>
                   <p>{fmt.clientsDesc}</p>
@@ -229,32 +195,34 @@ export function ClientsPage() {
               <Reveal key={seg.id} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">0{idx + 1}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="users" size={15} />
+                      </span>
+                      <span className="card-index">0{idx + 1}</span>
+                    </div>
                     <span className="card-tag">{seg.label}</span>
                   </div>
-                  <div className="card-icon-box">
-                    <Icon name="users" size={18} />
-                  </div>
                   <h3>{seg.clientsPageTitle}</h3>
-                  <p style={{ marginBottom: '1rem' }}>{seg.clientsDescription}</p>
+                  <p style={{ marginBottom: '0.7rem' }}>{seg.clientsDescription}</p>
                   <ul
                     style={{
                       listStyle: 'none',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '0.45rem',
-                      marginBottom: '0.5rem',
-                      fontSize: '0.84rem',
+                      gap: '0.35rem',
+                      marginBottom: '0.35rem',
+                      fontSize: '0.81rem',
                       color: 'var(--color-text-secondary)'
                     }}
                   >
                     {seg.workflows.map((w) => (
                       <li
                         key={w}
-                        style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}
+                        style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem' }}
                       >
                         <span style={{ color: 'var(--hub-navy)', marginTop: 2 }}>
-                          <Icon name="check" size={14} />
+                          <Icon name="check" size={13} />
                         </span>
                         <span>{w}</span>
                       </li>

@@ -42,15 +42,7 @@ export function IntakeForm({ config }) {
             prepares a direct email dispatch or opens the live form.
           </span>
         </div>
-        <a
-          href={`mailto:${config.recipientEmail}`}
-          style={{
-            color: 'var(--color-accent)',
-            fontWeight: 600,
-            textDecoration: 'underline',
-            whiteSpace: 'nowrap'
-          }}
-        >
+        <a href={`mailto:${config.recipientEmail}`} className="email-plain-link">
           {config.recipientEmail}
         </a>
       </div>
@@ -240,10 +232,7 @@ export function IntakeForm({ config }) {
             </button>
             <span style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
               Direct email alternative:{' '}
-              <a
-                href={`mailto:${config.recipientEmail}`}
-                style={{ color: 'var(--color-accent)', fontWeight: 500, textDecoration: 'underline' }}
-              >
+              <a href={`mailto:${config.recipientEmail}`} className="email-plain-link">
                 {config.recipientEmail}
               </a>
             </span>
