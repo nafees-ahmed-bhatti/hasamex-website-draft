@@ -24,18 +24,18 @@ export function WorkflowTimeline({ variant = 'navy' }) {
             <div className="pipeline-stage__rail">
               <div className="pipeline-stage__node">
                 <span className="pipeline-stage__icon">
-                  <Icon name={stage.icon || 'shield'} size={14} />
+                  <Icon name={stage.icon || 'shield'} size={15} />
                 </span>
                 <span className="pipeline-stage__step-num">STAGE {stage.step}</span>
               </div>
               <span className="pipeline-stage__sla">{stage.sla}</span>
             </div>
 
-            {/* Full Stage Content (Zero Truncation) */}
+            {/* Clean, Easy-to-Scan Stage Content */}
             <div className="pipeline-stage__body">
               <div className="pipeline-stage__phase">{stage.phase}</div>
               <h3 className="pipeline-stage__title">{stage.title}</h3>
-              <p className="pipeline-stage__desc">{stage.description}</p>
+              <p className="pipeline-stage__desc">{stage.summary}</p>
             </div>
 
             {/* Stage Deliverable Specification */}

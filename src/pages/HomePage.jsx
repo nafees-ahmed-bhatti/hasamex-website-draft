@@ -200,13 +200,12 @@ export function HomePage() {
               <Reveal key={fmt.id} delay={idx * 0.03} className="format-cell">
                 <div className="format-cell__top">
                   <div className="format-cell__id">
-                    <span className="format-cell__num">{fmt.number}</span>
                     <span className="format-cell__icon">
                       <Icon name={fmt.icon} size={15} />
                     </span>
-                    <span className="format-cell__tag">{fmt.tag}</span>
+                    <span className="format-cell__num">{fmt.number}</span>
                   </div>
-                  <span className="format-cell__scope">{fmt.scope}</span>
+                  <span className="format-cell__tag">{fmt.tag}</span>
                 </div>
 
                 <div className="format-cell__body">
@@ -215,7 +214,7 @@ export function HomePage() {
                 </div>
 
                 <div className="format-cell__footer">
-                  <span className="format-cell__detail-note">{fmt.clientsDesc}</span>
+                  <span className="format-cell__scope">{fmt.scope}</span>
                   <Link to="/clients#formats" className="format-cell__link">
                     <span>Explore</span>
                     <Icon name="arrow-right" size={13} />

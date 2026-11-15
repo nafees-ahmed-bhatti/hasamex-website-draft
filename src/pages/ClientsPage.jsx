@@ -35,10 +35,10 @@ export function ClientsPage() {
         secondaryTo: '/compliance'
       }}
     >
-      {/* 1. HERO — BALANCED 2-COLUMN INSTITUTIONAL SPLIT */}
+      {/* 1. HERO — CLEAN, UN-RUSHED 2-COLUMN INSTITUTIONAL SPLIT */}
       <section className="hero">
         <div className="container">
-          <div className="hero-grid">
+          <div className="hero-grid" style={{ alignItems: 'center' }}>
             <Reveal blur y={14} className="hero-copy">
               <div>
                 <span className="eyebrow">
@@ -50,7 +50,7 @@ export function ClientsPage() {
                   text="The New Standard in Expert Intelligence"
                   style={{ marginTop: '0.65rem', marginBottom: '0.65rem' }}
                 />
-                <p className="lead" style={{ maxWidth: '54ch', marginBottom: '1.1rem' }}>
+                <p className="lead" style={{ maxWidth: '52ch', marginBottom: '1.25rem' }}>
                   Fast, compliant, and high-quality expert insight — delivered with white-glove
                   service across Developed, Emerging, and Frontier markets.
                 </p>
@@ -68,92 +68,64 @@ export function ClientsPage() {
                 </div>
               </div>
 
-              <div className="hero-footprint-ledger">
-                <div className="hero-footprint-ledger__head">
-                  <img
-                    src="/brand/hasamex-emblem-dark.png"
-                    alt="Hasamex Institutional Seal"
-                    className="hero-footprint-ledger__emblem"
-                  />
-                  <div>
-                    <div className="hero-footprint-ledger__title">
-                      Client Solutions Desk · Singapore HQ &amp; India Execution Hubs
-                    </div>
-                    <div className="hero-footprint-ledger__sub">
-                      {BRAND.legalName} (UEN {BRAND.uen}) · {BRAND.address}
-                    </div>
-                  </div>
-                </div>
-                <div className="hero-footprint-ledger__metrics">
-                  <div className="hero-footprint-ledger__cell">
-                    <span className="hero-footprint-ledger__k">Turnaround SLA</span>
-                    <span className="hero-footprint-ledger__v">2–12 Hr Typical Delivery</span>
-                  </div>
-                  <div className="hero-footprint-ledger__cell">
-                    <span className="hero-footprint-ledger__k">Sourcing Model</span>
-                    <span className="hero-footprint-ledger__v">100% Custom Per Brief</span>
-                  </div>
-                  <div className="hero-footprint-ledger__cell">
-                    <span className="hero-footprint-ledger__k">Compliance Gate</span>
-                    <span className="hero-footprint-ledger__v">5-Point Pre-Call Vetting</span>
-                  </div>
+              <div className="hero-trust-line">
+                <img
+                  src="/brand/hasamex-emblem-dark.png"
+                  alt="Hasamex Emblem"
+                  className="hero-footprint-ledger__emblem"
+                />
+                <div>
+                  <strong>{BRAND.legalName} (UEN {BRAND.uen})</strong>
+                  <span>Singapore HQ · Distributed Research &amp; Execution Desks in India</span>
                 </div>
               </div>
             </Reveal>
 
-            {/* Right Column — Institutional Client Mandate Command Panel */}
+            {/* Right Column — Clean Client Mandate Summary Panel */}
             <Reveal delay={0.08} y={14}>
               <div className="page-hero-panel">
                 <div className="page-hero-panel__header">
                   <span className="showcase-live-pill">
                     <span className="showcase-live-dot" />
-                    Client Mandate Architecture
+                    Client Mandate Standards
                   </span>
-                  <span className="showcase-step-counter">SLA · DM / EM / FM</span>
+                  <span className="showcase-step-counter">DM · EM · FM</span>
                 </div>
-
-                <div className="page-hero-panel__title">
-                  Engineered for High-Conviction Institutional Diligence
-                </div>
-                <p className="page-hero-panel__sub">
-                  Every client mandate is led by a dedicated Singapore and India desk pair—combining
-                  fresh operator recruitment with mandatory 5-point compliance clearance.
-                </p>
 
                 <div className="page-hero-panel__matrix">
                   <div className="page-hero-panel__cell">
                     <span className="page-hero-panel__metric">2–12 Hrs</span>
-                    <span className="page-hero-panel__label">Brief-to-Shortlist Speed</span>
+                    <span className="page-hero-panel__label">Typical Turnaround</span>
                     <span className="page-hero-panel__note">
-                      Handpicked profiles without database recycling
+                      Custom-recruited operators per brief
                     </span>
                   </div>
                   <div className="page-hero-panel__cell">
                     <span className="page-hero-panel__metric">6 Formats</span>
                     <span className="page-hero-panel__label">Flexible Research Modes</span>
                     <span className="page-hero-panel__note">
-                      1:1 Calls, Roundtables, Tours &amp; Transcripts
+                      Calls, Meetings, Roundtables &amp; Tours
                     </span>
                   </div>
                   <div className="page-hero-panel__cell">
                     <span className="page-hero-panel__metric">Zero-MNPI</span>
-                    <span className="page-hero-panel__label">Recorded &amp; Auditable</span>
+                    <span className="page-hero-panel__label">100% Auditable</span>
                     <span className="page-hero-panel__note">
-                      Conflict checks, cooling-off &amp; blind anonymity
+                      5-point pre-call compliance clearance
                     </span>
                   </div>
                   <div className="page-hero-panel__cell">
                     <span className="page-hero-panel__metric">14 Hubs</span>
-                    <span className="page-hero-panel__label">Global Market Corridors</span>
+                    <span className="page-hero-panel__label">Global Market Reach</span>
                     <span className="page-hero-panel__note">
-                      Developed, Emerging &amp; Frontier reach
+                      Developed, Emerging &amp; Frontier coverage
                     </span>
                   </div>
                 </div>
 
                 <div className="page-hero-panel__footer">
                   <div className="page-hero-panel__contact">
-                    <span>Direct Client Desk:</span>
+                    <span>Client Desk:</span>
                     <a href={`mailto:${BRAND.emails.general}`} className="email-plain-link">
                       {BRAND.emails.general}
                     </a>
@@ -169,11 +141,11 @@ export function ClientsPage() {
         </div>
       </section>
 
-      {/* 2. SERVICE MODEL & 4-STAGE EXECUTION PIPELINE (Unified Architectural Frame) */}
+      {/* 2. SERVICE MODEL & 4-STAGE EXECUTION PIPELINE */}
       <section id="service-model" className="section">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 660 }}>
+            <Reveal style={{ maxWidth: 640 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Service Architecture
@@ -216,7 +188,7 @@ export function ClientsPage() {
                     <p className="service-standard-cell__desc">{item.description}</p>
                   </div>
                   <div className="service-standard-cell__footer">
-                    <span>Commitment: {meta.metric}</span>
+                    <span>{meta.metric}</span>
                     <Icon name="check" size={14} />
                   </div>
                 </Reveal>
@@ -234,7 +206,6 @@ export function ClientsPage() {
               <div className="hin-roster__banner-pills">
                 <span>2–12 Hr Typical Delivery</span>
                 <span>100% Pre-Call Cleared</span>
-                <span>≤ 14-Day Expert Settlement</span>
               </div>
             </div>
             <WorkflowTimeline variant="navy" />
@@ -242,11 +213,11 @@ export function ClientsPage() {
         </div>
       </section>
 
-      {/* 3. ENGAGEMENT METHODS (Architectural Hairline Format Matrix — Full Context) */}
+      {/* 3. ENGAGEMENT METHODS — CLEAN 3x2 MATRIX WITH PROPERLY SPACED ICON & NUMBER */}
       <section id="formats" className="section section--ivory">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 660 }}>
+            <Reveal style={{ maxWidth: 640 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Engagement Methods
@@ -273,14 +244,13 @@ export function ClientsPage() {
             {HOME_FORMATS.map((fmt, idx) => (
               <Reveal key={fmt.id} delay={idx * 0.03} className="format-cell">
                 <div className="format-cell__top">
-                  <div className="format-cell__identity">
-                    <span className="format-cell__num">{fmt.number}</span>
+                  <div className="format-cell__id">
                     <span className="format-cell__icon">
                       <Icon name={fmt.icon} size={15} />
                     </span>
-                    <span className="format-cell__tag">{fmt.tag}</span>
+                    <span className="format-cell__num">{fmt.number}</span>
                   </div>
-                  <span className="format-cell__scope">{fmt.scope}</span>
+                  <span className="format-cell__tag">{fmt.tag}</span>
                 </div>
 
                 <div className="format-cell__body">
@@ -289,9 +259,10 @@ export function ClientsPage() {
                 </div>
 
                 <div className="format-cell__footer">
-                  <span className="format-cell__detail-note">{fmt.shortDesc}</span>
+                  <span className="format-cell__scope">{fmt.scope}</span>
                   <a href="#enquiry-form" className="format-cell__link">
-                    Request <Icon name="arrow-right" size={13} />
+                    <span>Request</span>
+                    <Icon name="arrow-right" size={13} />
                   </a>
                 </div>
               </Reveal>
@@ -300,7 +271,7 @@ export function ClientsPage() {
         </div>
       </section>
 
-      {/* 4. GLOBAL MARKETS COVERAGE (Unified Corridor Console — Zero Orphan Cards) */}
+      {/* 4. GLOBAL MARKETS COVERAGE (Interactive 3D Rotating Globe) */}
       <section id="markets" className="section">
         <div className="container">
           <Reveal className="section-header">
@@ -319,11 +290,11 @@ export function ClientsPage() {
         </div>
       </section>
 
-      {/* 5. CLIENT SEGMENTS (3-Column Architectural Segment Matrix — Stays 3 Columns on Tablet) */}
+      {/* 5. CLIENT SEGMENTS — CLEAN, EASY-TO-SCAN 3-COLUMN MATRIX */}
       <section className="section section--elevated">
         <div className="container">
           <div className="section-header--split">
-            <Reveal style={{ maxWidth: 680 }}>
+            <Reveal style={{ maxWidth: 660 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Client Segments
@@ -357,7 +328,6 @@ export function ClientsPage() {
                   </div>
 
                   <h3 className="client-segment-cell__title">{seg.clientsPageTitle}</h3>
-                  <div className="client-segment-cell__headline">{seg.headline}</div>
                   <p className="client-segment-cell__desc">{seg.clientsDescription}</p>
 
                   <ul className="client-segment-cell__list">
@@ -372,17 +342,11 @@ export function ClientsPage() {
                   </ul>
                 </div>
 
-                <div>
-                  <div className="client-segment-cell__quote">
-                    <p>“{seg.quote.text}”</p>
-                    <span>— {seg.quote.author}</span>
-                  </div>
-                  <div className="client-segment-cell__footer">
-                    <span>Custom Brief Sourcing</span>
-                    <a href="#enquiry-form" className="card-cta-link">
-                      Start Mandate <Icon name="arrow-right" size={13} />
-                    </a>
-                  </div>
+                <div className="client-segment-cell__footer">
+                  <span>Custom Brief Sourcing</span>
+                  <a href="#enquiry-form" className="card-cta-link">
+                    Start Mandate <Icon name="arrow-right" size={13} />
+                  </a>
                 </div>
               </Reveal>
             ))}
@@ -390,7 +354,7 @@ export function ClientsPage() {
         </div>
       </section>
 
-      {/* 6. CLIENT ENQUIRY FORM (Institutional Split Intake Layout) */}
+      {/* 6. CLIENT ENQUIRY FORM */}
       <section id="enquiry-form" className="section">
         <div className="container">
           <div className="intake-split-layout">
