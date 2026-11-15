@@ -34,12 +34,11 @@ export function IntakeForm({ config }) {
   return (
     <div className="form-shell">
       <div className="draft-banner">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <Icon name="alert" size={17} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+          <Icon name="alert" size={16} />
           <span>
-            <strong>Static Frontend Preview:</strong> All existing {config.title} fields are
-            preserved. Backend/CRM form webhook integration is pending confirmation—submitting
-            prepares a direct email dispatch or opens the live form.
+            <strong>Static Frontend Preview:</strong> All {config.title} fields are preserved.
+            Submitting prepares a direct email dispatch or opens the live form.
           </span>
         </div>
         <a href={`mailto:${config.recipientEmail}`} className="email-plain-link">
@@ -47,24 +46,33 @@ export function IntakeForm({ config }) {
         </a>
       </div>
 
-      <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ marginBottom: '1.15rem' }}>
         <span className="eyebrow">
           <span className="eyebrow-dot" />
           {config.badge}
         </span>
-        <h3 style={{ fontSize: '1.42rem', marginTop: '0.7rem', marginBottom: '0.35rem', color: 'var(--color-text-primary)' }}>
+        <h3
+          style={{
+            fontSize: '1.32rem',
+            marginTop: '0.55rem',
+            marginBottom: '0.25rem',
+            color: 'var(--color-text-primary)'
+          }}
+        >
           {config.title}
         </h3>
-        <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>{config.subtitle}</p>
+        <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.86rem' }}>
+          {config.subtitle}
+        </p>
       </div>
 
       {previewState ? (
         <div
           style={{
             background: '#f8fafc',
-            border: '1px solid var(--color-accent-border)',
+            border: '1px solid var(--border-strong)',
             borderRadius: 'var(--radius-lg)',
-            padding: '1.5rem'
+            padding: '1.35rem'
           }}
           role="status"
         >
@@ -76,16 +84,28 @@ export function IntakeForm({ config }) {
               color: 'var(--color-success)',
               fontWeight: 600,
               fontSize: '0.82rem',
-              marginBottom: '0.55rem'
+              marginBottom: '0.45rem'
             }}
           >
             <Icon name="check" size={16} />
             Form Entry Validated (Static Frontend Draft)
           </div>
-          <p style={{ color: 'var(--color-text-primary)', fontWeight: 600, marginBottom: '0.45rem' }}>
+          <p
+            style={{
+              color: 'var(--color-text-primary)',
+              fontWeight: 600,
+              marginBottom: '0.4rem'
+            }}
+          >
             {config.successPreviewNote}
           </p>
-          <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+          <p
+            style={{
+              color: 'var(--color-text-secondary)',
+              fontSize: '0.84rem',
+              marginBottom: '0.9rem'
+            }}
+          >
             Because this preview build is a static frontend without a connected database, your
             entry has not been stored on a server yet. You can dispatch these exact details right
             now via email or open the existing live Softr form:
@@ -95,20 +115,20 @@ export function IntakeForm({ config }) {
               background: '#ffffff',
               border: '1px solid var(--hasamex-border-light)',
               borderRadius: 'var(--radius-md)',
-              padding: '0.85rem 1rem',
-              fontSize: '0.82rem',
+              padding: '0.8rem 0.95rem',
+              fontSize: '0.8rem',
               color: 'var(--color-text-secondary)',
-              marginBottom: '1.15rem',
+              marginBottom: '1rem',
               fontFamily: 'var(--font-mono)'
             }}
           >
             {previewState.summaryLines.map((line) => (
-              <div key={line} style={{ marginBottom: '0.2rem' }}>
+              <div key={line} style={{ marginBottom: '0.18rem' }}>
                 {line}
               </div>
             ))}
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
             <a href={previewState.mailtoUrl} className="btn btn--primary">
               <Icon name="mail" size={15} />
               Send via {config.recipientEmail}
@@ -158,9 +178,7 @@ export function IntakeForm({ config }) {
                     className="form-input"
                     accept=".pdf,.doc,.docx"
                     required={field.required}
-                    onChange={(e) =>
-                      setFileName(e.target.files?.[0]?.name || '')
-                    }
+                    onChange={(e) => setFileName(e.target.files?.[0]?.name || '')}
                   />
                 ) : (
                   <input
@@ -179,11 +197,11 @@ export function IntakeForm({ config }) {
 
           <div
             style={{
-              marginTop: '1.15rem',
+              marginTop: '0.95rem',
               display: 'flex',
               alignItems: 'flex-start',
-              gap: '0.6rem',
-              fontSize: '0.85rem',
+              gap: '0.55rem',
+              fontSize: '0.83rem',
               color: 'var(--color-text-secondary)'
             }}
           >
@@ -193,23 +211,26 @@ export function IntakeForm({ config }) {
               required
               checked={values.consent}
               onChange={(e) => handleChange('consent', e.target.checked)}
-              style={{ marginTop: '0.26rem', accentColor: 'var(--color-accent)' }}
+              style={{ marginTop: '0.24rem', accentColor: 'var(--hub-navy)' }}
             />
             <label htmlFor={`${config.id}-consent`}>
-              {config.consentLabel} <span style={{ color: 'var(--color-accent)' }}>*</span>
+              {config.consentLabel} <span style={{ color: '#dc2626' }}>*</span>
             </label>
           </div>
 
           {config.disclaimer && (
             <p
               style={{
-                marginTop: '0.6rem',
-                fontSize: '0.78rem',
+                marginTop: '0.5rem',
+                fontSize: '0.76rem',
                 color: 'var(--color-text-muted)'
               }}
             >
               {config.disclaimer}{' '}
-              <Link to="/privacy" style={{ color: 'var(--color-accent)', textDecoration: 'underline' }}>
+              <Link
+                to="/privacy"
+                style={{ color: 'var(--hub-navy)', fontWeight: 600, textDecoration: 'underline' }}
+              >
                 Privacy Policy
               </Link>
               .
@@ -218,19 +239,19 @@ export function IntakeForm({ config }) {
 
           <div
             style={{
-              marginTop: '1.45rem',
+              marginTop: '1.15rem',
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: '0.85rem'
+              gap: '0.75rem'
             }}
           >
             <button type="submit" className="btn btn--primary">
               {config.submitLabel}
               <Icon name="arrow-right" size={15} />
             </button>
-            <span style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
+            <span style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>
               Direct email alternative:{' '}
               <a href={`mailto:${config.recipientEmail}`} className="email-plain-link">
                 {config.recipientEmail}

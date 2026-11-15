@@ -11,17 +11,9 @@ export function MarketCoverageMap() {
       : MARKETS_COVERAGE.filter((m) => m.id === selectedTier);
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '1rem',
-          marginBottom: '1.4rem'
-        }}
-      >
+    <div className="corridor-console">
+      {/* Top Control Header */}
+      <div className="corridor-console__header">
         <div className="tab-bar" style={{ marginBottom: 0 }}>
           <button
             type="button"
@@ -42,43 +34,32 @@ export function MarketCoverageMap() {
           ))}
         </div>
 
-        <div
-          style={{
-            fontSize: '0.8rem',
-            color: 'var(--color-text-secondary)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            fontWeight: 500
-          }}
-        >
+        <div className="corridor-console__meta">
           <Icon name="globe" size={15} />
           <span>Singapore HQ · Distributed Execution in India &amp; Global Corridors</span>
         </div>
       </div>
 
       {/* Architectural SVG World Coordinate Matrix */}
-      <div
-        style={{
-          background:
-            'radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.08), transparent 45%), linear-gradient(180deg, #0b1329 0%, #070c1b 100%)',
-          border: '1px solid #1e293b',
-          borderRadius: 'var(--radius-xl)',
-          padding: '1.4rem',
-          marginBottom: '1.4rem',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: 'var(--shadow-md)'
-        }}
-      >
+      <div className="corridor-console__map">
+        <div className="corridor-console__map-topbar">
+          <span className="corridor-console__map-status">
+            <span className="hin-roster__dot" />
+            ACTIVE SOURCING TELEMETRY · SINGAPORE HUB (1.2789° N, 103.8476° E)
+          </span>
+          <span className="corridor-console__map-count">
+            Showing: {selectedTier === 'all' ? 'All 3 Global Market Tiers (14 Regional Hubs)' : visibleTiers[0]?.title}
+          </span>
+        </div>
+
         <svg
-          viewBox="0 0 100 52"
-          style={{ width: '100%', height: 'auto', maxHeight: 295, display: 'block' }}
+          viewBox="0 0 100 46"
+          style={{ width: '100%', height: 'auto', maxHeight: 240, display: 'block' }}
           role="img"
           aria-label="Global Market Coverage Map across Developed, Emerging, and Frontier Markets"
         >
           {/* Subtle latitude / longitude grid */}
-          {[10, 20, 30, 40].map((y) => (
+          {[9, 18, 27, 36].map((y) => (
             <line
               key={`lat-${y}`}
               x1="0"
@@ -95,7 +76,7 @@ export function MarketCoverageMap() {
               x1={x}
               y1="0"
               x2={x}
-              y2="52"
+              y2="46"
               stroke="rgba(255, 255, 255, 0.06)"
               strokeWidth="0.2"
             />
@@ -103,40 +84,40 @@ export function MarketCoverageMap() {
 
           {/* Stylized continent silhouettes */}
           <g fill="rgba(255, 255, 255, 0.06)" stroke="rgba(255, 255, 255, 0.16)" strokeWidth="0.25">
-            <polygon points="8,10 28,9 31,22 21,27 14,23" />
-            <polygon points="26,29 36,31 34,46 28,47 25,36" />
-            <polygon points="43,10 57,9 58,19 44,20" />
-            <polygon points="44,22 61,21 63,31 56,43 48,41 44,30" />
-            <polygon points="59,10 88,11 89,29 74,33 65,27 59,20" />
-            <polygon points="77,36 89,36 88,45 78,44" />
+            <polygon points="8,9 28,8 31,20 21,24 14,21" />
+            <polygon points="26,26 36,28 34,41 28,42 25,32" />
+            <polygon points="43,9 57,8 58,17 44,18" />
+            <polygon points="44,20 61,19 63,28 56,39 48,37 44,27" />
+            <polygon points="59,9 88,10 89,26 74,30 65,24 59,18" />
+            <polygon points="77,32 89,32 88,40 78,39" />
           </g>
 
-          {/* Connection arcs from Singapore HQ (x=76, y=31.2) */}
+          {/* Connection arcs from Singapore HQ (x=76, y=27.6) */}
           {visibleTiers.flatMap((tier) =>
             tier.coordinates.map((pt) => {
-              const targetY = pt.y * 0.52;
+              const targetY = pt.y * 0.46;
               return (
                 <g key={`${tier.id}-${pt.label}`}>
                   <path
-                    d={`M 76 31.2 Q ${(76 + pt.x) / 2} ${Math.min(31.2, targetY) - 6} ${pt.x} ${targetY}`}
+                    d={`M 76 27.6 Q ${(76 + pt.x) / 2} ${Math.min(27.6, targetY) - 5.5} ${pt.x} ${targetY}`}
                     fill="none"
-                    stroke="rgba(255, 255, 255, 0.34)"
+                    stroke="rgba(134, 239, 172, 0.45)"
                     strokeWidth="0.32"
                     strokeDasharray="1 1"
                   />
                   <circle
                     cx={pt.x}
                     cy={targetY}
-                    r="1.65"
-                    fill="rgba(255, 255, 255, 0.18)"
+                    r="1.55"
+                    fill="rgba(134, 239, 172, 0.22)"
                   />
-                  <circle cx={pt.x} cy={targetY} r="0.78" fill="#ffffff" />
+                  <circle cx={pt.x} cy={targetY} r="0.75" fill="#ffffff" />
                   <text
                     x={pt.x + (pt.dx ?? 1.4)}
                     y={targetY + (pt.dy ?? 0.6)}
                     fill="#f8fafc"
-                    fontSize="2.0"
-                    fontWeight="500"
+                    fontSize="2.1"
+                    fontWeight="600"
                   >
                     {pt.label}
                   </text>
@@ -147,41 +128,40 @@ export function MarketCoverageMap() {
         </svg>
       </div>
 
-      <div className="grid-3">
+      {/* Bottom 3-Column Connected Corridor Ledger (Stays 3 Columns on Desktop AND Tablet) */}
+      <div className="corridor-ledger-row">
         {MARKETS_COVERAGE.map((tier) => {
-          const isHighlighted = selectedTier === 'all' || selectedTier === tier.id;
+          const isSelected = selectedTier === tier.id;
           return (
             <div
               key={tier.id}
-              className="card"
-              style={{
-                opacity: isHighlighted ? 1 : 0.48,
-                borderColor:
-                  selectedTier === tier.id ? 'var(--hub-navy)' : 'var(--border-subtle)'
+              className={`corridor-ledger-cell ${
+                isSelected ? 'corridor-ledger-cell--selected' : ''
+              }`}
+              onClick={() => setSelectedTier(selectedTier === tier.id ? 'all' : tier.id)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedTier(selectedTier === tier.id ? 'all' : tier.id);
+                }
               }}
             >
               <div>
-                <div className="card-top">
+                <div className="corridor-ledger-cell__top">
                   <span className="card-index">{tier.code}</span>
-                  <span className="card-tag">{tier.regions.length} Key Corridors</span>
+                  <span className="card-tag">
+                    {isSelected ? 'Active Filter · ' : ''}
+                    {tier.regions.length} Key Corridors
+                  </span>
                 </div>
-                <h3>{tier.title}</h3>
-                <p style={{ marginBottom: '1.1rem' }}>{tier.summary}</p>
+                <h3 className="corridor-ledger-cell__title">{tier.title}</h3>
+                <p className="corridor-ledger-cell__summary">{tier.summary}</p>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+              <div className="corridor-ledger-cell__pills">
                 {tier.regions.map((reg) => (
-                  <span
-                    key={reg}
-                    style={{
-                      fontSize: '0.74rem',
-                      fontWeight: 600,
-                      padding: '0.24rem 0.65rem',
-                      borderRadius: 'var(--radius-pill)',
-                      background: 'var(--bg-section-subtle)',
-                      border: '1px solid var(--border-strong)',
-                      color: 'var(--hub-navy)'
-                    }}
-                  >
+                  <span key={reg} className="corridor-region-pill">
                     {reg}
                   </span>
                 ))}

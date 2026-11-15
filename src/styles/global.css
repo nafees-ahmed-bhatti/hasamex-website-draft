@@ -2370,6 +2370,576 @@ p {
   border-top: 1px dashed var(--hasamex-border-light);
 }
 
+/* ==========================================================================
+   CLIENTS PAGE — ARCHITECTURAL COMPONENTS (DESKTOP, TABLET & MOBILE)
+   ========================================================================== */
+
+/* 1. Page Hero Command Panel (Right Column of Inner Page Hero Split) */
+.page-hero-panel {
+  height: 100%;
+  background: rgba(17, 26, 46, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-xl);
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--shadow-navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.page-hero-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-hero-panel__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.32;
+}
+
+.page-hero-panel__sub {
+  font-size: 0.81rem;
+  color: #cbd5e1;
+  line-height: 1.48;
+  margin: 0;
+}
+
+.page-hero-panel__matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.page-hero-panel__cell {
+  background: rgba(7, 12, 27, 0.85);
+  padding: 0.72rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.page-hero-panel__metric {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.page-hero-panel__label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #86efac;
+}
+
+.page-hero-panel__note {
+  font-size: 0.69rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.page-hero-panel__footer {
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.page-hero-panel__contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  color: #94a3b8;
+}
+
+/* 2. Service Standard Strip (4-Column Hairline Matrix) */
+.service-standard-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.service-standard-cell {
+  background: #ffffff;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+  transition: background-color 0.2s var(--ease-hub);
+}
+
+.service-standard-cell:hover {
+  background: #fafbfc;
+}
+
+.service-standard-cell:hover .card-icon-box,
+.service-standard-cell:hover .card-index {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.service-standard-cell__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+
+.service-standard-cell__badge-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.service-standard-cell__title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.service-standard-cell__desc {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.service-standard-cell__footer {
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--hasamex-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--hub-navy);
+}
+
+/* 3. Client Pipeline Wrapper (Header Banner + 4-Stage Pipeline) */
+.client-pipeline-wrapper {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--hub-navy-border);
+  box-shadow: var(--shadow-md);
+}
+
+.client-pipeline-wrapper__bar {
+  background: #070c1b;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.client-pipeline-wrapper .pipeline-board {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 4. Global Corridor Console (Map + 3-Column Connected Ledger) */
+.corridor-console {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.corridor-console__header {
+  background: #ffffff;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.corridor-console__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.corridor-console__map {
+  background:
+    radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.07), transparent 45%),
+    linear-gradient(180deg, #0b1329 0%, #070c1b 100%);
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.corridor-console__map-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+}
+
+.corridor-console__map-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.corridor-console__map-count {
+  color: #86efac;
+  font-weight: 600;
+}
+
+.corridor-ledger-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-strong);
+}
+
+.corridor-ledger-cell {
+  background: #ffffff;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease-hub);
+}
+
+.corridor-ledger-cell:hover {
+  background: #f8fafc;
+}
+
+.corridor-ledger-cell--selected {
+  background: #f1f5f9;
+  box-shadow: inset 0 3px 0 var(--hub-navy);
+}
+
+.corridor-ledger-cell--selected .card-index,
+.corridor-ledger-cell:hover .card-index {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.corridor-ledger-cell__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.corridor-ledger-cell__title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.corridor-ledger-cell__summary {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.corridor-ledger-cell__pills {
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--hasamex-border-light);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.corridor-region-pill {
+  font-size: 0.71rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-section-subtle);
+  border: 1px solid var(--border-strong);
+  color: var(--hub-navy);
+}
+
+/* 5. Client Segment Matrix (3-Column Hairline Matrix on Desktop & Tablet) */
+.client-segment-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.client-segment-cell {
+  background: #ffffff;
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.9rem;
+  transition: background-color 0.2s var(--ease-hub);
+}
+
+.client-segment-cell:hover {
+  background: #fafbfc;
+}
+
+.client-segment-cell:hover .card-icon-box,
+.client-segment-cell:hover .card-index,
+.client-segment-cell:hover .card-cta-link {
+  background: var(--hub-navy);
+  color: #ffffff;
+  border-color: var(--hub-navy);
+}
+
+.client-segment-cell__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.client-segment-cell__title {
+  font-size: 1.04rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.client-segment-cell__headline {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hub-navy);
+  margin-bottom: 0.35rem;
+  line-height: 1.38;
+}
+
+.client-segment-cell__desc {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.48;
+  margin-bottom: 0.65rem;
+}
+
+.client-segment-cell__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.client-segment-cell__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  line-height: 1.42;
+}
+
+.client-segment-cell__check {
+  color: var(--hub-navy);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.client-segment-cell__quote {
+  background: var(--bg-section-subtle);
+  border: 1px solid var(--hasamex-border-light);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 0.65rem;
+}
+
+.client-segment-cell__quote p {
+  font-size: 0.77rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.client-segment-cell__quote span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.client-segment-cell__footer {
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--hasamex-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* 6. Institutional Split Intake Layout (Left Desk Card + Right Form Shell) */
+.intake-split-layout {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.intake-desk-card {
+  background: var(--hub-navy);
+  border: 1px solid var(--hub-navy-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem 1.6rem;
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.intake-desk-card__title {
+  font-size: clamp(1.22rem, 1.8vw, 1.48rem);
+  color: #ffffff;
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.26;
+}
+
+.intake-desk-card__lead {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.54;
+  margin-bottom: 1.15rem;
+}
+
+.intake-desk-card__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.intake-desk-step {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 0.72rem 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.intake-desk-step__num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--hub-navy);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.intake-desk-step div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.intake-desk-step strong {
+  font-size: 0.84rem;
+  color: #ffffff;
+}
+
+.intake-desk-step span {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.intake-desk-card__footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.intake-desk-card__office {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.intake-desk-card__office strong {
+  color: #ffffff;
+  font-size: 0.82rem;
+}
+
+.intake-desk-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  color: #86efac;
+  font-weight: 700;
+}
+
+.intake-desk-card__emails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
 /* Keep legacy workflow-timeline rules for any inner page if needed */
 .workflow-timeline {
   display: flex;
@@ -3204,13 +3774,15 @@ p {
 
   .hero-grid,
   .tab-panel,
-  .advantage-split {
+  .advantage-split,
+  .intake-split-layout {
     grid-template-columns: 1fr;
   }
 
   .grid-4,
   .workflow-rail,
   .pipeline-grid,
+  .service-standard-strip,
   .format-matrix {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3347,6 +3919,9 @@ p {
   .workflow-rail,
   .format-matrix,
   .pipeline-grid,
+  .service-standard-strip,
+  .corridor-ledger-row,
+  .client-segment-matrix,
   .hin-roster__grid,
   .governance-pillars-row,
   .testimonial-selector-row,
@@ -3372,6 +3947,9 @@ p {
 
   .format-cell,
   .pipeline-stage,
+  .service-standard-cell,
+  .corridor-ledger-cell,
+  .client-segment-cell,
   .advantage-row,
   .hin-cohort-row,
   .governance-pillar-cell,
