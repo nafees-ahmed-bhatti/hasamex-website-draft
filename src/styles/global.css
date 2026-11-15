@@ -1340,15 +1340,17 @@ p {
   align-items: center;
   gap: 0.28rem;
   font-family: var(--font-mono);
-  font-size: 0.69rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--hub-navy);
   background: var(--bg-section-subtle);
   border: 1px solid var(--border-strong);
-  padding: 0.18rem 0.52rem;
+  padding: 0.18rem 0.48rem;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s var(--ease-hub);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .card-expand-btn:hover,
