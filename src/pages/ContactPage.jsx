@@ -8,25 +8,25 @@ import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 const DIRECT_CHANNELS = [
   {
-    badge: 'General & Client Desk',
+    badge: '01 · Client Desk',
     title: 'Client & General Enquiries',
     email: BRAND.emails.general,
     description: 'Project briefs, institutional onboarding, custom transcripts, and general requests.'
   },
   {
-    badge: 'Regulatory & Oversight',
+    badge: '02 · Oversight',
     title: 'Compliance Desk',
     email: BRAND.emails.compliance,
     description: 'Pre-call screening questions, MNPI policy requests, and Code of Conduct inquiries.'
   },
   {
-    badge: 'Talent & Recruiting',
+    badge: '03 · Talent',
     title: 'Careers at Hasamex',
     email: BRAND.emails.careers,
     description: 'Applications and talent enquiries across our Singapore and India teams.'
   },
   {
-    badge: 'Data Protection',
+    badge: '04 · Privacy',
     title: 'Privacy Officer',
     email: BRAND.emails.privacy,
     description: 'GDPR, UK GDPR, CPRA, PIPL, and personal data rights requests.'
@@ -47,7 +47,7 @@ export function ContactPage() {
             <AnimatedHeading
               as="h1"
               text="Contact Us"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 620 }}>
               Share your details below and our team will be in touch within 24 hours.
@@ -69,30 +69,28 @@ export function ContactPage() {
       {/* DIRECT CHANNELS + FORM */}
       <section id="contact-form" className="section">
         <div className="container">
-          <div className="grid-4" style={{ marginBottom: '2.75rem' }}>
+          <div className="grid-4" style={{ marginBottom: '2.5rem' }}>
             {DIRECT_CHANNELS.map((ch, idx) => (
-              <Reveal key={ch.email} delay={idx * 0.045} className="card">
+              <Reveal key={ch.email} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{ch.badge}</span>
-                    <span style={{ color: 'var(--color-accent)' }}>
-                      <Icon name="mail" size={16} />
-                    </span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="mail" size={18} />
                   </div>
                   <h3>{ch.title}</h3>
-                  <p style={{ marginBottom: '1.1rem' }}>{ch.description}</p>
+                  <p>{ch.description}</p>
                 </div>
-                <a
-                  href={`mailto:${ch.email}`}
-                  style={{
-                    color: 'var(--color-accent)',
-                    fontWeight: 600,
-                    fontSize: '0.84rem',
-                    textDecoration: 'underline'
-                  }}
-                >
-                  {ch.email}
-                </a>
+                <div className="card-footer-row">
+                  <a
+                    href={`mailto:${ch.email}`}
+                    className="card-cta-link"
+                    style={{ paddingLeft: 0 }}
+                  >
+                    {ch.email} <Icon name="arrow-up-right" size={13} />
+                  </a>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -105,16 +103,16 @@ export function ContactPage() {
               alignItems: 'start'
             }}
           >
-            <Reveal className="card card--navy" style={{ padding: '2rem' }}>
+            <Reveal className="card card--navy" style={{ padding: '1.9rem' }}>
               <div>
                 <span className="eyebrow">
                   <span className="eyebrow-dot" />
                   Global Headquarters
                 </span>
-                <h3 style={{ fontSize: '1.32rem', marginTop: '0.8rem', marginBottom: '0.45rem', color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1.28rem', marginTop: '0.75rem', marginBottom: '0.45rem', color: '#ffffff' }}>
                   {BRAND.legalName}
                 </h3>
-                <p style={{ marginBottom: '1.35rem', color: '#cbd5e1' }}>
+                <p style={{ marginBottom: '1.25rem', color: '#cbd5e1' }}>
                   Registered in Singapore (UEN {BRAND.uen}) with distributed execution teams across
                   India and global corridors.
                 </p>
@@ -123,15 +121,15 @@ export function ContactPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.95rem',
-                    paddingTop: '1.15rem',
-                    borderTop: '1px solid #1e293b',
-                    fontSize: '0.86rem'
+                    gap: '0.9rem',
+                    paddingTop: '1.1rem',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+                    fontSize: '0.85rem'
                   }}
                 >
                   <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
-                      <Icon name="map-pin" size={17} />
+                    <span style={{ color: '#ffffff', marginTop: 2 }}>
+                      <Icon name="map-pin" size={16} />
                     </span>
                     <div>
                       <strong style={{ color: '#ffffff', display: 'block' }}>
@@ -142,8 +140,8 @@ export function ContactPage() {
                   </div>
 
                   <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
-                      <Icon name="clock" size={17} />
+                    <span style={{ color: '#ffffff', marginTop: 2 }}>
+                      <Icon name="clock" size={16} />
                     </span>
                     <div>
                       <strong style={{ color: '#ffffff', display: 'block' }}>
@@ -156,8 +154,8 @@ export function ContactPage() {
                   </div>
 
                   <div style={{ display: 'flex', gap: '0.7rem', alignItems: 'flex-start' }}>
-                    <span style={{ color: '#22d3ee', marginTop: 2 }}>
-                      <Icon name="linkedin" size={17} />
+                    <span style={{ color: '#ffffff', marginTop: 2 }}>
+                      <Icon name="linkedin" size={16} />
                     </span>
                     <div>
                       <strong style={{ color: '#ffffff', display: 'block' }}>
@@ -167,7 +165,7 @@ export function ContactPage() {
                         href={BRAND.social.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: '#22d3ee', textDecoration: 'underline' }}
+                        style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 500 }}
                       >
                         linkedin.com/company/hasamex
                       </a>
@@ -177,18 +175,18 @@ export function ContactPage() {
 
                 <div
                   style={{
-                    marginTop: '1.5rem',
-                    paddingTop: '1.15rem',
-                    borderTop: '1px solid #1e293b',
+                    marginTop: '1.4rem',
+                    paddingTop: '1.1rem',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.12)',
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '0.6rem'
+                    gap: '0.55rem'
                   }}
                 >
                   <Link to="/clients#enquiry-form" className="btn btn--primary btn--sm">
                     Client Brief Form →
                   </Link>
-                  <Link to="/experts#register-form" className="btn btn--glass btn--sm" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', borderColor: 'rgba(255,255,255,0.18)' }}>
+                  <Link to="/experts#register-form" className="btn btn--glass btn--sm">
                     Expert Registration →
                   </Link>
                 </div>

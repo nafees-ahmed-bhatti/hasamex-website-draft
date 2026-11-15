@@ -203,54 +203,60 @@ export const HOME_FORMATS = [
     id: 'expert-calls',
     number: '01',
     title: '1:1 Expert Calls',
-    shortDesc: 'Real-time conversations with vetted professionals.',
-    clientsDesc: 'Speak 1-on-1 with vetted operators and domain experts.',
+    shortDesc: 'Real-time consultations with custom-vetted operators and domain leaders tailored to your exact brief.',
+    clientsDesc: 'Speak 1-on-1 with vetted operators, former executives, and subject-matter experts on monitored lines.',
     tag: 'Real-Time Diligence',
+    scope: '30–60 Min Monitored Call',
     icon: 'phone'
   },
   {
     id: 'in-person',
     number: '02',
     title: 'In-Person Meetings',
-    shortDesc: 'Deep-dive discussions tailored to your location and schedule.',
-    clientsDesc: 'One-on-one, face-to-face sessions with subject-matter experts.',
+    shortDesc: 'Deep-dive face-to-face discussions coordinated around your regional travel schedule and diligence location.',
+    clientsDesc: 'One-on-one, face-to-face sessions with senior subject-matter experts arranged at your preferred location.',
     tag: 'On-Location Depth',
+    scope: 'Private Executive Session',
     icon: 'users'
   },
   {
     id: 'roundtables',
     number: '03',
     title: 'Roundtables',
-    shortDesc: 'Moderated group insight on key themes or market trends.',
-    clientsDesc: 'Moderated, multi-expert discussions designed to bring together like-minded peers around key themes and trends.',
+    shortDesc: 'Moderated multi-expert group discussions examining competing viewpoints on key themes or market shifts.',
+    clientsDesc: 'Moderated, multi-expert discussions designed to bring together seasoned peers around key themes and trends.',
     tag: 'Multi-Expert Synthesis',
+    scope: '3–5 Vetted Practitioners',
     icon: 'grid'
   },
   {
     id: 'knowledge-tours',
     number: '04',
     title: 'Knowledge Tours',
-    shortDesc: 'Curated expert visits for on-ground learning.',
-    clientsDesc: 'Curated itineraries of expert and site visits designed to give clients firsthand perspective on industries, operations, and local market dynamics.',
+    shortDesc: 'Curated multi-day expert and site visit itineraries built for on-ground market immersion across DM, EM & FM.',
+    clientsDesc: 'Curated itineraries of expert and site visits designed to give clients firsthand perspective on local market dynamics.',
     tag: 'Field Immersion',
+    scope: 'Multi-Site Field Itinerary',
     icon: 'compass'
   },
   {
     id: 'conference',
     number: '05',
     title: 'Conference Augmentation',
-    shortDesc: 'Add targeted expert context to your event schedules.',
-    clientsDesc: 'Supplement your event calendar with targeted expert 1:1s and small-group meetings—before, during, or after key industry conferences.',
+    shortDesc: 'Add targeted 1:1 and small-group practitioner meetings before, during, or after major industry conferences.',
+    clientsDesc: 'Supplement your event calendar with targeted expert 1:1s and small-group meetings around key industry conferences.',
     tag: 'Event Intelligence',
+    scope: 'Pre / Post-Event Briefings',
     icon: 'calendar'
   },
   {
     id: 'transcripts',
     number: '06',
     title: 'Custom Transcripts',
-    shortDesc: 'Access advisor-led interviews for high-signal, high-context insight.',
-    clientsDesc: 'A curated archive of advisor-led expert interviews, delivering authentic, first-hand primary research across sectors, geographies, and themes.',
+    shortDesc: 'Access advisor-led primary research interviews structured for high-signal, high-context institutional insight.',
+    clientsDesc: 'A curated archive of advisor-led expert interviews, delivering authentic, first-hand primary research across sectors.',
     tag: 'Advisor-Led Archive',
+    scope: 'Verbatim + Executive Summary',
     icon: 'document'
   }
 ];
@@ -259,26 +265,34 @@ export const WHY_CHOOSE_HASAMEX = [
   {
     number: '01',
     title: 'White-Glove Premium Service',
-    description: 'From brief intake to post-call delivery, we manage every detail with precision.',
-    highlight: 'Dedicated End-to-End Execution'
+    description: 'From brief intake and custom screening questions to scheduling and post-call follow-up, our Singapore and India desks manage every detail.',
+    highlight: 'End-to-End Execution',
+    footerNote: 'Dedicated Account Lead',
+    icon: 'users'
   },
   {
     number: '02',
     title: 'Quality with Speed',
-    description: 'We move fast—but never at the cost of quality or depth.',
-    highlight: '2–12 Hour Typical Delivery'
+    description: 'We move on institutional clocks—delivering handpicked, custom-vetted profiles within 2–12 hours without cutting corners on depth.',
+    highlight: '2–12 Hr Typical Delivery',
+    footerNote: 'Rapid Brief Calibration',
+    icon: 'clock'
   },
   {
     number: '03',
     title: 'Built-In Compliance',
-    description: 'Industry-leading safeguards for MNPI, confidentiality, and expert integrity.',
-    highlight: 'Investment-Grade Safeguards'
+    description: 'Industry-leading 5-point safeguards covering MNPI prohibitions, employer conflict checks, recorded lines, and full audit trails.',
+    highlight: 'Zero-MNPI Firewall',
+    footerNote: '100% Recorded & Auditable',
+    icon: 'shield'
   },
   {
     number: '04',
-    title: 'Tailored Sourcing',
-    description: 'We start with a strong base—and custom-source to match every brief precisely.',
-    highlight: 'Custom Recruited Per Brief'
+    title: 'Tailored Custom Sourcing',
+    description: 'Rather than recycling stale databases, we custom-recruit senior practitioners for each mandate and enrich profiles with proprietary AI tools.',
+    highlight: 'Recruited Per Brief',
+    footerNote: 'DM · EM · FM Reach',
+    icon: 'compass'
   }
 ];
 
@@ -286,27 +300,44 @@ export const HOME_EXPERT_ARCHETYPES = [
   {
     code: 'EX-01',
     title: 'Former CxOs & BU Heads',
-    detail: 'Strategic decision-makers who have led teams, shaped markets, and driven P&L transformation.'
+    roleTag: 'Executive Leadership',
+    detail: 'Strategic decision-makers who have led enterprise teams, shaped regional markets, and driven P&L transformation.',
+    coverage: 'Corporate Strategy & Capital Allocation'
   },
   {
     code: 'EX-02',
-    title: 'Sector Operators',
-    detail: 'Hands-on commercial, supply chain, and operational leaders with on-the-ground execution experience.'
+    title: 'Sector & Commercial Operators',
+    roleTag: 'Frontline Execution',
+    detail: 'Hands-on commercial, supply chain, procurement, and plant leaders with direct operating experience across verticals.',
+    coverage: 'Unit Economics & Supply Chains'
   },
   {
     code: 'EX-03',
-    title: 'Technologists / Health Care Specialists',
-    detail: 'Deep technical architects, clinical specialists, and R&D practitioners across regulated verticals.'
+    title: 'Technologists & Healthcare Specialists',
+    roleTag: 'Regulated & Deep Tech',
+    detail: 'Enterprise architects, AI/cloud leaders, clinical specialists, and R&D practitioners across complex technical domains.',
+    coverage: 'Clinical, R&D & Systems Architecture'
   },
   {
     code: 'EX-04',
-    title: 'Policy Advisors & Channel Experts',
-    detail: 'Specialists with firsthand perspective on regulatory frameworks, distribution dynamics, and market access.'
+    title: 'Policy Advisors & Regulatory Experts',
+    roleTag: 'Policy & Governance',
+    detail: 'Specialists with firsthand perspective on licensing regimes, cross-border trade rules, and compliance frameworks.',
+    coverage: 'Licensing, Risk & Regulatory Shifts'
   },
   {
     code: 'EX-05',
-    title: 'Researchers & Academics',
-    detail: 'Analytical thinkers bringing structured methodology and peer-reviewed depth to complex questions.'
+    title: 'Independent Consultants & Senior Advisors',
+    roleTag: 'Advisory Perspective',
+    detail: 'Seasoned industry veterans and retired executives offering conflict-free, multi-cycle perspective across market transitions.',
+    coverage: 'Benchmarking & Value Creation'
+  },
+  {
+    code: 'EX-06',
+    title: 'Researchers, Academics & Channel Experts',
+    roleTag: 'Methodology & Distribution',
+    detail: 'Analytical thinkers and distribution specialists bringing structured methodology and frontline buyer intelligence.',
+    coverage: 'Channel Dynamics & Primary Research'
   }
 ];
 
@@ -669,12 +700,11 @@ export const ABOUT_VALUES = [
 ];
 
 export const TEAM_DEPARTMENTS = [
-  { id: 'all', label: 'All Departments' },
-  { id: 'leadership', label: 'Founders & Executive Leadership' },
+  { id: 'all', label: 'All Departments (8)' },
+  { id: 'leadership', label: 'Executive Leadership' },
   { id: 'client-solutions', label: 'Client Solutions & Research' },
-  { id: 'expert-relations', label: 'Expert Sourcing & Network' },
-  { id: 'compliance', label: 'Compliance & Legal Governance' },
-  { id: 'operations', label: 'Operations (Singapore & India)' }
+  { id: 'expert-relations', label: 'Expert Sourcing (HIN)' },
+  { id: 'compliance-ops', label: 'Compliance & Operations' }
 ];
 
 export const TEAM_PLACEHOLDER_SLOTS = [
@@ -694,7 +724,7 @@ export const TEAM_PLACEHOLDER_SLOTS = [
     department: 'leadership',
     departmentLabel: 'Founders & Executive Leadership',
     code: 'EXEC — 02',
-    titlePlaceholder: '[Executive Title — e.g. Co-Founder / Head of Operations]',
+    titlePlaceholder: '[Executive Title — e.g. Co-Founder / Head of Global Operations]',
     namePlaceholder: '[Official Name Pending Confirmation]',
     locationPlaceholder: 'Singapore / India',
     bioPlaceholder: 'Reserved for official leadership biography covering cross-border delivery architecture and network growth.',
@@ -725,7 +755,7 @@ export const TEAM_PLACEHOLDER_SLOTS = [
   {
     id: 'slot-5',
     department: 'expert-relations',
-    departmentLabel: 'Expert Sourcing & Network',
+    departmentLabel: 'Expert Sourcing & Network (HIN)',
     code: 'HIN — 01',
     titlePlaceholder: '[Role Placeholder — e.g. Lead, Bespoke Expert Sourcing]',
     namePlaceholder: '[Team Profile Slot — Awaiting Roster]',
@@ -735,36 +765,36 @@ export const TEAM_PLACEHOLDER_SLOTS = [
   },
   {
     id: 'slot-6',
-    department: 'compliance',
-    departmentLabel: 'Compliance & Legal Governance',
-    code: 'COMP — 01',
-    titlePlaceholder: '[Role Placeholder — e.g. Compliance & Risk Officer]',
+    department: 'expert-relations',
+    departmentLabel: 'Expert Sourcing & Network (HIN)',
+    code: 'HIN — 02',
+    titlePlaceholder: '[Role Placeholder — e.g. Senior Specialist, Network Quality & Vetting]',
     namePlaceholder: '[Team Profile Slot — Awaiting Roster]',
-    locationPlaceholder: 'Singapore HQ',
-    bioPlaceholder: 'Oversees pre-call conflict clearance, cooling-off enforcement, MNPI safeguards, and audit trail integrity.',
-    focusTags: ['MNPI Safeguards', 'Audit Trails', 'Regulatory Compliance']
+    locationPlaceholder: 'India / Singapore',
+    bioPlaceholder: 'Manages AI-enriched expert profiling, domain screening questions, and long-term practitioner relationships across the HIN community.',
+    focusTags: ['AI Profile Enrichment', 'Operator Vetting', 'Global Corridors']
   },
   {
     id: 'slot-7',
-    department: 'operations',
-    departmentLabel: 'Operations (Singapore & India)',
-    code: 'OPS — 01',
-    titlePlaceholder: '[Role Placeholder — e.g. Expert Partner Operations & Honoraria]',
+    department: 'compliance-ops',
+    departmentLabel: 'Compliance & Operations',
+    code: 'COMP — 01',
+    titlePlaceholder: '[Role Placeholder — e.g. Compliance & Legal Governance Lead]',
     namePlaceholder: '[Team Profile Slot — Awaiting Roster]',
-    locationPlaceholder: 'Singapore / India',
-    bioPlaceholder: 'Coordinates scheduling, recorded teleconference logistics, and guaranteed 14-day expert honorarium disbursements.',
-    focusTags: ['14-Day Payouts', 'Scheduling Precision', 'Partner Experience']
+    locationPlaceholder: 'Singapore HQ',
+    bioPlaceholder: 'Oversees pre-call conflict clearance, cooling-off enforcement, zero-tolerance MNPI safeguards, and recorded audit trail integrity.',
+    focusTags: ['MNPI Safeguards', 'Audit Trails', 'Regulatory Compliance']
   },
   {
     id: 'slot-8',
-    department: 'operations',
-    departmentLabel: 'Operations (Singapore & India)',
-    code: 'OPS — 02',
-    titlePlaceholder: '[Role Placeholder — e.g. Research Technology & Quality]',
+    department: 'compliance-ops',
+    departmentLabel: 'Compliance & Operations',
+    code: 'OPS — 01',
+    titlePlaceholder: '[Role Placeholder — e.g. Lead, Partner Operations & Honoraria]',
     namePlaceholder: '[Team Profile Slot — Awaiting Roster]',
-    locationPlaceholder: 'India / Singapore',
-    bioPlaceholder: 'Supports AI-assisted brief enrichment, profile verification workflows, and data protection standards.',
-    focusTags: ['Profile Enrichment', 'Data Security', 'Workflow Quality']
+    locationPlaceholder: 'Singapore / India',
+    bioPlaceholder: 'Coordinates global scheduling, monitored MS Teams logistics, and guaranteed 14-day expert honorarium disbursements.',
+    focusTags: ['14-Day Payouts', 'Scheduling Precision', 'Partner Experience']
   }
 ];
 

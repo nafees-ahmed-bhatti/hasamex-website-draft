@@ -19,7 +19,7 @@ export function MarketCoverageMap() {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '1rem',
-          marginBottom: '1.5rem'
+          marginBottom: '1.4rem'
         }}
       >
         <div className="tab-bar" style={{ marginBottom: 0 }}>
@@ -61,19 +61,19 @@ export function MarketCoverageMap() {
       <div
         style={{
           background:
-            'radial-gradient(circle at 75% 55%, rgba(34, 211, 238, 0.14), transparent 45%), linear-gradient(180deg, #0b1329 0%, #070d1d 100%)',
+            'radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.08), transparent 45%), linear-gradient(180deg, #0b1329 0%, #070c1b 100%)',
           border: '1px solid #1e293b',
           borderRadius: 'var(--radius-xl)',
-          padding: '1.5rem',
-          marginBottom: '1.5rem',
+          padding: '1.4rem',
+          marginBottom: '1.4rem',
           position: 'relative',
           overflow: 'hidden',
-          boxShadow: '0 16px 36px rgba(11, 19, 41, 0.16)'
+          boxShadow: 'var(--shadow-md)'
         }}
       >
         <svg
           viewBox="0 0 100 52"
-          style={{ width: '100%', height: 'auto', maxHeight: 300, display: 'block' }}
+          style={{ width: '100%', height: 'auto', maxHeight: 295, display: 'block' }}
           role="img"
           aria-label="Global Market Coverage Map across Developed, Emerging, and Frontier Markets"
         >
@@ -85,7 +85,7 @@ export function MarketCoverageMap() {
               y1={y}
               x2="100"
               y2={y}
-              stroke="rgba(148, 163, 184, 0.08)"
+              stroke="rgba(255, 255, 255, 0.06)"
               strokeWidth="0.2"
             />
           ))}
@@ -96,13 +96,13 @@ export function MarketCoverageMap() {
               y1="0"
               x2={x}
               y2="52"
-              stroke="rgba(148, 163, 184, 0.08)"
+              stroke="rgba(255, 255, 255, 0.06)"
               strokeWidth="0.2"
             />
           ))}
 
           {/* Stylized continent silhouettes */}
-          <g fill="rgba(148, 163, 184, 0.08)" stroke="rgba(148, 163, 184, 0.18)" strokeWidth="0.25">
+          <g fill="rgba(255, 255, 255, 0.06)" stroke="rgba(255, 255, 255, 0.16)" strokeWidth="0.25">
             <polygon points="8,10 28,9 31,22 21,27 14,23" />
             <polygon points="26,29 36,31 34,46 28,47 25,36" />
             <polygon points="43,10 57,9 58,19 44,20" />
@@ -120,7 +120,7 @@ export function MarketCoverageMap() {
                   <path
                     d={`M 76 31.2 Q ${(76 + pt.x) / 2} ${Math.min(31.2, targetY) - 6} ${pt.x} ${targetY}`}
                     fill="none"
-                    stroke="rgba(34, 211, 238, 0.38)"
+                    stroke="rgba(255, 255, 255, 0.34)"
                     strokeWidth="0.32"
                     strokeDasharray="1 1"
                   />
@@ -128,9 +128,9 @@ export function MarketCoverageMap() {
                     cx={pt.x}
                     cy={targetY}
                     r="1.65"
-                    fill="rgba(34, 211, 238, 0.22)"
+                    fill="rgba(255, 255, 255, 0.18)"
                   />
-                  <circle cx={pt.x} cy={targetY} r="0.75" fill="#22d3ee" />
+                  <circle cx={pt.x} cy={targetY} r="0.78" fill="#ffffff" />
                   <text
                     x={pt.x + (pt.dx ?? 1.4)}
                     y={targetY + (pt.dy ?? 0.6)}
@@ -157,7 +157,7 @@ export function MarketCoverageMap() {
               style={{
                 opacity: isHighlighted ? 1 : 0.48,
                 borderColor:
-                  selectedTier === tier.id ? 'var(--color-accent)' : 'var(--border-subtle)'
+                  selectedTier === tier.id ? 'var(--hub-navy)' : 'var(--border-subtle)'
               }}
             >
               <div>
@@ -166,20 +166,20 @@ export function MarketCoverageMap() {
                   <span className="card-tag">{tier.regions.length} Key Corridors</span>
                 </div>
                 <h3>{tier.title}</h3>
-                <p style={{ marginBottom: '1.15rem' }}>{tier.summary}</p>
+                <p style={{ marginBottom: '1.1rem' }}>{tier.summary}</p>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                 {tier.regions.map((reg) => (
                   <span
                     key={reg}
                     style={{
-                      fontSize: '0.75rem',
+                      fontSize: '0.74rem',
                       fontWeight: 600,
-                      padding: '0.26rem 0.65rem',
+                      padding: '0.24rem 0.65rem',
                       borderRadius: 'var(--radius-pill)',
-                      background: 'var(--color-accent-subtle)',
-                      border: '1px solid var(--color-accent-border)',
-                      color: 'var(--color-accent)'
+                      background: 'var(--bg-section-subtle)',
+                      border: '1px solid var(--border-strong)',
+                      color: 'var(--hub-navy)'
                     }}
                   >
                     {reg}

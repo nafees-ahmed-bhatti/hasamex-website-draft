@@ -46,7 +46,7 @@ export function ExpertsPage() {
             <AnimatedHeading
               as="h1"
               text="The Hasamex Intelligence Network"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 640 }}>
               Join a global community of trusted experts across industries — built on relevance,
@@ -68,7 +68,7 @@ export function ExpertsPage() {
         </div>
       </section>
 
-      {/* DESIGNED WITH EXPERTS IN MIND */}
+      {/* DESIGNED WITH EXPERTS IN MIND (Balanced 4x1 Grid) */}
       <section id="why-join" className="section">
         <div className="container">
           <div className="section-header--split">
@@ -80,9 +80,9 @@ export function ExpertsPage() {
               <AnimatedHeading
                 as="h2"
                 text="Designed with Experts in Mind"
-                style={{ marginTop: '0.75rem', marginBottom: '0.65rem' }}
+                style={{ marginTop: '0.65rem', marginBottom: '0.55rem' }}
               />
-              <p className="lead" style={{ marginBottom: '0.8rem' }}>
+              <p className="lead" style={{ marginBottom: '0.7rem' }}>
                 The Hasamex Intelligence Network is a curated community of professionals who share
                 insight with global investors, consultants, and corporate leaders. Whether through
                 expert calls, meetings, transcripts, or roundtables—our experts shape smarter
@@ -93,7 +93,7 @@ export function ExpertsPage() {
                 built on relevance, respect, and reliability.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
+            <Reveal delay={0.06}>
               <a href="#register-form" className="btn btn--primary">
                 Register Now
                 <Icon name="arrow-right" size={15} />
@@ -103,16 +103,21 @@ export function ExpertsPage() {
 
           <div className="grid-4">
             {EXPERTS_PROMISES.map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.045} className="card">
+              <Reveal key={item.title} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{item.number}</span>
-                    <span style={{ color: 'var(--color-accent)' }}>
-                      <Icon name="check" size={16} />
-                    </span>
+                    <span className="card-tag">HIN Commitment</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="check" size={18} />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
+                </div>
+                <div className="card-footer-row">
+                  <span>Guaranteed Standard</span>
+                  <Icon name="shield" size={14} />
                 </div>
               </Reveal>
             ))}
@@ -120,7 +125,7 @@ export function ExpertsPage() {
         </div>
       </section>
 
-      {/* WHO POWERS THE NETWORK */}
+      {/* WHO POWERS THE NETWORK (Balanced 3x2 Grid — 6 Cards) */}
       <section id="categories" className="section section--ivory">
         <div className="container">
           <Reveal className="section-header">
@@ -136,16 +141,23 @@ export function ExpertsPage() {
 
           <div className="grid-3">
             {EXPERTS_CATEGORIES.map((cat, idx) => (
-              <Reveal key={cat.code} delay={idx * 0.045} className="card">
+              <Reveal key={cat.code} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{cat.code}</span>
-                    <span style={{ color: 'var(--color-accent)' }}>
-                      <Icon name="users" size={16} />
-                    </span>
+                    <span className="card-tag">Verified Cohort</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="users" size={18} />
                   </div>
                   <h3>{cat.title}</h3>
                   <p>{cat.description}</p>
+                </div>
+                <div className="card-footer-row">
+                  <span>DM · EM · FM Coverage</span>
+                  <a href="#register-form" className="card-cta-link">
+                    Join Cohort <Icon name="arrow-right" size={13} />
+                  </a>
                 </div>
               </Reveal>
             ))}
@@ -203,10 +215,14 @@ export function ExpertsPage() {
                       <span
                         style={{
                           fontFamily: 'var(--font-mono)',
-                          fontSize: '0.74rem',
-                          color: 'var(--color-accent)',
+                          fontSize: '0.73rem',
+                          color: 'var(--hub-navy)',
                           fontWeight: 700,
-                          marginRight: '0.7rem'
+                          marginRight: '0.7rem',
+                          padding: '0.15rem 0.45rem',
+                          background: 'var(--bg-section-subtle)',
+                          borderRadius: '4px',
+                          border: '1px solid var(--border-strong)'
                         }}
                       >
                         {String(idx + 1).padStart(2, '0')}

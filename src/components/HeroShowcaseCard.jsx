@@ -45,10 +45,24 @@ export function HeroShowcaseCard() {
       aria-label="Hasamex Intelligence Network Workflow Walkthrough"
     >
       <div className="showcase-header">
-        <div className="showcase-live-pill">
-          <span className="live-dot" />
-          <span>HIN Execution Lifecycle</span>
+        <div className="showcase-header__top">
+          <div className="showcase-live-pill">
+            <span className="live-dot" />
+            <span>HIN Execution Lifecycle</span>
+          </div>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.66rem',
+              color: '#94a3b8',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase'
+            }}
+          >
+            {paused ? 'Paused' : 'Auto-Cycling · 8s'}
+          </span>
         </div>
+
         <div className="showcase-tabs" role="tablist" aria-label="Hasamex Workflow Phases">
           {HERO_SHOWCASE_BRIEFS.map((item, idx) => {
             const isActive = idx === activeIndex;
@@ -77,13 +91,13 @@ export function HeroShowcaseCard() {
       <AnimatePresence mode="wait">
         <motion.div
           key={current.id}
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 10, filter: 'blur(4px)' }}
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 8, filter: 'blur(3px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8, filter: 'blur(3px)' }}
-          transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
+          exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6, filter: 'blur(2px)' }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="showcase-meta-row">
-            <span style={{ color: '#22d3ee', fontWeight: 600 }}>
+            <span style={{ color: '#ffffff', fontWeight: 600 }}>
               {current.format}
             </span>
             <span>{current.region}</span>
@@ -95,7 +109,7 @@ export function HeroShowcaseCard() {
             style={{
               fontSize: '0.78rem',
               color: '#94a3b8',
-              marginBottom: '0.85rem'
+              marginBottom: '0.8rem'
             }}
           >
             Scope Coverage: <strong style={{ color: '#f8fafc' }}>{current.audience}</strong>
@@ -105,11 +119,11 @@ export function HeroShowcaseCard() {
             <div className="showcase-profile-box__label">Live Workflow Stream</div>
             <div
               style={{
-                fontSize: '0.84rem',
+                fontSize: '0.82rem',
                 fontWeight: 500,
                 color: '#f8fafc',
                 lineHeight: 1.5,
-                minHeight: '2.6rem',
+                minHeight: '2.55rem',
                 fontFamily: 'var(--font-mono)'
               }}
             >
@@ -117,8 +131,8 @@ export function HeroShowcaseCard() {
             </div>
             <div
               style={{
-                fontSize: '0.75rem',
-                color: '#4ade80',
+                fontSize: '0.74rem',
+                color: '#86efac',
                 marginTop: '0.45rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -136,12 +150,13 @@ export function HeroShowcaseCard() {
               <div key={cp} className="showcase-checkpoint">
                 <span
                   style={{
-                    color: '#22d3ee',
+                    color: '#ffffff',
                     display: 'inline-flex',
-                    flexShrink: 0
+                    flexShrink: 0,
+                    opacity: 0.9
                   }}
                 >
-                  <Icon name="shield" size={15} />
+                  <Icon name="shield" size={14} />
                 </span>
                 <span>{cp}</span>
               </div>
@@ -149,13 +164,13 @@ export function HeroShowcaseCard() {
           </div>
 
           <div className="showcase-footer">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <HasamexEmblemVector size={28} />
-              <span style={{ color: '#cbd5e1' }}>{current.deliverable}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+              <HasamexEmblemVector size={26} />
+              <span style={{ color: '#e2e8f0', fontWeight: 500 }}>{current.deliverable}</span>
             </div>
             <span
               style={{
-                fontSize: '0.68rem',
+                fontSize: '0.66rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.07em',
                 color: '#94a3b8',

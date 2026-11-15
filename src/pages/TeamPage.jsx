@@ -10,29 +10,29 @@ function EditorialAvatarPlaceholder({ code }) {
     <div
       style={{
         width: '100%',
-        aspectRatio: '4 / 3',
-        borderRadius: '12px',
+        aspectRatio: '16 / 9',
+        borderRadius: '10px',
         background:
-          'radial-gradient(circle at 50% 35%, rgba(34, 211, 238, 0.16), #0b1329 76%)',
+          'radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08), #0b1329 78%)',
         border: '1px dashed #334155',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0.55rem',
-        marginBottom: '1.1rem',
+        gap: '0.45rem',
+        marginBottom: '1rem',
         position: 'relative',
         overflow: 'hidden'
       }}
       aria-label="Portrait Placeholder"
     >
       {/* Minimalist Illustrated Line-Art Silhouette */}
-      <svg width="68" height="68" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <svg width="56" height="56" viewBox="0 0 80 80" fill="none" aria-hidden="true">
         <circle
           cx="40"
           cy="40"
           r="35"
-          stroke="rgba(148, 163, 184, 0.24)"
+          stroke="rgba(255, 255, 255, 0.22)"
           strokeWidth="1.2"
           strokeDasharray="3 3"
         />
@@ -40,9 +40,9 @@ function EditorialAvatarPlaceholder({ code }) {
           cx="40"
           cy="29"
           r="11"
-          stroke="#22d3ee"
+          stroke="#ffffff"
           strokeWidth="1.6"
-          fill="rgba(34, 211, 238, 0.12)"
+          fill="rgba(255, 255, 255, 0.1)"
         />
         <path
           d="M20 65 C22 50, 30 45, 40 45 C50 45, 58 50, 60 65"
@@ -54,11 +54,11 @@ function EditorialAvatarPlaceholder({ code }) {
       <span
         style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.68rem',
+          fontSize: '0.66rem',
           fontWeight: 600,
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
-          color: '#94a3b8'
+          color: '#cbd5e1'
         }}
       >
         Portrait / Headshot Slot · {code}
@@ -75,6 +75,10 @@ export function TeamPage() {
     selectedDept === 'all'
       ? TEAM_PLACEHOLDER_SLOTS
       : TEAM_PLACEHOLDER_SLOTS.filter((s) => s.department === selectedDept);
+
+  // Balanced grid: 8 items -> 4x2 in compact or 2x4 in detailed; 2 items -> 2x1 in both
+  const gridClass =
+    selectedDept === 'all' && viewMode === 'compact' ? 'grid-4' : 'grid-2';
 
   return (
     <Layout
@@ -100,7 +104,7 @@ export function TeamPage() {
             <AnimatedHeading
               as="h1"
               text="The People Behind Hasamex"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 660 }}>
               Headquartered in Singapore, with a distributed team across India and beyond, our
@@ -113,7 +117,7 @@ export function TeamPage() {
       {/* TRANSPARENT DRAFT NOTICE & CONTROLS */}
       <section className="section">
         <div className="container">
-          <div className="draft-banner" style={{ marginBottom: '2rem' }}>
+          <div className="draft-banner" style={{ marginBottom: '1.85rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <Icon name="alert" size={17} />
               <span>
@@ -161,12 +165,12 @@ export function TeamPage() {
             ))}
           </div>
 
-          {/* PLACEHOLDER PROFILE CARDS */}
-          <div className={viewMode === 'compact' ? 'grid-4' : 'grid-3'}>
+          {/* PLACEHOLDER PROFILE CARDS (Balanced 2x4 or 4x2 Grid — Zero Orphan Cards!) */}
+          <div className={gridClass}>
             {filteredSlots.map((slot, idx) => (
               <Reveal
                 key={slot.id}
-                delay={idx * 0.04}
+                delay={idx * 0.035}
                 className="card"
                 style={{ borderStyle: 'dashed' }}
               >
@@ -181,10 +185,10 @@ export function TeamPage() {
                   <div
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.7rem',
+                      fontSize: '0.68rem',
                       textTransform: 'uppercase',
                       letterSpacing: '0.07em',
-                      color: 'var(--color-accent)',
+                      color: 'var(--color-text-muted)',
                       fontWeight: 600,
                       marginBottom: '0.25rem'
                     }}
@@ -192,7 +196,7 @@ export function TeamPage() {
                     {slot.departmentLabel}
                   </div>
 
-                  <h3 style={{ fontSize: '1.08rem', marginBottom: '0.3rem' }}>
+                  <h3 style={{ fontSize: '1.05rem', marginBottom: '0.25rem' }}>
                     {slot.namePlaceholder}
                   </h3>
 
@@ -201,41 +205,32 @@ export function TeamPage() {
                       fontSize: '0.84rem',
                       fontWeight: 600,
                       color: 'var(--color-text-primary)',
-                      marginBottom: '0.65rem'
+                      marginBottom: '0.6rem'
                     }}
                   >
                     {slot.titlePlaceholder}
                   </div>
 
                   {viewMode === 'detailed' && (
-                    <p style={{ fontSize: '0.84rem', marginBottom: '1rem' }}>
+                    <p style={{ fontSize: '0.84rem', marginBottom: '0.5rem' }}>
                       {slot.bioPlaceholder}
                     </p>
                   )}
                 </div>
 
-                <div
-                  style={{
-                    paddingTop: '0.85rem',
-                    borderTop: '1px solid var(--hasamex-border-light)',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '0.45rem'
-                  }}
-                >
+                <div className="card-footer-row">
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
                     {slot.focusTags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
                         style={{
                           fontSize: '0.68rem',
-                          fontWeight: 500,
+                          fontWeight: 600,
                           padding: '0.16rem 0.5rem',
                           borderRadius: 'var(--radius-pill)',
-                          background: '#f1f5f9',
-                          color: 'var(--color-text-secondary)'
+                          background: 'var(--bg-section-subtle)',
+                          color: 'var(--color-text-secondary)',
+                          border: '1px solid var(--hasamex-border-light)'
                         }}
                       >
                         {tag}
@@ -273,7 +268,7 @@ export function TeamPage() {
               <AnimatedHeading
                 as="h2"
                 text="One Standard of Precision Across Singapore & India"
-                style={{ marginTop: '0.75rem', marginBottom: '0.75rem' }}
+                style={{ marginTop: '0.65rem', marginBottom: '0.65rem' }}
               />
               <p className="lead" style={{ marginBottom: '1.15rem' }}>
                 We lead with integrity, operate with speed, treat people with respect, move with
@@ -286,11 +281,11 @@ export function TeamPage() {
             </div>
 
             <div className="card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.9rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.85rem' }}>
                 <HasamexEmblemVector size={44} />
                 <div>
                   <h3 style={{ marginBottom: '0.1rem' }}>Ready for Content Handover</h3>
-                  <p style={{ fontSize: '0.82rem' }}>
+                  <p style={{ fontSize: '0.8rem' }}>
                     Drop-in JSON configuration in <code>src/content/siteData.js</code>
                   </p>
                 </div>

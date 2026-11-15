@@ -8,18 +8,21 @@ import { AnimatedHeading, Reveal } from '../components/Reveal';
 const CULTURE_PILLARS = [
   {
     number: '01',
+    tag: 'Ownership',
     title: 'Real Responsibility From Day One',
     description:
       'We mentor you to become a trusted professional, giving you real ownership over high-stakes institutional research projects.'
   },
   {
     number: '02',
+    tag: 'Global Exposure',
     title: 'Global Market Exposure',
     description:
       'Work directly with hedge funds, private equity firms, strategy consultancies, and senior C-suite operators across global markets.'
   },
   {
     number: '03',
+    tag: 'Momentum',
     title: 'High-Momentum Culture',
     description:
       'Smart, kind people move fast here. We lead with integrity, operate with speed, and communicate with clarity.'
@@ -51,7 +54,7 @@ export function CareersPage() {
             <AnimatedHeading
               as="h1"
               text="Careers with Hasamex"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 640 }}>
               If you’re curious, driven, and ready to do meaningful work—let’s talk.
@@ -73,7 +76,7 @@ export function CareersPage() {
       {/* GROW WITH US */}
       <section className="section">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '2.5rem', marginBottom: '3rem' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '2.5rem', marginBottom: '2.75rem' }}>
             <Reveal>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
@@ -82,17 +85,17 @@ export function CareersPage() {
               <AnimatedHeading
                 as="h2"
                 text="Grow with Us"
-                style={{ marginTop: '0.75rem', marginBottom: '0.85rem' }}
+                style={{ marginTop: '0.65rem', marginBottom: '0.8rem' }}
               />
-              <p className="lead" style={{ color: 'var(--color-text-primary)', fontWeight: 500, marginBottom: '0.9rem' }}>
+              <p className="lead" style={{ color: 'var(--color-text-primary)', fontWeight: 500, marginBottom: '0.85rem' }}>
                 We’re always looking for thoughtful, ambitious people to build Hasamex with us.
                 Smart, kind people move fast here. Reach out and tell us your story.
               </p>
-              <p className="lead" style={{ marginBottom: '0.9rem' }}>
+              <p className="lead" style={{ marginBottom: '0.85rem' }}>
                 To apply, send us your CV through the form below or email us at:{' '}
                 <a
                   href={`mailto:${BRAND.emails.careers}`}
-                  style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'underline' }}
+                  style={{ color: 'var(--hub-navy)', fontWeight: 700, textDecoration: 'underline' }}
                 >
                   {BRAND.emails.careers}
                 </a>
@@ -102,13 +105,13 @@ export function CareersPage() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.08} className="card card--navy" style={{ padding: '2rem' }}>
+            <Reveal delay={0.08} className="card card--navy" style={{ padding: '1.9rem' }}>
               <div className="card-top">
                 <span className="card-index">OPEN ROLES STATUS</span>
                 <span className="card-tag">Singapore &amp; India</span>
               </div>
               <h3 style={{ color: '#ffffff' }}>Rolling Talent Intake</h3>
-              <p style={{ marginBottom: '1.2rem', color: '#cbd5e1' }}>
+              <p style={{ marginBottom: '1.15rem', color: '#cbd5e1' }}>
                 Hasamex accepts rolling applications across Client Solutions, Expert Sourcing,
                 Research Associates, and Operations in Singapore and India. No individual role
                 requisitions are published on the current public site—submit your CV below to be
@@ -126,9 +129,17 @@ export function CareersPage() {
                 <div>
                   <div className="card-top">
                     <span className="card-index">{item.number}</span>
+                    <span className="card-tag">{item.tag}</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="users" size={18} />
                   </div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
+                </div>
+                <div className="card-footer-row">
+                  <span>Singapore &amp; India Teams</span>
+                  <Icon name="check" size={14} />
                 </div>
               </Reveal>
             ))}

@@ -41,7 +41,7 @@ export function CompliancePage() {
             <AnimatedHeading
               as="h1"
               text="Investment Grade Compliance"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 640 }}>
               Industry-leading compliance framework that safeguards every interaction between
@@ -78,9 +78,9 @@ export function CompliancePage() {
             </p>
           </Reveal>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {COMPLIANCE_SAFEGUARDS.map((item, idx) => (
-              <Reveal key={item.number} delay={idx * 0.045} className="card">
+              <Reveal key={item.number} delay={idx * 0.04} className="card">
                 <div
                   style={{
                     display: 'grid',
@@ -95,48 +95,35 @@ export function CompliancePage() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.65rem',
-                        marginBottom: '0.55rem'
+                        marginBottom: '0.6rem'
                       }}
                     >
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.95rem',
-                          fontWeight: 700,
-                          color: 'var(--color-accent)',
-                          padding: '0.22rem 0.6rem',
-                          borderRadius: '8px',
-                          background: 'var(--color-accent-subtle)',
-                          border: '1px solid var(--color-accent-border)'
-                        }}
-                      >
-                        {item.number}
-                      </span>
+                      <span className="card-index">CHECKPOINT {item.number}</span>
                       <span className="card-tag">{item.stage}</span>
                     </div>
-                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>{item.title}</h3>
+                    <h3 style={{ fontSize: '1.16rem', marginBottom: '0.4rem' }}>{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
 
                   <div
                     style={{
-                      background: '#f8fafc',
+                      background: 'var(--bg-body)',
                       border: '1px solid var(--hasamex-border-light)',
                       borderRadius: 'var(--radius-md)',
-                      padding: '1.05rem 1.2rem',
+                      padding: '1rem 1.15rem',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '0.55rem'
+                      gap: '0.5rem'
                     }}
                   >
                     <div
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.7rem',
+                        fontSize: '0.68rem',
                         textTransform: 'uppercase',
                         letterSpacing: '0.08em',
-                        color: 'var(--color-accent)',
-                        fontWeight: 600
+                        color: 'var(--hub-navy)',
+                        fontWeight: 700
                       }}
                     >
                       Mandatory Controls
@@ -153,7 +140,7 @@ export function CompliancePage() {
                           fontWeight: 500
                         }}
                       >
-                        <span style={{ color: 'var(--color-accent)', marginTop: 2 }}>
+                        <span style={{ color: 'var(--hub-navy)', marginTop: 2 }}>
                           <Icon name="shield" size={14} />
                         </span>
                         <span>{ctrl}</span>
@@ -167,7 +154,7 @@ export function CompliancePage() {
         </div>
       </section>
 
-      {/* VERIFIED COMPLIANCE TESTIMONIALS */}
+      {/* VERIFIED COMPLIANCE TESTIMONIALS (Balanced 3x1 Grid) */}
       <section className="section section--ivory">
         <div className="container">
           <Reveal className="section-header">
@@ -181,26 +168,28 @@ export function CompliancePage() {
 
           <div className="grid-3">
             {complianceQuotes.map((q, idx) => (
-              <Reveal key={q.id} delay={idx * 0.05} className="card">
+              <Reveal key={q.id} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{q.category}</span>
-                    <span style={{ color: 'var(--color-accent)' }}>
-                      <Icon name="shield" size={16} />
-                    </span>
+                    <span className="card-tag">Verified Feedback</span>
                   </div>
                   <p
                     style={{
                       color: 'var(--color-text-primary)',
-                      fontSize: '0.92rem',
-                      marginBottom: '1.15rem'
+                      fontSize: '0.91rem',
+                      marginBottom: '1rem',
+                      fontWeight: 500
                     }}
                   >
                     “{q.quote}”
                   </p>
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)' }}>
-                  <strong style={{ color: 'var(--color-text-primary)' }}>{q.role}</strong> · {q.org}
+                <div className="card-footer-row">
+                  <span>
+                    <strong style={{ color: 'var(--color-text-primary)' }}>{q.role}</strong> ·{' '}
+                    {q.org}
+                  </span>
                 </div>
               </Reveal>
             ))}
@@ -211,41 +200,40 @@ export function CompliancePage() {
       {/* GOVERNANCE DOCUMENTS & DIRECT COMPLIANCE CHANNEL */}
       <section className="section">
         <div className="container">
-          <div className="grid-3" style={{ marginBottom: '2.25rem' }}>
+          <div className="grid-3" style={{ marginBottom: '2rem' }}>
             {HOME_COMPLIANCE_CARDS.map((card) => (
               <div key={card.title} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{card.badge}</span>
-                    <span style={{ color: 'var(--color-accent)' }}>
-                      <Icon name="document" size={17} />
-                    </span>
+                    <span className="card-tag">Official Policy</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="document" size={18} />
                   </div>
                   <h3>{card.title}</h3>
-                  <p style={{ marginBottom: '1.15rem' }}>{card.description}</p>
+                  <p>{card.description}</p>
                 </div>
-                <Link
-                  to={card.path}
-                  className="btn btn--glass btn--sm"
-                  style={{ alignSelf: 'flex-start' }}
-                >
-                  {card.ctaLabel}
-                  <Icon name="arrow-right" size={14} />
-                </Link>
+                <div className="card-footer-row">
+                  <span>Binding Governance</span>
+                  <Link to={card.path} className="card-cta-link">
+                    {card.ctaLabel} <Icon name="arrow-right" size={13} />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
 
-          <Reveal className="card card--navy" style={{ padding: '2rem' }}>
+          <Reveal className="card card--navy" style={{ padding: '1.9rem 2rem' }}>
             <div style={{ maxWidth: 760 }}>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
                 Direct Compliance Oversight
               </span>
-              <h3 style={{ fontSize: '1.38rem', marginTop: '0.75rem', marginBottom: '0.55rem', color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1.3rem', marginTop: '0.7rem', marginBottom: '0.5rem', color: '#ffffff' }}>
                 Have a compliance-related question or concern?
               </h3>
-              <p style={{ marginBottom: '1.1rem', color: '#cbd5e1' }}>
+              <p style={{ marginBottom: '1.15rem', color: '#cbd5e1' }}>
                 At Hasamex, compliance is built into everything we do. From expert onboarding and
                 client confidentiality to MNPI safeguards and secure call handling, our program is
                 designed to uphold the highest legal and ethical standards—globally. Powered by
@@ -257,14 +245,14 @@ export function CompliancePage() {
                   display: 'flex',
                   flexWrap: 'wrap',
                   alignItems: 'center',
-                  gap: '0.9rem'
+                  gap: '0.85rem'
                 }}
               >
                 <a href={`mailto:${BRAND.emails.compliance}`} className="btn btn--primary">
                   <Icon name="mail" size={15} />
                   Reach out: {BRAND.emails.compliance}
                 </a>
-                <span style={{ fontSize: '0.84rem', color: '#94a3b8' }}>
+                <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
                   We’ll review your inquiry with discretion and respond promptly.
                 </span>
               </div>

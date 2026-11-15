@@ -9,6 +9,7 @@ const STAKEHOLDER_CARDS = [
   {
     badge: '01 · For Clients',
     title: 'Clients',
+    tag: 'Institutional Research',
     description:
       'We deliver expert insight with speed, precision, and discretion—so you can make sharper decisions, faster.',
     ctaLabel: 'Request an Expert',
@@ -17,6 +18,7 @@ const STAKEHOLDER_CARDS = [
   {
     badge: '02 · For Experts',
     title: 'Experts',
+    tag: 'HIN Community',
     description:
       'We respect your time, match you to relevant projects, and ensure you’re paid fairly and on time—every time.',
     ctaLabel: 'Sign Up Now',
@@ -25,6 +27,7 @@ const STAKEHOLDER_CARDS = [
   {
     badge: '03 · For Talent',
     title: 'Candidates / Employees',
+    tag: 'Singapore & India',
     description:
       'We mentor you to become a trusted professional, giving you real responsibility, global exposure, and a clear path to grow.',
     ctaLabel: 'Apply Now',
@@ -57,7 +60,7 @@ export function AboutPage() {
             <AnimatedHeading
               as="h1"
               text="Built for Better Insight"
-              style={{ marginTop: '0.9rem', marginBottom: '1rem' }}
+              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
             />
             <p className="lead" style={{ maxWidth: 640 }}>
               Hasamex is a global expert network built to simplify how professionals access and
@@ -91,14 +94,21 @@ export function AboutPage() {
               <AnimatedHeading
                 as="h2"
                 text="Connecting Global Decision-Makers With Trusted Primary Insight"
-                style={{ marginTop: '0.75rem', marginBottom: '0.95rem' }}
+                style={{ marginTop: '0.65rem', marginBottom: '0.85rem' }}
               />
-              <p className="lead" style={{ marginBottom: '0.95rem', color: 'var(--color-text-primary)', fontWeight: 500 }}>
+              <p
+                className="lead"
+                style={{
+                  marginBottom: '0.85rem',
+                  color: 'var(--color-text-primary)',
+                  fontWeight: 500
+                }}
+              >
                 Hasamex connects investors, consultants, and strategy leaders with trusted experts
                 through short consultations, transcripts, and roundtables—across sectors,
                 geographies, and themes.
               </p>
-              <p className="lead" style={{ marginBottom: '0.95rem' }}>
+              <p className="lead" style={{ marginBottom: '0.85rem' }}>
                 Headquartered in Singapore, with a distributed team across India and beyond, we
                 serve decision-makers who value precision, pace, and professionalism in every
                 engagement.
@@ -109,15 +119,15 @@ export function AboutPage() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.08} className="card card--navy" style={{ padding: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.95rem', marginBottom: '1.35rem' }}>
-                <HasamexEmblemVector size={52} />
+            <Reveal delay={0.08} className="card card--navy" style={{ padding: '1.9rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.95rem', marginBottom: '1.25rem' }}>
+                <HasamexEmblemVector size={50} />
                 <div>
                   <div
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.7rem',
-                      color: '#22d3ee',
+                      fontSize: '0.68rem',
+                      color: '#cbd5e1',
                       fontWeight: 600,
                       textTransform: 'uppercase',
                       letterSpacing: '0.08em'
@@ -125,10 +135,10 @@ export function AboutPage() {
                   >
                     Corporate Profile
                   </div>
-                  <div style={{ fontSize: '1.18rem', fontWeight: 600, color: '#ffffff' }}>
+                  <div style={{ fontSize: '1.15rem', fontWeight: 600, color: '#ffffff' }}>
                     {BRAND.legalName}
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                  <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
                     Singapore UEN: {BRAND.uen}
                   </div>
                 </div>
@@ -138,20 +148,20 @@ export function AboutPage() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.85rem',
-                  paddingTop: '1.1rem',
-                  borderTop: '1px solid #1e293b',
-                  fontSize: '0.86rem'
+                  gap: '0.8rem',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+                  fontSize: '0.85rem'
                 }}
               >
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.75rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
                     Registered Headquarters
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>{BRAND.address}</div>
                 </div>
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.75rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
                     Operating Footprint
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>
@@ -159,7 +169,7 @@ export function AboutPage() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.75rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
                     Proprietary Network
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>
@@ -172,7 +182,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* OPERATING PRINCIPLES / VALUES */}
+      {/* OPERATING PRINCIPLES / VALUES (Balanced 5-Card Bento Grid: 3 Top + 2 Bottom, Zero Lonely Card!) */}
       <section className="section section--ivory">
         <div className="container">
           <Reveal className="section-header">
@@ -186,21 +196,20 @@ export function AboutPage() {
             </p>
           </Reveal>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(215px, 1fr))',
-              gap: '1.1rem'
-            }}
-          >
+          <div className="grid-5-bento">
             {ABOUT_VALUES.map((val, idx) => (
-              <Reveal key={val.title} delay={idx * 0.045} className="card">
+              <Reveal key={val.title} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">{val.number}</span>
+                    <span className="card-index">PRINCIPLE {val.number}</span>
+                    <span className="card-tag">Core Standard</span>
                   </div>
                   <h3>{val.title}</h3>
                   <p>{val.description}</p>
+                </div>
+                <div className="card-footer-row">
+                  <span>Hasamex Operating Charter</span>
+                  <Icon name="check" size={14} />
                 </div>
               </Reveal>
             ))}
@@ -208,7 +217,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* WHY HASAMEX — 3 STAKEHOLDER PILLARS */}
+      {/* WHY HASAMEX — 3 STAKEHOLDER PILLARS (Balanced 3x1 Grid) */}
       <section className="section">
         <div className="container">
           <Reveal className="section-header">
@@ -224,29 +233,31 @@ export function AboutPage() {
 
           <div className="grid-3">
             {STAKEHOLDER_CARDS.map((card, idx) => (
-              <Reveal key={card.title} delay={idx * 0.05} className="card">
+              <Reveal key={card.title} delay={idx * 0.045} className="card">
                 <div>
                   <div className="card-top">
                     <span className="card-index">{card.badge}</span>
+                    <span className="card-tag">{card.tag}</span>
+                  </div>
+                  <div className="card-icon-box">
+                    <Icon name="users" size={18} />
                   </div>
                   <h3>{card.title}</h3>
-                  <p style={{ marginBottom: '1.35rem' }}>{card.description}</p>
+                  <p>{card.description}</p>
                 </div>
-                <Link
-                  to={card.path}
-                  className="btn btn--primary btn--sm"
-                  style={{ alignSelf: 'flex-start' }}
-                >
-                  {card.ctaLabel}
-                  <Icon name="arrow-right" size={14} />
-                </Link>
+                <div className="card-footer-row">
+                  <span>Dedicated Support</span>
+                  <Link to={card.path} className="card-cta-link">
+                    {card.ctaLabel} <Icon name="arrow-right" size={13} />
+                  </Link>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SPACE FOR FUTURE ADDITIONAL COMPANY CONTENT (Draft Expansion Module) */}
+      {/* SPACE FOR FUTURE ADDITIONAL COMPANY CONTENT (Balanced 2x1 Grid) */}
       <section className="section section--elevated">
         <div className="container">
           <div className="draft-banner">

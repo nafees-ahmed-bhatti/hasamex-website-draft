@@ -169,7 +169,7 @@ export function Icon({ name, size = 20, className = '' }) {
 
 /**
  * Vector recreation of the official Hasamex "Two Figures Forming H" emblem
- * using HASAMEX Hub Executive Navy (#0b1329) & Bright Cyan (#22d3ee).
+ * using HASAMEX Hub Executive Navy (#0b1329) & Crisp White (#ffffff).
  */
 export function HasamexEmblemVector({ size = 52, className = '' }) {
   return (
@@ -186,21 +186,21 @@ export function HasamexEmblemVector({ size = 52, className = '' }) {
         cy="50"
         r="47"
         fill="#0b1329"
-        stroke="rgba(34,211,238,0.35)"
+        stroke="rgba(255,255,255,0.28)"
         strokeWidth="2"
       />
       <circle
         cx="50"
         cy="50"
         r="42"
-        stroke="rgba(148,163,184,0.28)"
+        stroke="rgba(255,255,255,0.18)"
         strokeWidth="1"
         strokeDasharray="3 3"
       />
       {/* Left figure head */}
-      <circle cx="33" cy="22.5" r="5.5" fill="#22d3ee" />
+      <circle cx="33" cy="22.5" r="5.5" fill="#ffffff" />
       {/* Right figure head */}
-      <circle cx="67" cy="22.5" r="5.5" fill="#22d3ee" />
+      <circle cx="67" cy="22.5" r="5.5" fill="#ffffff" />
       {/* Stylized H body */}
       <path
         d="M28.5 32.5 C30.5 34.5, 35.5 34.5, 37.5 32.5 L37.5 48.5 C37.5 52.5, 42 54, 50 54 C58 54, 62.5 52.5, 62.5 48.5 L62.5 32.5 C64.5 34.5, 69.5 34.5, 71.5 32.5 L71.5 82 L62.5 82 L62.5 64.5 C62.5 60.5, 58 59, 50 59 C42 59, 37.5 60.5, 37.5 64.5 L37.5 82 L28.5 82 Z"
