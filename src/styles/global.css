@@ -3188,6 +3188,10 @@ p {
   align-items: stretch;
 }
 
+.intake-split-layout > * {
+  min-width: 0;
+}
+
 .intake-desk-card {
   background: var(--hub-navy);
   border: 1px solid var(--hub-navy-border);
@@ -3199,6 +3203,7 @@ p {
   flex-direction: column;
   justify-content: space-between;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .intake-desk-card__title {
@@ -3248,6 +3253,8 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.12rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .intake-desk-step strong {
@@ -4147,8 +4154,10 @@ p {
   background: #ffffff;
   border: 1px solid var(--hasamex-border-light);
   border-radius: var(--radius-xl);
-  padding: clamp(1.5rem, 2.8vw, 2.25rem);
+  padding: clamp(1.25rem, 2.8vw, 2.25rem);
   box-shadow: var(--shadow-md);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .form-grid {
@@ -4236,10 +4245,17 @@ p {
    LEGAL PAGES (TERMS, CODE OF CONDUCT, PRIVACY, COOKIES)
    ========================================================================== */
 
+.legal-policy-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
 .legal-layout {
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: 2rem;
+  gap: 1.75rem;
   align-items: start;
 }
 
@@ -4282,8 +4298,10 @@ p {
   background: #ffffff;
   border: 1px solid var(--hasamex-border-light);
   border-radius: var(--radius-xl);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 2.8vw, 2.25rem);
   box-shadow: var(--shadow-sm);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .legal-prose section {

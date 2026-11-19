@@ -24,16 +24,9 @@ export function LegalPage({ slug }) {
 
   return (
     <Layout>
-      <section className="hero" style={{ paddingBottom: '2.75rem' }}>
+      <section className="hero" style={{ paddingBottom: '1.65rem' }}>
         <div className="container">
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.45rem',
-              marginBottom: '1.5rem'
-            }}
-          >
+          <div className="legal-policy-switcher" role="navigation" aria-label="Governance Policies">
             {POLICY_TABS.map((tab) => (
               <Link
                 key={tab.slug}
@@ -54,7 +47,7 @@ export function LegalPage({ slug }) {
           <AnimatedHeading
             as="h1"
             text={doc.title}
-            style={{ marginTop: '0.85rem', marginBottom: '0.65rem' }}
+            style={{ marginTop: '0.65rem', marginBottom: '0.5rem' }}
           />
           <p className="lead" style={{ maxWidth: 680 }}>
             {doc.subtitle}
@@ -65,7 +58,7 @@ export function LegalPage({ slug }) {
       <section className="section">
         <div className="container">
           {doc.flags && doc.flags.length > 0 && (
-            <div className="draft-banner" style={{ marginBottom: '1.75rem' }}>
+            <div className="draft-banner" style={{ marginBottom: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                 <span style={{ marginTop: 2 }}>
                   <Icon name="alert" size={17} />
@@ -91,7 +84,7 @@ export function LegalPage({ slug }) {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  color: 'var(--color-accent)',
+                  color: 'var(--hub-navy)',
                   marginBottom: '0.55rem'
                 }}
               >

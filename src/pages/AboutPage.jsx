@@ -7,32 +7,47 @@ import { AnimatedHeading, Reveal } from '../components/Reveal';
 
 const STAKEHOLDER_CARDS = [
   {
-    badge: '01 · For Clients',
+    num: '01',
+    badge: 'For Clients',
     title: 'Clients',
     tag: 'Institutional Research',
+    icon: 'briefcase',
     description:
       'We deliver expert insight with speed, precision, and discretion—so you can make sharper decisions, faster.',
     ctaLabel: 'Request an Expert',
     path: '/clients'
   },
   {
-    badge: '02 · For Experts',
+    num: '02',
+    badge: 'For Experts',
     title: 'Experts',
     tag: 'HIN Community',
+    icon: 'users',
     description:
       'We respect your time, match you to relevant projects, and ensure you’re paid fairly and on time—every time.',
     ctaLabel: 'Sign Up Now',
     path: '/experts'
   },
   {
-    badge: '03 · For Talent',
+    num: '03',
+    badge: 'For Talent',
     title: 'Candidates / Employees',
     tag: 'Singapore & India',
+    icon: 'compass',
     description:
       'We mentor you to become a trusted professional, giving you real responsibility, global exposure, and a clear path to grow.',
     ctaLabel: 'Apply Now',
     path: '/careers'
   }
+];
+
+const ABOUT_MARQUEE = [
+  'Headquartered in Singapore (UEN 202526952W)',
+  'Distributed Research & Sourcing Hubs Across India',
+  '2–12 Hour Typical Expert Profile Delivery',
+  'Zero-Tolerance MNPI & Institutional Audit Trails',
+  '≤ 14-Day Guaranteed Expert Honorarium Settlement',
+  'Developed · Emerging · Frontier Market Coverage'
 ];
 
 export function AboutPage() {
@@ -49,43 +64,138 @@ export function AboutPage() {
         secondaryTo: '/team'
       }}
     >
-      {/* HERO */}
+      {/* 1. HERO — BALANCED 2-COLUMN INSTITUTIONAL SPLIT */}
       <section className="hero">
-        <div className="container" style={{ maxWidth: 880 }}>
-          <Reveal blur y={16}>
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              About Hasamex
-            </span>
-            <AnimatedHeading
-              as="h1"
-              text="Built for Better Insight"
-              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
-            />
-            <p className="lead" style={{ maxWidth: 640 }}>
-              Hasamex is a global expert network built to simplify how professionals access and
-              share insight.
-            </p>
-            <div className="hero-ctas">
-              <a href="#story" className="btn btn--primary">
-                Learn More
-                <Icon name="arrow-right" size={15} />
-              </a>
-              <Link to="/team" className="btn btn--glass">
-                Leadership &amp; Team
-              </Link>
-              <Link to="/contact-us" className="btn btn--charcoal">
-                Get in Touch
-              </Link>
-            </div>
-          </Reveal>
+        <div className="container">
+          <div className="hero-grid" style={{ alignItems: 'center' }}>
+            <Reveal blur y={14} className="hero-copy">
+              <div>
+                <span className="eyebrow">
+                  <span className="eyebrow-dot" />
+                  About Hasamex
+                </span>
+                <AnimatedHeading
+                  as="h1"
+                  text="Built for Better Insight"
+                  style={{ marginTop: '0.65rem', marginBottom: '0.65rem' }}
+                />
+                <p className="lead" style={{ maxWidth: '52ch', marginBottom: '1.25rem' }}>
+                  Hasamex is a global expert network built to simplify how professionals access and
+                  share insight across Developed, Emerging, and Frontier markets.
+                </p>
+                <div className="hero-ctas">
+                  <a href="#story" className="btn btn--primary">
+                    Our Mandate
+                    <Icon name="arrow-right" size={15} />
+                  </a>
+                  <Link to="/team" className="btn btn--glass">
+                    Leadership &amp; Team
+                  </Link>
+                  <Link to="/contact-us" className="btn btn--charcoal">
+                    Get in Touch
+                  </Link>
+                </div>
+              </div>
+
+              <div className="hero-trust-line">
+                <img
+                  src="/brand/hasamex-emblem-dark.png"
+                  alt="Hasamex Emblem"
+                  className="hero-footprint-ledger__emblem"
+                />
+                <div>
+                  <strong>{BRAND.legalName} · Singapore HQ</strong>
+                  <span>UEN {BRAND.uen} · {BRAND.address}</span>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08} y={14}>
+              <div className="page-hero-panel">
+                <div className="page-hero-panel__header">
+                  <span className="showcase-live-pill">
+                    <span className="live-dot" />
+                    Corporate Footprint
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.66rem',
+                      color: '#86efac',
+                      fontWeight: 600
+                    }}
+                  >
+                    SINGAPORE · INDIA · GLOBAL
+                  </span>
+                </div>
+
+                <div>
+                  <div className="page-hero-panel__title">
+                    Institutional Speed Meets Cross-Border Precision
+                  </div>
+                  <p className="page-hero-panel__sub">
+                    Anchored in Singapore with distributed research and sourcing hubs across India,
+                    Hasamex operates on institutional clocks without compromising compliance.
+                  </p>
+                </div>
+
+                <div className="page-hero-panel__matrix">
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">2–12 Hr</span>
+                    <span className="page-hero-panel__label">Typical Turnaround</span>
+                    <span className="page-hero-panel__note">Handpicked per brief</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">5-Point</span>
+                    <span className="page-hero-panel__label">MNPI Safeguards</span>
+                    <span className="page-hero-panel__note">100% recorded calls</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">DM · EM · FM</span>
+                    <span className="page-hero-panel__label">Global Coverage</span>
+                    <span className="page-hero-panel__note">14+ active corridors</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">≤ 14 Days</span>
+                    <span className="page-hero-panel__label">Expert Payouts</span>
+                    <span className="page-hero-panel__note">Guaranteed settlement</span>
+                  </div>
+                </div>
+
+                <div className="page-hero-panel__footer">
+                  <span className="page-hero-panel__contact">
+                    <Icon name="mail" size={14} />
+                    <a href={`mailto:${BRAND.emails.general}`} className="email-plain-link">
+                      {BRAND.emails.general}
+                    </a>
+                  </span>
+                  <Link to="/contact-us" className="showcase-cta">
+                    Connect With Us
+                    <Icon name="arrow-right" size={13} />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* COMPANY STORY & POSITIONING */}
+      {/* 1B. CONTINUOUS CORPORATE CHARTER MARQUEE */}
+      <div className="marquee-bar" aria-label="Hasamex Corporate Footprint">
+        <div className="marquee-track">
+          {[...ABOUT_MARQUEE, ...ABOUT_MARQUEE].map((item, idx) => (
+            <div key={`${item}-${idx}`} className="marquee-item">
+              <span className="marquee-dot" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. COMPANY STORY & POSITIONING */}
       <section id="story" className="section">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '2.5rem' }}>
+          <div className="advantage-split" style={{ alignItems: 'center' }}>
             <Reveal>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
@@ -94,12 +204,12 @@ export function AboutPage() {
               <AnimatedHeading
                 as="h2"
                 text="Connecting Global Decision-Makers With Trusted Primary Insight"
-                style={{ marginTop: '0.65rem', marginBottom: '0.85rem' }}
+                style={{ marginTop: '0.5rem', marginBottom: '0.75rem' }}
               />
               <p
                 className="lead"
                 style={{
-                  marginBottom: '0.85rem',
+                  marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)',
                   fontWeight: 500
                 }}
@@ -108,7 +218,7 @@ export function AboutPage() {
                 through short consultations, transcripts, and roundtables—across sectors,
                 geographies, and themes.
               </p>
-              <p className="lead" style={{ marginBottom: '0.85rem' }}>
+              <p className="lead" style={{ marginBottom: '0.75rem' }}>
                 Headquartered in Singapore, with a distributed team across India and beyond, we
                 serve decision-makers who value precision, pace, and professionalism in every
                 engagement.
@@ -119,26 +229,26 @@ export function AboutPage() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.08} className="card card--navy" style={{ padding: '1.9rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.95rem', marginBottom: '1.25rem' }}>
-                <HasamexEmblemVector size={50} />
+            <Reveal delay={0.06} className="card card--navy" style={{ padding: '1.6rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1rem' }}>
+                <HasamexEmblemVector size={46} />
                 <div>
                   <div
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.68rem',
-                      color: '#cbd5e1',
-                      fontWeight: 600,
+                      fontSize: '0.66rem',
+                      color: '#86efac',
+                      fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '0.08em'
                     }}
                   >
                     Corporate Profile
                   </div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: 600, color: '#ffffff' }}>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#ffffff' }}>
                     {BRAND.legalName}
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
+                  <div style={{ fontSize: '0.76rem', color: '#94a3b8' }}>
                     Singapore UEN: {BRAND.uen}
                   </div>
                 </div>
@@ -148,20 +258,20 @@ export function AboutPage() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.8rem',
-                  paddingTop: '1rem',
+                  gap: '0.7rem',
+                  paddingTop: '0.9rem',
                   borderTop: '1px solid rgba(255, 255, 255, 0.12)',
-                  fontSize: '0.85rem'
+                  fontSize: '0.84rem'
                 }}
               >
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', marginBottom: 2 }}>
                     Registered Headquarters
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>{BRAND.address}</div>
                 </div>
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', marginBottom: 2 }}>
                     Operating Footprint
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>
@@ -169,7 +279,7 @@ export function AboutPage() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', marginBottom: 2 }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', marginBottom: 2 }}>
                     Proprietary Network
                   </div>
                   <div style={{ color: '#f8fafc', fontWeight: 500 }}>
@@ -182,26 +292,37 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* OPERATING PRINCIPLES / VALUES (Balanced 5-Card Bento Grid: 3 Top + 2 Bottom, Zero Lonely Card!) */}
+      {/* 3. OPERATING PRINCIPLES (5-Card Bento Grid) */}
       <section className="section section--ivory">
         <div className="container">
-          <Reveal className="section-header">
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              Operating Principles
-            </span>
-            <AnimatedHeading as="h2" text="How We Operate Every Engagement" />
-            <p className="lead">
-              We focus on what matters — quality, speed, trust, and compliance.
-            </p>
-          </Reveal>
+          <div className="section-header--split">
+            <Reveal style={{ maxWidth: 640 }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                Operating Principles
+              </span>
+              <AnimatedHeading
+                as="h2"
+                text="How We Operate Every Engagement"
+                style={{ marginTop: '0.45rem', marginBottom: '0.35rem' }}
+              />
+              <p className="lead">
+                We focus on what matters — quality, speed, trust, and compliance.
+              </p>
+            </Reveal>
+          </div>
 
           <div className="grid-5-bento">
             {ABOUT_VALUES.map((val, idx) => (
               <Reveal key={val.title} delay={idx * 0.04} className="card">
                 <div>
                   <div className="card-top">
-                    <span className="card-index">PRINCIPLE {val.number}</span>
+                    <div className="card-top__left">
+                      <span className="card-icon-box">
+                        <Icon name="check" size={14} />
+                      </span>
+                      <span className="card-index">PRINCIPLE {val.number}</span>
+                    </div>
                     <span className="card-tag">Core Standard</span>
                   </div>
                   <h3>{val.title}</h3>
@@ -209,7 +330,7 @@ export function AboutPage() {
                 </div>
                 <div className="card-footer-row">
                   <span>Hasamex Operating Charter</span>
-                  <Icon name="check" size={14} />
+                  <Icon name="shield" size={14} />
                 </div>
               </Reveal>
             ))}
@@ -217,38 +338,44 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* WHY HASAMEX — 3 STAKEHOLDER PILLARS (Balanced 3x1 Grid) */}
+      {/* 4. WHY HASAMEX — 3 STAKEHOLDER PILLARS (Stays 3 Columns on Desktop & Tablet, Zero Orphan) */}
       <section className="section">
         <div className="container">
-          <Reveal className="section-header">
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              Why Hasamex?
-            </span>
-            <AnimatedHeading as="h2" text="Built for Clients, Experts, and Ambitious Professionals" />
-            <p className="lead">
-              We focus on what matters — quality, speed, trust and compliance.
-            </p>
-          </Reveal>
+          <div className="section-header--split">
+            <Reveal style={{ maxWidth: 660 }}>
+              <span className="eyebrow">
+                <span className="eyebrow-dot" />
+                Why Hasamex?
+              </span>
+              <AnimatedHeading
+                as="h2"
+                text="Built for Clients, Experts, and Ambitious Professionals"
+                style={{ marginTop: '0.45rem', marginBottom: '0.35rem' }}
+              />
+              <p className="lead">
+                We focus on what matters — quality, speed, trust and compliance.
+              </p>
+            </Reveal>
+          </div>
 
-          <div className="grid-3">
+          <div className="governance-pillars-row">
             {STAKEHOLDER_CARDS.map((card, idx) => (
-              <Reveal key={card.title} delay={idx * 0.045} className="card">
+              <Reveal key={card.title} delay={idx * 0.04} className="governance-pillar-cell">
                 <div>
-                  <div className="card-top">
+                  <div className="governance-pillar-cell__top">
                     <div className="card-top__left">
                       <span className="card-icon-box">
-                        <Icon name="users" size={15} />
+                        <Icon name={card.icon} size={15} />
                       </span>
-                      <span className="card-index">{card.badge}</span>
+                      <span className="card-index">{card.num}</span>
                     </div>
                     <span className="card-tag">{card.tag}</span>
                   </div>
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
+                  <h3 className="governance-pillar-cell__title">{card.title}</h3>
+                  <p className="governance-pillar-cell__desc">{card.description}</p>
                 </div>
-                <div className="card-footer-row">
-                  <span>Dedicated Support</span>
+                <div className="governance-pillar-cell__footer">
+                  <span>{card.badge}</span>
                   <Link to={card.path} className="card-cta-link">
                     {card.ctaLabel} <Icon name="arrow-right" size={13} />
                   </Link>
@@ -259,7 +386,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* SPACE FOR FUTURE ADDITIONAL COMPANY CONTENT (Balanced 2x1 Grid) */}
+      {/* 5. RESERVED MODULES FOR LEADERSHIP EXPANSION */}
       <section className="section section--elevated">
         <div className="container">
           <div className="draft-banner">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TEAM_DEPARTMENTS, TEAM_PLACEHOLDER_SLOTS } from '../content/siteData';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { BRAND, TEAM_DEPARTMENTS, TEAM_PLACEHOLDER_SLOTS } from '../content/siteData';
 import { HasamexEmblemVector, Icon } from '../components/Icons';
 import { Layout } from '../components/Layout';
 import { AnimatedHeading, Reveal } from '../components/Reveal';
@@ -12,18 +13,18 @@ function EditorialAvatarBadge({ code, departmentLabel }) {
         display: 'flex',
         alignItems: 'center',
         gap: '0.65rem',
-        padding: '0.55rem 0.7rem',
+        padding: '0.52rem 0.68rem',
         borderRadius: '8px',
         background: 'var(--bg-section-subtle)',
         border: '1px solid var(--border-strong)',
-        marginBottom: '0.65rem'
+        marginBottom: '0.6rem'
       }}
       aria-label="Portrait Placeholder"
     >
       <div
         style={{
-          width: 36,
-          height: 36,
+          width: 34,
+          height: 34,
           borderRadius: '50%',
           background: 'var(--hub-navy)',
           display: 'inline-flex',
@@ -32,7 +33,7 @@ function EditorialAvatarBadge({ code, departmentLabel }) {
           flexShrink: 0
         }}
       >
-        <svg width="22" height="22" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 80 80" fill="none" aria-hidden="true">
           <circle
             cx="40"
             cy="28"
@@ -53,7 +54,7 @@ function EditorialAvatarBadge({ code, departmentLabel }) {
         <div
           style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.64rem',
+            fontSize: '0.62rem',
             fontWeight: 700,
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
@@ -65,7 +66,7 @@ function EditorialAvatarBadge({ code, departmentLabel }) {
         >
           {departmentLabel}
         </div>
-        <div style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>
+        <div style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>
           Headshot Slot · {code}
         </div>
       </div>
@@ -76,14 +77,13 @@ function EditorialAvatarBadge({ code, departmentLabel }) {
 export function TeamPage() {
   const [selectedDept, setSelectedDept] = useState('all');
   const [viewMode, setViewMode] = useState('compact'); // 'compact' | 'detailed'
-  const [expandedSlotId, setExpandedSlotId] = useState(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const filteredSlots =
     selectedDept === 'all'
       ? TEAM_PLACEHOLDER_SLOTS
       : TEAM_PLACEHOLDER_SLOTS.filter((s) => s.department === selectedDept);
 
-  // Balanced grid: 8 items -> 4x2 in compact or 2x4 in detailed; 2 items -> 2x1 in both
   const gridClass =
     selectedDept === 'all' && viewMode === 'compact' ? 'grid-4' : 'grid-2';
 
@@ -100,31 +100,123 @@ export function TeamPage() {
         secondaryTo: '/about-us'
       }}
     >
-      {/* HERO */}
+      {/* 1. HERO — BALANCED 2-COLUMN INSTITUTIONAL SPLIT */}
       <section className="hero">
-        <div className="container" style={{ maxWidth: 880 }}>
-          <Reveal blur y={16}>
-            <span className="eyebrow">
-              <span className="eyebrow-dot" />
-              Leadership &amp; Team · New Page Draft
-            </span>
-            <AnimatedHeading
-              as="h1"
-              text="The People Behind Hasamex"
-              style={{ marginTop: '0.85rem', marginBottom: '0.9rem' }}
-            />
-            <p className="lead" style={{ maxWidth: 660 }}>
-              Headquartered in Singapore, with a distributed team across India and beyond, our
-              team connects institutional decision-makers with vetted domain experts worldwide.
-            </p>
-          </Reveal>
+        <div className="container">
+          <div className="hero-grid" style={{ alignItems: 'center' }}>
+            <Reveal blur y={14} className="hero-copy">
+              <div>
+                <span className="eyebrow">
+                  <span className="eyebrow-dot" />
+                  Leadership &amp; Team · New Page Draft
+                </span>
+                <AnimatedHeading
+                  as="h1"
+                  text="The People Behind Hasamex"
+                  style={{ marginTop: '0.65rem', marginBottom: '0.65rem' }}
+                />
+                <p className="lead" style={{ maxWidth: '52ch', marginBottom: '1.25rem' }}>
+                  Headquartered in Singapore, with a distributed team across India and beyond, our
+                  team connects institutional decision-makers with vetted domain experts worldwide.
+                </p>
+                <div className="hero-ctas">
+                  <a href="#team-roster" className="btn btn--primary">
+                    View Team Structure
+                    <Icon name="arrow-right" size={15} />
+                  </a>
+                  <Link to="/careers" className="btn btn--glass">
+                    Explore Careers
+                  </Link>
+                </div>
+              </div>
+
+              <div className="hero-trust-line">
+                <img
+                  src="/brand/hasamex-emblem-dark.png"
+                  alt="Hasamex Emblem"
+                  className="hero-footprint-ledger__emblem"
+                />
+                <div>
+                  <strong>Cross-Border Execution Architecture</strong>
+                  <span>Singapore HQ · Distributed Research &amp; Sourcing Hubs Across India</span>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08} y={14}>
+              <div className="page-hero-panel">
+                <div className="page-hero-panel__header">
+                  <span className="showcase-live-pill">
+                    <span className="live-dot" />
+                    Roster Architecture (Draft)
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.66rem',
+                      color: '#86efac',
+                      fontWeight: 600
+                    }}
+                  >
+                    8 STRUCTURED SLOTS
+                  </span>
+                </div>
+
+                <div>
+                  <div className="page-hero-panel__title">
+                    4 Core Functional Desks · Zero Invented Profiles
+                  </div>
+                  <p className="page-hero-panel__sub">
+                    Structured placeholder slots ready for official leadership names, titles,
+                    biographies, and portraits upon final confirmation.
+                  </p>
+                </div>
+
+                <div className="page-hero-panel__matrix">
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">EXEC</span>
+                    <span className="page-hero-panel__label">Leadership</span>
+                    <span className="page-hero-panel__note">Strategy &amp; Governance</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">CLIENT</span>
+                    <span className="page-hero-panel__label">Client Solutions</span>
+                    <span className="page-hero-panel__note">Mandate execution</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">HIN</span>
+                    <span className="page-hero-panel__label">Expert Relations</span>
+                    <span className="page-hero-panel__note">Custom recruitment</span>
+                  </div>
+                  <div className="page-hero-panel__cell">
+                    <span className="page-hero-panel__metric">OPS</span>
+                    <span className="page-hero-panel__label">Compliance &amp; Ops</span>
+                    <span className="page-hero-panel__note">MNPI &amp; payouts</span>
+                  </div>
+                </div>
+
+                <div className="page-hero-panel__footer">
+                  <span className="page-hero-panel__contact">
+                    <Icon name="mail" size={14} />
+                    <a href={`mailto:${BRAND.emails.careers}`} className="email-plain-link">
+                      {BRAND.emails.careers}
+                    </a>
+                  </span>
+                  <Link to="/careers" className="showcase-cta">
+                    Join Hasamex
+                    <Icon name="arrow-right" size={13} />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* TRANSPARENT DRAFT NOTICE & CONTROLS */}
-      <section className="section">
+      {/* 2. TRANSPARENT DRAFT NOTICE & TEAM ROSTER */}
+      <section id="team-roster" className="section">
         <div className="container">
-          <div className="draft-banner" style={{ marginBottom: '1.85rem' }}>
+          <div className="draft-banner" style={{ marginBottom: '1.35rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <Icon name="alert" size={17} />
               <span>
@@ -134,7 +226,7 @@ export function TeamPage() {
                 leadership and team profiles.
               </span>
             </div>
-            <div style={{ display: 'flex', gap: '0.4rem' }}>
+            <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
               <button
                 type="button"
                 className={`btn btn--sm ${
@@ -172,14 +264,19 @@ export function TeamPage() {
             ))}
           </div>
 
-          {/* PLACEHOLDER PROFILE CARDS (Balanced 4x2 or 2x4 Grid — Compact & Zero Orphan Cards!) */}
-          <div className={gridClass}>
-            {filteredSlots.map((slot, idx) => {
-              const showBio = viewMode === 'detailed' || expandedSlotId === slot.id;
-              return (
-                <Reveal
+          {/* ANIMATED PLACEHOLDER PROFILE CARDS */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${selectedDept}-${viewMode}`}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              className={gridClass}
+            >
+              {filteredSlots.map((slot) => (
+                <div
                   key={slot.id}
-                  delay={idx * 0.035}
                   className="card"
                   style={{ borderStyle: 'dashed' }}
                 >
@@ -194,13 +291,13 @@ export function TeamPage() {
                       departmentLabel={slot.departmentLabel}
                     />
 
-                    <h3 style={{ fontSize: '0.96rem', marginBottom: '0.2rem' }}>
+                    <h3 style={{ fontSize: '0.95rem', marginBottom: '0.2rem' }}>
                       {slot.namePlaceholder}
                     </h3>
 
                     <div
                       style={{
-                        fontSize: '0.8rem',
+                        fontSize: '0.79rem',
                         fontWeight: 600,
                         color: 'var(--color-text-secondary)',
                         marginBottom: '0.45rem'
@@ -209,7 +306,7 @@ export function TeamPage() {
                       {slot.titlePlaceholder}
                     </div>
 
-                    {showBio && (
+                    {viewMode === 'detailed' && (
                       <div className="card-detail-drawer">{slot.bioPlaceholder}</div>
                     )}
                   </div>
@@ -233,44 +330,30 @@ export function TeamPage() {
                         </span>
                       ))}
                     </div>
-                    {viewMode === 'compact' ? (
-                      <button
-                        type="button"
-                        className={`card-expand-btn ${
-                          expandedSlotId === slot.id ? 'card-expand-btn--active' : ''
-                        }`}
-                        onClick={() =>
-                          setExpandedSlotId(expandedSlotId === slot.id ? null : slot.id)
-                        }
-                      >
-                        {expandedSlotId === slot.id ? 'Hide −' : 'Scope +'}
-                      </button>
-                    ) : (
-                      <span
-                        style={{
-                          fontSize: '0.7rem',
-                          color: 'var(--color-text-muted)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.25rem'
-                        }}
-                      >
-                        <Icon name="linkedin" size={12} />
-                        [LinkedIn]
-                      </span>
-                    )}
+                    <span
+                      style={{
+                        fontSize: '0.7rem',
+                        color: 'var(--color-text-muted)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.25rem'
+                      }}
+                    >
+                      <Icon name="linkedin" size={12} />
+                      [LinkedIn]
+                    </span>
                   </div>
-                </Reveal>
-              );
-            })}
-          </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
-      {/* CROSS-BORDER CULTURE HIGHLIGHT */}
+      {/* 3. CROSS-BORDER CULTURE HIGHLIGHT */}
       <section className="section section--ivory">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '2.25rem' }}>
+          <div className="advantage-split" style={{ alignItems: 'center' }}>
             <div>
               <span className="eyebrow">
                 <span className="eyebrow-dot" />
@@ -279,9 +362,9 @@ export function TeamPage() {
               <AnimatedHeading
                 as="h2"
                 text="One Standard of Precision Across Singapore & India"
-                style={{ marginTop: '0.65rem', marginBottom: '0.65rem' }}
+                style={{ marginTop: '0.5rem', marginBottom: '0.55rem' }}
               />
-              <p className="lead" style={{ marginBottom: '1.15rem' }}>
+              <p className="lead" style={{ marginBottom: '1rem' }}>
                 We lead with integrity, operate with speed, treat people with respect, move with
                 momentum, and communicate with clarity.
               </p>
@@ -292,16 +375,16 @@ export function TeamPage() {
             </div>
 
             <div className="card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.85rem' }}>
-                <HasamexEmblemVector size={44} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.75rem' }}>
+                <HasamexEmblemVector size={42} />
                 <div>
                   <h3 style={{ marginBottom: '0.1rem' }}>Ready for Content Handover</h3>
-                  <p style={{ fontSize: '0.8rem' }}>
+                  <p style={{ fontSize: '0.79rem', margin: 0 }}>
                     Drop-in JSON configuration in <code>src/content/siteData.js</code>
                   </p>
                 </div>
               </div>
-              <p style={{ fontSize: '0.86rem' }}>
+              <p style={{ fontSize: '0.85rem', margin: 0 }}>
                 Once leadership confirms the final team list, each placeholder card above can be
                 populated with official names, titles, regional locations, executive bios, LinkedIn
                 URLs, and either studio photography or custom illustrated portraits.
